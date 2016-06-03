@@ -1,0 +1,112 @@
+<template name="siteHeader">
+  <header>
+    <div class="header">
+      <div class="header_wrap">
+        <a class="header_logo" href="{{pathFor 'home'}}">
+      		<img src='/img/site/all-natural-contacts-logo.svg'>
+      		<span class="header_logo_txt">All Natural Contact</span>
+        </a>
+    		<a class="js_menu_btn btn_nav_drop" href="#">
+          <span></span>
+        </a>
+        <nav>
+      		<ul>
+            <span class="hide">
+              <li class="soc_nav">
+                <a href="{{pathFor 'linkedin'}}">
+                  <img src='/img/site/icn-nav-linkedin.svg' class="soc_nav_icn">
+                </a>
+              </li>
+        			<li class="soc_nav">
+                <a href="{{pathFor 'twitter'}}">
+                  <img src='/img/site/icn-nav-twitter.svg' class="soc_nav_icn">
+                </a>
+              </li>
+              <li class="soc_nav">
+                <a href="{{pathFor 'facebook'}}">
+                  <img src='/img/site/icn-nav-facebook.svg' class="soc_nav_icn">
+                </a>
+              </li>
+            </span>
+            <li>
+              <a href="{{pathFor 'contact'}}">
+                <span class="txt_nav no_border">Contact</span>
+              </a>
+            </li>
+            <li>
+              <a class="js_support" href="{{pathFor 'support'}}">
+                <span class="txt_nav">Support</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{pathFor 'pricing'}}">
+                <span class="txt_nav">Pricing</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{pathFor 'home'}}">
+                <span class="txt_nav">Home</span>
+              </a>
+            </li>
+      		</ul>
+      	</nav>
+      </div>
+    </div>
+
+    <nav>
+  		<ul class="js_nav_drop">
+        <li>
+          <a class="js_nav_item" href="{{pathFor 'home'}}">
+            <span class="txt_nav">Home</span>
+          </a>
+        </li>
+        <li>
+          <a class="js_nav_item" href="{{pathFor 'pricing'}}">
+            <span class="txt_nav">Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a class="js_support" href="{{pathFor 'support'}}">
+            <span class="txt_nav">Support</span>
+          </a>
+        </li>
+        <li>
+          <a class="js_nav_item" href="{{pathFor 'contact'}}">
+            <span class="txt_nav">Contact</span>
+          </a>
+        </li>
+        <span class="hide">
+    			<li>
+            <a class="js_nav_item" href="{{pathFor 'facebook'}}">
+              <span class="txt_nav">Facebook</span>
+            </a>
+          </li>
+    			<li>
+            <a class="js_nav_item" href="{{pathFor 'twitter'}}">
+              <span class="txt_nav">Twitter</span>
+            </a>
+          </li>
+    			<li>
+            <a class="js_nav_item" href="{{pathFor 'linkedin'}}">
+              <span class="txt_nav">Linkedin</span>
+            </a>
+          </li>
+        </span>
+  		</ul>
+  	</nav>
+
+  	<div class="sub_header">
+      <div class="header_wrap">
+        <div class="sub_nav">
+          {{#if currentUser}}
+        		<a href="/info/tag/all_contacts_tag">Go To Application</a>
+          {{else}}
+            <a href="{{pathFor 'register'}}">Create Account</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="{{pathFor 'login'}}">Sign In</a>
+          {{/if}}
+        </div>
+      </div>
+  	</div>
+	</header>
+</template>

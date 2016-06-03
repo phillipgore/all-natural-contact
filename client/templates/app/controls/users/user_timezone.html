@@ -1,0 +1,11 @@
+<template name="userTimezone">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_timezone_gray"></div>
+		<h1>{{timezoneUser.profile.first}} {{timezoneUser.profile.last}}: Timezone</h1>
+	</div>
+	<form class="js_user_timezone_update_form js_timezone top_50 scroll bg_gray" id="register_form" action="action">
+		<input type="submit" value="Submit" class="js_submit offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+	</form>
+</template>

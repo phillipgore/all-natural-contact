@@ -1,0 +1,13 @@
+<template name="index">
+  <span id="site">
+    <div class="outer_wrap">
+			<div class="inner_wrap">
+        {{> siteHeader}}
+        <div class="site_content">
+          {{> yield }}
+        </div>
+      </div>
+    </div>
+    {{> siteFooter}}
+  </span>
+</template>

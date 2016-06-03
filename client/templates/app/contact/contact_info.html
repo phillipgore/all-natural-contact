@@ -1,0 +1,211 @@
+<template name="contactInfo">
+	<div class="js_profile_toolbar toolbar gray txt_ellipsis">
+		{{#if contact.is_company}}
+			<div class="toolbar_img icn_company_gray"></div>
+		{{else}}
+			<div class="toolbar_img icn_profile_gray"></div>
+		{{/if}}
+		<h1 class="js_contact_name contact_name txt_ellipsis" data-name-first="{{contact.nameFirst}}" data-name-last="{{contact.nameLast}}">
+			{{#if contact.is_company}}
+				{{#if contact.company}}
+					{{contact.company}}
+				{{/if}}
+			{{else}}
+				<span class="txt_small_gray">{{contact.prefix}}</span>
+				{{#if contact.first}}
+					{{contact.first}}
+				{{else}}
+					<span class="txt_missing">First</span>
+				{{/if}}
+				<span class="txt_small_gray">{{contact.middle}}</span>
+				{{#if contact.last}}
+					{{contact.last}}
+				{{else}}
+					<span class="txt_missing">Last</span>
+				{{/if}}
+				<span class="txt_small_gray">{{contact.suffix}}</span>
+			{{/if}}
+		</h1>
+		<div class="js_profile_active toolbar_active icn_profile_active"></div>
+		<div class="js_profile_inactive toolbar_active icn_profile_inactive hide"></div>
+	</div>
+
+	<div id="contact_info_list" class="js_contact_info list scroll top_50 bg_gray">
+		<div class="js_contact_data bg_white">
+			{{#if hasPersonalOrProfessional}}
+			<div class="list_item divided">
+				<div class="list_sub_item txt_ellipsis txt_small_gray">
+					{{#if hasPersonal}}
+						{{#if contact.is_company}}
+							<label>Name: </label>
+							{{contact.prefix}}
+							{{#if contact.first}}
+								{{contact.first}}
+							{{else}}
+								<span class="txt_missing">First</span>
+							{{/if}}
+							{{contact.middle}}
+							{{#if contact.last}}
+								{{contact.last}}
+							{{else}}
+								<span class="txt_missing">Last</span>
+							{{/if}}
+							{{contact.suffix}}<br>
+						{{/if}}
+
+						{{#if hasPhonetic}}
+							<label>Phonetic: </label>
+							{{contact.phonetic_first}} {{contact.phonetic_middle}} {{contact.phonetic_last}}<br>
+						{{/if}}
+
+						{{#if contact.nickname}}
+							<label>Nickname: </label>
+							"{{contact.nickname}}"<br>
+						{{/if}}
+
+						{{#if contact.maiden}}
+							<label>Maiden: </label>
+							{{contact.maiden}}<br>
+						{{/if}}
+
+					{{/if}}
+
+					{{#if hasProfessional}}
+						{{#if contact.job_title}}
+							<label>Title: </label>
+							{{contact.job_title}}<br>
+						{{/if}}
+						{{#if contact.department}}
+							<label>Department: </label>
+							{{contact.department}}<br>
+						{{/if}}
+						{{#unless contact.is_company}}
+							{{#if contact.company}}
+								<label>Company: </label>
+								{{contact.company}}
+								<!--<a class="icon_box icn_search_circle" href="#"></a>-->
+							{{/if}}
+						{{/unless}}
+					{{/if}}
+				</div>
+			</div>
+			{{/if}}
+
+			{{#if contact.phones}}
+			<div class="list_item divided">
+				{{#each contact.phones}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{phone_label}}</label>
+						{{phone}}
+					</div>
+					<a class="icon_box icn_phone" href="tel:{{phone}}"></a>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if contact.emails}}
+			<div class="list_item divided">
+				{{#each contact.emails}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{email_label}}</label>
+						{{email}}
+					</div>
+					<a class="icon_box icn_email" href="mailto:{{email}}"></a>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if contact.urls}}
+			<div class="list_item divided">
+				{{#each contact.urls}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{url_label}}</label>
+						{{url}}
+					</div>
+					<a class="icon_box icn_url icn_{{url_label.toLowerCase}}" target="_blank" href="{{url}}"></a>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if contact.dates}}
+			<div class="list_item divided">
+				{{#each contact.dates}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{date_label}}</label>
+						{{formatDateLong date_entry}}
+					</div>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if contact.relateds}}
+			<div class="list_item divided">
+				{{#each contact.relateds}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{related_label}}</label>
+						{{related}}
+					</div>
+					<a data-label="{{related_label}}" data-related="{{related}}" data-last="{{contact.last}}" data-company="{{contact.company}}" class="js_related_search icon_box icn_search_circle" href="#"></a>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if contact.immps}}
+			<div class="list_item divided">
+				{{#each contact.immps}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{immp_label}}</label>
+						{{immp_user_name}} <span class="txt_light_gray">({{immp_service}})</span>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if contact.addresses}}
+			<div class="list_item divided">
+				{{#each contact.addresses}}
+				<div class="list_item_icon">
+					<div class="list_sub_item txt_ellipsis">
+						<label class="top">{{address_label}}</label>
+						{{street}}<br>
+						{{city}} {{state}} {{postal_code}}
+					</div>
+					<a class="icon_box icn_address" target="_blank" href="https://www.google.com/maps/place/{{street}} {{city}} {{state}} {{postal_code}}"></a>
+				</div>
+				{{/each}}
+			</div>
+			{{/if}}
+
+			{{#if noInfo}}
+			<div class="list_item spacer divided"></div>
+			{{/if}}
+		</div>
+
+		<div class="js_notes js_notes_click list_item bg_gray">
+			<div class="js_notes_click list_sub_item txt_ellipsis">
+				<label class="js_notes_click top notes_label">Notepad</label>
+				<div class="js_notes_click notes_adjust">
+					<textarea class="js_notes_click js_notes_input js_inactive input notes bg_gray">{{contact.notes}}</textarea>
+					<input type="hidden" name="nameFirst" value="{{contact.nameFirst}}" />
+					<input type="hidden" name="nameLast" value="{{contact.nameLast}}" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<span class="js_contact_loader">
+		{{> loading}}
+		{{> blankToolbar}}
+	</span>
+</template>

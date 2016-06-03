@@ -1,0 +1,38 @@
+<template autocomplete="off" name="conversationNew">
+	<div class="conv_toolbar toolbar gray">
+		<div class="toolbar_img icn_add_conversation_gray"></div>
+		<h1>{{first}} {{last}}</h1>
+	</div>
+	<form class="js_conversation_new_form scroll top_50 bg_gray" method="post" action="">
+		<fieldset id="conversation" class="">
+			<div class="input_wraper">
+				<div class="input_full">
+					<div class="date_container"></div>
+				</div>
+				<div class="input_full">
+					<div class="conversation_labels row">
+						<div class="col_2of5">
+							<label class="js_conversation_label js_label block"><span class="js_label_txt">Phone</span> &#9662;</label>
+							<input class="js_input_label" type="hidden" name="conversation_label" value="Phone" />
+							{{> labelConversation}}
+						</div>
+						<div class="col_2of5">
+							<label class="js_conversation_date conversation_date txt_ellipsis">{{formatDate current_date}} &#9662;</label>
+							<input class="js_datepicker hide" type="date" name="conversation_date" value="{{currentDate}}"/>
+						</div>
+						<div class="col_1of5">
+							<label class="js_time_label conversation_time">{{formatTime current_date}} &#9662;</label>
+							<input class="js_time_input_label" type="hidden" name="conversation_time" />
+							{{> labelTime}}
+						</div>
+					</div>
+					<input class="" type="hidden" name="conversation_date_time" value="{{currentDate}}" />
+					<textarea class="conversation_input" name="conversation" placeholder="Add to the conversation."></textarea>
+					<input type="hidden" name="contact_id" value="{{currentContact}}" />
+				</div>
+			</div>
+		</fieldset>
+		<input type="submit" value="Submit" class="offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+	</form>
+</template>

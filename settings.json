@@ -1,0 +1,25 @@
+{
+  "public": {
+    "plans": [
+      {
+        "name": "Simple",
+        "amount": {
+          "cents": 1500,
+          "usd": "$15"
+        },
+        "limit": 1,
+        "interval": "month"
+      }
+    ],
+    "stripe": {
+      "testPublishableKey": "pk_test_z9qioT2pcpTSSQViE1sXjCHA",
+      "livePublishableKey": "pk_live_e8hPgnE6JkxjeQpFqi5iAFxl"
+    }
+  },
+  "private": {
+    "stripe": {
+      "testSecretKey": "sk_test_gWbfk5UGuB6HHP7FJi1z80ak",
+      "liveSecretKey": "sk_live_NToiWUQsyMyPJOHqIrexbZ5t"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<template name="tagUpdateProcess">
+	
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_edit_tag_gray"></div>
+		<h1>Edit Process Tag</h1>
+	</div>
+	<form class="js_tag_update_form js_process_tag_update_form bg_gray top_50 scroll" method="post" action="">
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<input id="tag" name="tag" type="text" autocomplete="off" placeholder="Process Tag Name" value="{{tag}}" />
+			</div>
+		</fieldset>	
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<div class="js_checkbox_personal_tag checkbox icn_check {{personalCheck}}">
+					Personal Tag
+					<input name="personal_tag" id="personal_tag" type="hidden" value="{{personal}}"/>
+				</div>
+			</div>
+		</fieldset>	
+		<fieldset id="milestone" class="js_paste_input">
+			{{#each milestoneTags}}
+				<div class="js_delete_input js_input input_wrap">
+					<div class="input_full multi_input_adjust">
+						<a class="js_input_clear btn_clear icn_clear rounded_right small" href="#"></a>
+						<input id="{{_id}}" class="js_existing_milestone js_input js_multi_input multi_input" name="milestone" type="text" autocomplete="off" placeholder="Milestone" value="{{tag}}" />
+					</div>
+				</div>
+			{{/each}}
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_full multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_new_milestone js_input js_multi_input multi_input" name="milestone" type="text" autocomplete="off" placeholder="Milestone" value="" />
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+</template>

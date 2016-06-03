@@ -1,0 +1,15 @@
+<template name="supportListItem">
+  <li id="{{_id}}"><a id="{{section_perma_link}}" class="js_support_list_item support_list_item" style="margin-left:{{margin_left}}px;" href="/support/section/{{section_perma_link}}">
+    <span class="js_support_list_text">{{section_title}}</span>
+    {{#if section_has}}
+      <div class="js_support_list_toggle support_list_toggle">
+        <img class="js_support_list_toggle js_list_item_arrow list_item_arrow" src="/img/support/icn-down-arrow-gray.svg">
+      </div>
+    {{/if}}
+  </a></li>
+  <div class="sub_section hide">
+    {{#each sub_sections}}
+      {{> supportListItem}}
+    {{/each}}
+  </div>
+</template>

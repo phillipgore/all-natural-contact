@@ -1,0 +1,49 @@
+<template name="fakeData">
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_data_gray"></div>
+		<h1>Create Fake Data</h1>
+	</div>
+	<form autocomplete="off" class="js_fake_data_form top_50 scroll bg_gray">
+		<fieldset>
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Tags</label>
+				</div>
+				<div class="input_two">
+					<input name="fake_tags" id="fake_tags" type="text" autocomplete="off" placeholder="Currently {{accountTagCount}}" />
+				</div>
+			</div>
+		</fieldset>	
+		<fieldset>
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Contacts</label>
+				</div>
+				<div class="input_two">
+					<input name="fake_contacts" id="fake_contacts" type="text" autocomplete="off" placeholder="Currently {{accountContactCount}}" />
+				</div>
+			</div>
+		</fieldset>	
+		<fieldset>
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Conversations</label>
+				</div>
+				<div class="input_two">
+					<input name="fake_conversations" id="fake_conversations" type="text" autocomplete="off" placeholder="Entries Per Contact" />
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<div class="js_fake_data_creation initial_loading_overlay bg_gray hide">
+		<div class="toolbar gray">
+			<div class="toolbar_img icn_data_gray"></div>
+			<h1>Creating Fake Data</h1>
+		</div>
+		<div class="top_50 scroll bg_gray">
+			<div class="list_item divided">Tag Creation: {{tagPercent}}%</div>
+			<div class="list_item divided">Contact Creation: {{contactPercent}}%</div>
+			<div class="list_item divided">Conversation Creation: {{conversationPercent}}%</div>
+		</div>
+	</div>
+</template>

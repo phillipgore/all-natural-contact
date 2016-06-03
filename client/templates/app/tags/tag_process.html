@@ -1,0 +1,29 @@
+<template name="tagProcess">
+	<div class="toolbar gray">
+		<span class="hide_639">
+			<div class="toolbar_img icn_process_gray"></div>
+			<h1 class="js_contact_name" data-name-first="{{contact.nameFirst}}" data-name-last="{{contact.nameLast}}">{{contact.first}} {{contact.last}}</h1>
+		</span>
+	</div>
+	<div class="js_process_list list scroll top_50">
+		{{#if processes}}
+			{{#each processes}}
+				<fieldset class="checkbox_container">
+					<div id="{{_id}}" class="js_tag js_process_tag checkbox_lable icn_left {{#if personal}}icn_tag_process_small_personal{{else}}icn_tag_process_small{{/if}}">{{tag}}</div>
+					{{#each milestones}}
+						<div id="{{_id}}" data-belongs-to="{{belongs_to}}" class="js_tag js_milestone_tag js_checkbox_milestone checkbox icn_left listing icn_check {{#if personal}}txt_light_gray{{/if}} {{#unless contact_belongs}}unchecked{{/unless}}">
+							{{tag}}
+							<input name="milestone" id="milestone" type="hidden" value="{{#if contact_belongs}}true{{else}}false{{/if}}"/>
+						</div>
+					{{/each}}
+				</fieldset>
+			{{/each}}
+		{{else}}
+			{{> contactProcessNone}}
+		{{/if}}
+	</div>
+	<span class="js_process_loader">
+		{{> loading}}
+		{{> blankToolbar}}
+	</span>
+</template>

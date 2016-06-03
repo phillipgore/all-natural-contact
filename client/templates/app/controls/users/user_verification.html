@@ -1,0 +1,17 @@
+<template name="userVerification">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_email_verify"></div>
+		<h1>{{verifyUser.profile.first}} {{verifyUser.profile.last}}</h1>
+		<!--<a href="/delete/user/{{verifyUser._id}}" class="js_remove_user tool_delete_user icn_user_delete"></a>-->
+	</div>
+	<div class="top_50 scroll bg_gray">
+		<div class="red_alert_msg hide"></div>
+		<div class="verify_container">
+			<div class="verify_msg">Resend email verification with {{verifyUser.profile.first}}'s current address or enter a new one.</div>
+			<form class="js_verify_email_form verify_email">
+				<input class="js_required" type="email" name="account_email_update" id="account_email_update" placeholder="Email*" value="{{verifyUser.emails.[0].address}}"/>
+			</form>
+		</div>
+	</div>
+</template>

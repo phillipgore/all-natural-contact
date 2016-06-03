@@ -1,0 +1,36 @@
+<template name="settings">
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_manage_account_gray"></div>
+		<h1>Settings</h1>
+	</div>
+	<div class="js_contact_list list scroll top_50" data-scroll-dir="up">
+	{{#if isAdmin}}
+		<div class="list_item_division">Manage Account</div>
+		<a class="js_list_item js_users list_item divided list_icon" href="{{pathFor 'userNew'}}">
+			<div class="icon_box icn_add_blue"></div>New User
+		</a>
+		<a class="js_list_item js_profile list_item divided list_icon" href="{{pathFor 'userRoles'}}">
+			<div class="icon_box icn_role"></div>User Roles
+		</a>
+		{{#unless currentUser.role.app_administrator}}
+			<a class="js_list_item js_billing list_item divided list_icon" href="{{pathFor 'userBilling'}}">
+				<div class="icon_box icn_billing"></div>Billing
+			</a>
+		{{/unless}}
+		<div class="list_item_division">Manage Users</div>
+		{{#each users}}
+				<a id="{{_id}}" class="js_list_item list_item divided list_icon" href="{{#if emails.[0].verified}}/info/user/{{_id}}{{else}}/verify/user/{{_id}}{{/if}}">
+					<div class="icon_box icn_user"></div>{{profile.first}} {{profile.last}}
+					{{#if emails.[0].verified}}
+						- {{#if currentUser.role.app_administrator}}App Administrator{{/if}}{{#if role.administrator}}Administrator{{/if}}{{#if role.user}}User{{/if}}{{#if role.inactive}}Inactive{{/if}}
+					{{else}}
+						<span class="txt_small_gray">(Verify Or Delete)</span>
+					{{/if}}
+				</a>
+		{{/each}}
+	{{else}}
+		<div class="list_item_division">{{currentUser.profile.first}} {{currentUser.profile.last}} - {{#if currentUser.role.app_administrator}}App Administrator{{/if}}{{#if currentUser.role.administrator}}Administrator{{/if}}{{#if currentUser.role.user}}User{{/if}}{{#if currentUser.role.inactive}}Inactive{{/if}}</div>
+		{{> userSettings}}
+	{{/if}}
+	</div>
+</template>

@@ -1,0 +1,243 @@
+<template name="contactNew">
+	{{> blankSaving}}
+	{{> contactFields}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_add_contact_gray"></div>
+		<h1>New Contact</h1>
+		<a href="#" class="js_tool_fields tool_date icn_add_field_gray"></a>
+	</div>
+	<form autocomplete="off" class="js_contact_new_form top_50 scroll bg_gray">
+		<!-- Contact Is Company -->
+		<fieldset class="js_is_company hide">
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Company</label>
+				</div>
+				<div class="input_two">
+					<span class="js_is_company_container"></span>
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Name -->
+		<fieldset>
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Name</label>
+				</div>
+				<div class="input_two">
+					<span class="js_prefix_field {{#unless currentUser.fields.prefix_field}}hide{{/unless}}">
+						<div class="col_2of5">
+							<input name="prefix" id="prefix" type="text" autocomplete="off" placeholder="Prefix" value="" />
+						</div>
+						<div class="col_3of5">&nbsp;</div>
+					</span>
+					<input name="first" id="first" type="text" autocomplete="off" placeholder="First" value="" />
+					<input class="js_middle_field {{#unless currentUser.fields.middle_field}}hide{{/unless}}" name="middle" id="middle" type="text" autocomplete="off" placeholder="Middle" value="" />
+					<input name="last" id="last" type="text" autocomplete="off" placeholder="Last" value="" />
+					<span class="js_suffix_field {{#unless currentUser.fields.suffix_field}}hide{{/unless}}">
+						<div class="col_3of5">&nbsp;</div>
+						<div class="col_2of5">
+							<input name="suffix" id="suffix" type="text" autocomplete="off" placeholder="Suffix" value="" />
+						</div>
+					</span>
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Phonetic -->
+		<fieldset class="js_phonetic_field {{#unless currentUser.fields.phonetic_field}}hide{{/unless}}">
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Phonetic</label>
+				</div>
+				<div class="input_two">
+					<input name="phonetic_first" id="phonetic_first" type="text" autocomplete="off" placeholder="Phonetic First Name" value="" />
+					<input name="phonetic_middle" id="phonetic_middle" type="text" autocomplete="off" placeholder="Phonetic Middle Name" value="" />
+					<input name="phonetic_last" id="phonetic_last" type="text" autocomplete="off" placeholder="Phonetic Last Name" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Nickname -->
+		<fieldset class="js_nickname_field {{#unless currentUser.fields.nickname_field}}hide{{/unless}}">
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Nickname</label>
+				</div>
+				<div class="input_two">
+					<input name="nickname" id="nickname" type="text" autocomplete="off" placeholder="Nickname" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Maiden -->
+		<fieldset class="js_maiden_field {{#unless currentUser.fields.maiden_field}}hide{{/unless}}">
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Maiden</label>
+				</div>
+				<div class="input_two">
+					<input name="maiden" id="maiden" type="text" autocomplete="off" placeholder="Maiden Name" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Profession -->
+		<fieldset class="js_has_profession {{#unless hasProfession}}hide{{/unless}}">
+			<div class="input_wrap">
+				<div class="input_one">
+					<label class="js_label left">Profession</label>
+				</div>
+				<div class="input_two">
+					<input class="js_job_title_field {{#unless currentUser.fields.job_title_field}}hide{{/unless}}" name="job_title" id="job_title" type="text" autocomplete="off" placeholder="Job Title" value="" />
+					<input class="js_department_field {{#unless currentUser.fields.department_field}}hide{{/unless}}" name="department" id="department" type="text" autocomplete="off" placeholder="Department" value="" />
+					<span class="js_company_field {{#unless currentUser.fields.company_field}}hide{{/unless}}">
+						<span class="js_is_not_company_container">
+							<input class="js_company" name="company" id="company" type="text" autocomplete="off" placeholder="Company" value="" />
+						</span>
+						<div class="js_checkbox_is_company checkbox icn_check unchecked">
+							Contact is Company
+							<input name="is_company" id="is_company" type="hidden" value="false"/>
+						</div>
+					</span>
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Phone -->
+		<fieldset id="phone" class="js_paste_input js_phone_field {{#unless currentUser.fields.phone_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Mobile</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="phone_label" value="Mobile" />
+					{{> labelPhone}}
+				</div>
+				<div class="input_two multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_multi_input multi_input phone_input"  name="phone" type="text" autocomplete="off" placeholder="Phone" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Email -->
+		<fieldset id="email" class="js_paste_input js_email_field {{#unless currentUser.fields.email_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="email_label" value="Work" />
+					{{> labelEmail}}
+				</div>
+				<div class="input_two multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_multi_input multi_input"  name="email" type="text" autocomplete="off" placeholder="Email" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Website -->
+		<fieldset id="url" class="js_paste_input js_url_field {{#unless currentUser.fields.url_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="url_label" value="Work" />
+					{{> labelUrl}}
+				</div>
+				<div class="input_two multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_multi_input multi_input"  name="url" type="text" autocomplete="off" placeholder="Website" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Date -->
+		<fieldset id="date" class="js_paste_input js_date_field {{#unless currentUser.fields.date_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Birthday</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="date_label" value="Birthday" />
+					{{> labelDate}}
+				</div>
+				<div class="input_two multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_multi_input js_date_input multi_input" name="date_entry" type="text" autocomplete="off" placeholder="MM/DD/YYYY" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Related -->
+		<fieldset id="related" class="js_paste_input js_related_field {{#unless currentUser.fields.related_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Mother</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="related_label" value="Mother" />
+					{{> labelRelated}}
+				</div>
+				<div class="input_two multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_multi_input multi_input"  name="related" type="text" autocomplete="off" placeholder="Related Name" value="" />
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- IMMP -->
+		<fieldset id="immp" class="js_paste_input js_immp_field {{#unless currentUser.fields.immp_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="immp_label" value="Work" />
+					{{> labelImmp}}
+				</div>
+				<div class="input_two horizontal_2">
+					<div class="col_3of5">
+						<div class="input_horizontal_box">
+							<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+							<input class="js_multi_input"  name="immp_user_name" type="text" autocomplete="off" placeholder="User Name" value="" />
+						</div>
+					</div>
+					<div class="col_2of5">
+						<div class="input_horizontal_box padding_top_3">
+							<label class="js_label"><span class="js_label_txt">AIM</span> &#9662;</label>
+							<input class="js_input_label" type="hidden" name="immp_service" value="AIM" />
+							{{> labelImmpServices}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<!-- Address -->
+		<fieldset id="address" class="js_paste_input js_address_field {{#unless currentUser.fields.address_field}}hide{{/unless}}">
+			<div class="js_copy_input js_delete_input js_input input_wrap">
+				<div class="input_one">
+					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="address_label" value="Work" />
+					{{> labelAddress}}
+				</div>
+				<div class="input_two multi_input_adjust">
+					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+					<input class="js_multi_input multi_input"  name="street" type="text" autocomplete="off" placeholder="Street" value="" />
+				</div>
+				<div class="input_two">
+					<input class="js_multi_input"  name="city" type="text" autocomplete="off" placeholder="City" value="" />
+				</div>
+				<div class="input_two horizontal_2">
+					<div class="col_2of5">
+						<div class="input_horizontal_box">
+							<input class="js_multi_input"  name="state" type="text" autocomplete="off" placeholder="State" value="" />
+						</div>
+					</div>
+					<div class="col_3of5">
+						<div class="input_horizontal_box">
+							<input class="js_multi_input"  name="postal_code" type="text" autocomplete="off" placeholder="Zip" value="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<input type="submit" value="Submit" class="js_submit offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+
+	</form>
+</template>

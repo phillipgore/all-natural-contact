@@ -1,0 +1,46 @@
+<template name="officeLayout">
+  <div id="office">
+
+    <header class="header">
+      <a class="header_logo" href="{{pathFor 'login'}}">
+    		<img src='/img/site/all-natural-contacts-logo.svg'>
+    		<span class="anc_logo_txt">All Natural Contact</span>
+      </a>
+      <a class="js_office header_btn" href="{{pathFor 'officeSupport'}}">
+        <img src='/img/office/icn-add-support.svg'>
+      </a>
+      <a class="js_delete header_btn hide">
+        <img src='/img/office/icn-delete.svg'>
+      </a>
+      <span class="js_delete_inactive header_btn">
+        <img src='/img/office/icn-delete-inactive.svg'>
+      </span>
+    </header>
+
+    <div class="office_content">
+      <aside class="office_sidebar">
+        <header class="sub_header">
+          {{> yield region='sidebar_header'}}
+        </header>
+        <div class="sidebar_content">
+          {{> yield region='sidebar_content'}}
+        </div>
+      </aside>
+      <div class="office_main">
+        <header class="sub_header"></header>
+        <div class="main_content">
+          {{> yield region='main_content'}}
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer_left">
+        <a href="{{pathFor 'officeStats'}}" class="js_tool js_tool_office_stats tool icn_office_stats"></a>
+        <a href="{{pathFor 'officeControls'}}" class="js_tool js_tool_office_controls tool icn_office_controls"></a>
+        <a href="{{pathFor 'officeSupport'}}" class="js_tool js_tool_office_support tool icn_office_support"></a>
+      </div>
+      <div class="footer_right">{{> yield region='footer_content'}}</div>
+    </footer>
+  </div>
+</template>

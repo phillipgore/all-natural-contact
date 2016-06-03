@@ -1,0 +1,43 @@
+<template name="supportLayout">
+  <div id="support">
+
+    <header>
+      <div class="header">
+        <a class="js_btn_nav_slide btn_nav_slide" href="#">
+          <span></span>
+        </a>
+        <a class="header_logo" href="{{pathFor 'home'}}">
+      		<img src='/img/site/all-natural-contacts-logo.svg'>
+      		<span class="header_logo_txt">All Natural Contact</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="support_content">
+      <aside class="js_support_sidebar support_sidebar">
+        <header class="sub_header">
+          <div class="search_container">
+            <img src="/img/support/icn-search-gray.svg" alt="Search support icon." class="js_search_icn_gray search_icn left"/>
+            <img src="/img/support/icn-search-blue.svg" alt="Search support icon." class="js_search_icn_blue search_icn left hide"/>
+            <img src="/img/support/icn-clear-gray.svg" alt="Clear search support icon." class="js_clear_search js_search_icn_gray js_search_icn_gray search_icn right"/>
+            <img src="/img/support/icn-clear-blue.svg" alt="Clear search support icon." class="js_clear_search js_search_icn_blue search_icn right hide"/>
+            <input class="js_support_search support_search" type="text" name="name" placeholder="Search Support">
+          </div>
+        </header>
+        <div class="sidebar_content">
+          <div class="scroll">
+            {{> yield region='sidebar_content'}}
+          </div>
+        </div>
+      </aside>
+      <div class="support_main">
+        <div class="main_content">
+          <div class="scroll">
+            {{> yield region='main_content'}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>

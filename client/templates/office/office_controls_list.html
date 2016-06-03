@@ -1,0 +1,30 @@
+<template name="officeControlsList">
+  <form class="js_beta_form" id="beta_form" action="action">
+    <fieldset>
+      <div class="select_container">
+        <label>Free Trial Period</label>
+        <span class="select_arrow">&#9662;</span>
+        <select id="free_trial" class="free_trial" name="free_trial">
+          <option value="60">60 Days</option>
+          <option value="50">50 Days</option>
+          <option value="40">40 Days</option>
+          <option selected="selected" value="30">30 Days</option>
+          <option value="20">20 Days</option>
+          <option value="10">10 Days</option>
+        </select>
+      </div>
+    </fieldset>
+    <fieldset class="checkbox_container">
+      <div class="js_checkbox_bug checkbox listing icn_check {{#unless bugReporting}}unchecked{{/unless}}">
+        Bug Reporting
+        <input name="bug_field" id="bug_field" type="hidden" value="{{bugReporting}}"/>
+      </div>
+    </fieldset>
+    <fieldset class="checkbox_container">
+      <div class="js_checkbox_beta checkbox listing icn_check {{#unless publicBeta}}unchecked{{/unless}}">
+        Public Beta
+        <input name="beta_field" id="beta_field" type="hidden" value="{{publicBeta}}"/>
+      </div>
+    </fieldset>
+	</form>
+</template>

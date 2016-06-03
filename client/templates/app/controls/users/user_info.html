@@ -1,0 +1,9 @@
+<template name="userInfo">
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_user_gray"></div>
+		<h1 class="user_name txt_ellipsis">{{updateUser.profile.first}} {{updateUser.profile.last}}</h1>
+	</div>
+	<div class="js_contact_list list scroll top_50">
+		{{> userSettings}}
+	</div>
+</template>

@@ -1,0 +1,21 @@
+<template name="userEmail">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_email_gray"></div>
+		<h1>{{emailUser.profile.first}} {{emailUser.profile.last}}: Email</h1>
+	</div>
+
+	<form class="js_user_email_update_form top_50 scroll bg_gray" id="register_form" action="action">
+		<div class="red_alert_msg hide"></div>
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<input class="js_required" type="email" name="account_email_update" id="account_email_update" placeholder="New Email*" value=""/>
+				<input class="js_required" type="email" name="account_email_update_check" id="account_email_update_check" placeholder="Retype New Email*" value=""/>
+			</div>
+		</fieldset>
+		
+		<input type="submit" value="Submit" class="js_submit offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+	</form>
+
+</template>

@@ -1,0 +1,34 @@
+<template name="tagAlpha">
+	<div class="js_sheet_alpha_tag list padded gray top_double left_right narrow hide">
+		<a id="a" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'aTagCount'}}inactive{{/unless}}">A</a>
+		<a id="b" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'bTagCount'}}inactive{{/unless}}">B</a>
+		<a id="c" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'cTagCount'}}inactive{{/unless}}">C</a>
+		<a id="d" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'dTagCount'}}inactive{{/unless}}">D</a>
+		<a id="e" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'eTagCount'}}inactive{{/unless}}">E</a>
+		<a id="f" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'fTagCount'}}inactive{{/unless}}">F</a>
+		<a id="g" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'gTagCount'}}inactive{{/unless}}">G</a>
+		<a id="h" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'hTagCount'}}inactive{{/unless}}">H</a>
+		<a id="i" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'iTagCount'}}inactive{{/unless}}">I</a>
+		<a id="j" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'jTagCount'}}inactive{{/unless}}">J</a>
+		<a id="k" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'kTagCount'}}inactive{{/unless}}">K</a>
+		<a id="l" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'lTagCount'}}inactive{{/unless}}">L</a>
+		<a id="m" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'mTagCount'}}inactive{{/unless}}">M</a>
+		<a id="n" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'nTagCount'}}inactive{{/unless}}">N</a>
+		<a id="o" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'oTagCount'}}inactive{{/unless}}">O</a>
+		<a id="p" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'pTagCount'}}inactive{{/unless}}">P</a>
+		<a id="q" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'qTagCount'}}inactive{{/unless}}">Q</a>
+		<a id="r" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'rTagCount'}}inactive{{/unless}}">R</a>
+		<a id="s" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'sTagCount'}}inactive{{/unless}}">S</a>
+		<a id="t" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'tTagCount'}}inactive{{/unless}}">T</a>
+		<a id="u" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'uTagCount'}}inactive{{/unless}}">U</a>
+		<a id="v" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'vTagCount'}}inactive{{/unless}}">V</a>
+		<a id="w" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'wTagCount'}}inactive{{/unless}}">W</a>
+		<a id="x" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'xTagCount'}}inactive{{/unless}}">X</a>
+		<a id="y" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'yTagCount'}}inactive{{/unless}}">Y</a>
+		<a id="z" href="#" class="js_tool_lettered tool_lettered percent_20 {{#unless getPublishedCount 'zTagCount'}}inactive{{/unless}}">Z</a>
+		{{#if tagRoute}}
+			<a id="currentTag" href="#" class="js_tool_current tool_lettered percent_100 border_top">Currently Selected Tag</a>
+			<a id="allContactsTag" href="#" class="js_tool_all_contacts tool_lettered percent_100 border_top">All Contacts Tag</a>
+		{{/if}}
+	</div>
+</template>

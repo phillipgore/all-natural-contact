@@ -1,0 +1,30 @@
+<template name="register">
+	<section>
+		<h1>All Natural Contact</h1>
+		<h2>Create a new account. {{test}}</h2>
+		<span class="js_register_form">
+			<form class="login_form pos_relative" id="register_form" action="action">
+				<div class="js_form_overlay form_overlay hide">{{> loading}}</div>
+				<input type="text" name="group_name" id="group_name" placeholder="Company or Organization" />
+
+				<input class="js_required" type="text" name="account_first" id="account_first" placeholder="First Name*" />
+				<input class="js_required" type="text" name="account_last" id="account_last" placeholder="Last Name*" />
+
+				<input class="js_required" type="email" name="account_email" id="account_email" placeholder="Email*" />
+				<input class="js_required" type="email" name="account_email_check" id="account_email_check" placeholder="Retype Email*" />
+
+				<input class="js_required" type="password" name="account_password" id="account_password" placeholder="Password*" />
+				<input class="js_required" type="password" name="account_password_check" id="account_password_check" placeholder="Retype Password*" />
+
+				<div class="js_checkbox_email_updates checkbox icn_check checked">
+					Email me updates about Contact.
+					<input name="email_updates" id="email_updates" type="hidden" value="true"/>
+				</div>
+
+				<button class="js_submit btn_login margin" type="submit" id="create_account">Create Account</button>
+			</form>
+		</span>
+		<div class="login_alert hide"></div>
+		<a class="forgot_password" href="{{pathFor 'reset'}}">Forgot/Reset Password</a>
+	</section>
+</template>

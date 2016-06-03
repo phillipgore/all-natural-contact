@@ -1,0 +1,28 @@
+<template name="exportCSV">
+	<div class="js_initial_loading_overlay initial_loading_overlay bg_gray hide">
+		<div class="toolbar gray">&nbsp;</div>
+		<div class="js_complete loader with_text icn_import_complete"></div>
+		<div class='js_saving_msg saving_msg with_loader'>Contacts Exported</div>
+	</div>
+	
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_export_gray"></div>
+		<h1>Export Contacts</h1>
+	</div>
+	<div autocomplete="off" class="js_export top_50 scroll bg_gray">
+		<div class="js_export_data_type radiobutton_container">
+			<div class="js_radiobutton_role radiobutton listing icn_radio {{#unless allContactsCount}}unselected txt_light_gray js_inactive{{/unless}}">
+				All Contacts <span class="txt_ext_small">({{allContactsCount}})</span>
+				<input name="all_contacts" id="all_contacts" type="hidden" value="true"/>
+			</div>
+			<div class="js_radiobutton_role radiobutton listing icn_radio unselected {{#unless selectedContactsCount}}txt_light_gray js_inactive{{/unless}}">
+				Selected Contact{{pluralContact}} <span class="txt_ext_small">({{selectedContactsCount}})</span>
+				<input name="selected_contacts" id="selected_contacts" type="hidden" value="false"/>
+			</div>
+			<div class="js_radiobutton_role radiobutton listing icn_radio unselected {{#unless taggedContactsCount}}txt_light_gray js_inactive{{/unless}}">
+				Contact{{pluralTagged}} in Selected Tag{{pluralTag}} <span class="txt_ext_small">({{taggedContactsCount}})</span>
+				<input name="tagged_contacts" id="tagged_contacts" type="hidden" value="false"/>
+			</div>
+		</div>
+	</div>
+</template>

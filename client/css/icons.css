@@ -1,0 +1,742 @@
+.icn {
+	width: 22px;
+	height: 22px;
+}
+
+.icn_16 {
+	width: 16px;
+	height: 16px;
+}
+
+.margin_right_9 {
+	margin-right: 9px;
+}
+
+.icn_url  {
+	background: url(/img/icn-url.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_user {
+	background: url(/img/icn-user.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_user_delete {
+	background: url(/img/icn-user-delete.svg) center center no-repeat;
+}
+
+.icn_user_disabled {
+	background: url(/img/icn-user-disabled.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_user_enabled {
+	background: url(/img/icn-user-enabled.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_user_gray {
+	background: url(/img/icn-user-gray.svg) center center no-repeat;
+}
+
+.icn_user_white {
+	background: url(/img/icn-user-white.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_user_verification {
+	background: url(/img/icn-user-verification.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_user_verification_gray {
+	background: url(/img/icn-user-verification-gray.svg) center center no-repeat;
+}
+
+.icn_action {
+	background: url(/img/icn-action.svg) center center no-repeat;
+}
+
+.icn_action_disabled {
+	background: url(/img/icn-action-disabled.svg) center center no-repeat;
+}
+
+.icn_add {
+	background: url(/img/icn-add.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_add_blue {
+	background: url(/img/icn-add-blue.svg)center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_add_contact {
+	background: url(/img/icn-add-contact.svg) center center no-repeat;
+}
+
+.icn_add_contact_disabled {
+	background: url(/img/icn-add-contact-disabled.svg) center center no-repeat;
+}
+
+.icn_add_contact_gray {
+	background: url(/img/icn-add-contact-gray.svg) center center no-repeat;
+}
+
+.icn_add_contact_lrg {
+	background: url(/img/icn-add-contact-lrg.svg) center center no-repeat;
+}
+
+.icn_add_conversation {
+	background: url(/img/icn-add-conversation.svg) center center no-repeat;
+}
+
+.icn_add_conversation_disabled {
+	background: url(/img/icn-add-conversation-disabled.svg) center center no-repeat;
+}
+
+.icn_add_conversation_gray {
+	background: url(/img/icn-add-conversation-gray.svg) center center no-repeat;
+}
+
+.icn_add_conversation_lrg {
+	background: url(/img/icn-add-conversation-lrg.svg) center center no-repeat;
+}
+
+.icn_add_field_gray {
+	background: url(/img/icn-add-field-gray.svg) right center no-repeat;
+}
+
+.inactive.icn_add_field_gray {
+	background: url(/img/icn-add-field-light-gray.svg) right center no-repeat;
+}
+
+.icn_add_solid {
+	background: url(/img/icn-add-solid.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_add_tag {
+	background: url(/img/icn-add-tag.svg) center center no-repeat;
+}
+
+.icn_add_tag_disabled {
+	background: url(/img/icn-add-tag-disabled.svg) center center no-repeat;
+}
+
+.icn_add_tag_gray {
+	background: url(/img/icn-add-tag-gray.svg) center center no-repeat;
+}
+
+.icn_add_tag_lrg {
+	background: url(/img/icn-add-tag-lrg.svg) center center no-repeat;
+}
+
+.icn_add_to_tag {
+	background: url(/img/icn-add-to-tag.svg) center center no-repeat;
+}
+
+.icn_add_to_tag_gray {
+	background: url(/img/icn-add-to-tag-gray.svg) center center no-repeat;
+}
+
+.icn_add_to_tag_disabled {
+	background: url(/img/icn-add-to-tag-disabled.svg) center center no-repeat;
+}
+
+.icn_add_to_tag_mb {
+	background: url(/img/icn-add-to-tag-mb.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_back_office {
+	background: url(/img/icn-back-office.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_billing {
+	background: url(/img/icn-billing.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_billing_gray {
+	background: url(/img/icn-billing-gray.svg) center center no-repeat;
+}
+
+.icn_bug_report {
+	background: url(/img/icn-bug-report.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_calendar_gray {
+	background: url(/img/icn-calendar-gray.svg) right center no-repeat;
+}
+
+.inactive.icn_calendar_gray {
+	background: url(/img/icn-calendar-light-gray.svg) right center no-repeat;
+}
+
+.icn_check {
+	background: url(/img/icn-check-checked.svg) left center no-repeat;
+}
+
+.icn_check.unchecked {
+	background: url(/img/icn-check-unchecked.svg) left center no-repeat;
+}
+
+.icn_clear {
+	background: url(/img/icn-clear.svg) center center no-repeat;
+}
+
+.icn_clear_dg {
+	background: url(/img/icn-clear-dg.svg) center center no-repeat;
+}
+
+.icn_company_gray {
+	background: url(/img/icn-company-gray.svg) center center no-repeat;
+}
+
+.icn_company_mb {
+	background: url(/img/icn-company-mb.svg) center center no-repeat;
+}
+
+.icn_contact_list {
+	background: url(/img/icn-contact-list.svg) center center no-repeat;
+}
+
+.icn_contact_list_gray {
+	background: url(/img/icn-contact-list-gray.svg) center center no-repeat;
+}
+
+.icn_contact_list_search {
+	background: url(/img/icn-contact-list-search.svg) center center no-repeat;
+}
+
+.icn_controls {
+	background: url(/img/icn-controls.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_controls_disabled {
+	background: url(/img/icn-controls-disabled.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_conversation {
+	background: url(/img/icn-conversation.svg) center center no-repeat;
+}
+
+.icn_conversation_disabled {
+	background: url(/img/icn-conversation-disabled.svg) center center no-repeat;
+}
+
+.icn_conversation_blue {
+	background: url(/img/icn-conversation-blue.svg) center 20px no-repeat;
+}
+
+.icn_conversation_gray {
+	background: url(/img/icn-conversation-gray.svg) center center no-repeat;
+}
+
+.icn_current_user {
+	background: url(/img/icn-current-user.svg) center center no-repeat;
+	background-size: auto 16px;
+}
+
+.icn_dash {
+	background: url(/img/icn-dashboard.svg) center center no-repeat;
+}
+
+.icn_dash_gray {
+	background: url(/img/icn-dashboard-gray.svg) center center no-repeat;
+}
+
+.icn_data {
+	background: url(/img/icn-data.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_data_gray {
+	background: url(/img/icn-data-gray.svg) center center no-repeat;
+}
+
+.icn_delete_alert {
+	background: url(/img/icn-delete-alert.svg) center center no-repeat;
+}
+
+.icn_delete {
+	background: url(/img/icn-delete.svg) center center no-repeat;
+}
+
+.icn_delete_disabled {
+	background: url(/img/icn-delete-disabled.svg) center center no-repeat;
+}
+
+.icn_drop_arrow {
+	background: url(/img/icn-drop-arrow.svg) right center no-repeat #fff;
+}
+
+.icn_edit {
+	background: url(/img/icn-edit.svg) center center no-repeat;
+}
+
+.icn_edit_gray {
+	background: url(/img/icn-edit-gray.svg) center center no-repeat;
+}
+
+.icn_edit_disabled {
+	background: url(/img/icn-edit-disabled.svg) center center no-repeat;
+}
+
+.icn_edit_lrg {
+	background: url(/img/icn-edit-lrg.svg) center center no-repeat;
+}
+
+.icn_edit_contact_gray {
+	background: url(/img/icn-edit-contact-gray.svg) center center no-repeat;
+}
+
+.icn_edit_conversation_gray {
+	background: url(/img/icn-edit-conversation-gray.svg) center center no-repeat;
+}
+
+.icn_edit_tag_gray {
+	background: url(/img/icn-edit-tag-gray.svg) center center no-repeat;
+}
+
+.icn_edit_blue {
+	background: url(/img/icn-edit-blue.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_email {
+	background: url(/img/icn-email.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_email_blue {
+	background: url(/img/icn-email-blue.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_email_gray {
+	background: url(/img/icn-email-gray.svg) center center no-repeat;
+}
+
+.icn_email_verify {
+	background: url(/img/icn-email-verify.svg) center center no-repeat;
+}
+
+.icn_export {
+	background: url(/img/icn-export.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_export_gray {
+	background: url(/img/icn-export-gray.svg) center center no-repeat;
+}
+
+.icn_facebook {
+	background: url(/img/icn-facebook.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_fields {
+	background: url(/img/icn-fields.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_fields_gray {
+	background: url(/img/icn-fields-gray.svg) center center no-repeat;
+}
+
+.icn_office_controls {
+	background: url(/img/office/icn-office-controls.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
+.icn_office_stats {
+	background: url(/img/office/icn-office-stats.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
+.icn_office_support {
+	background: url(/img/office/icn-office-support.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
+.icn_support {
+	background: url(/img/icn-support.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_img_upload {
+	background: url(/img/icn-img-upload.svg) center center no-repeat #fff;
+	background-size: 68px 68px;
+}
+
+.icn_import {
+	background: url(/img/icn-import.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_import_gray {
+	background: url(/img/icn-import-gray.svg) center center no-repeat;
+}
+
+.icn_import_complete {
+	background: url(/img/icn-import-complete.svg) center center no-repeat;
+}
+
+.icn_img_upload_216 {
+	background: url(/img/icn-img-upload.svg) center center no-repeat;
+	background-size: 216px 216px;
+}
+
+.icn_increment {
+	background: url(/img/icn-increment.svg) right center no-repeat;
+	width: 30px;
+	text-align: right;
+	padding-right: 11px;
+}
+
+.icn_info_gray {
+	background: url(/img/icn-info-gray.svg) center center no-repeat;
+}
+
+.icn_linkedin {
+	background: url(/img/icn-linkedin.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_manage_account {
+	background: url(/img/icn-manage-account.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_manage_account_gray {
+	background: url(/img/icn-manage-account-gray.svg) center center no-repeat;
+}
+
+.icn_address {
+	background: url(/img/icn-address.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_multi_select_current {
+	background: url(/img/icn-multi-select-current.svg) center center no-repeat;
+}
+
+.icn_multi_go {
+	background: url(/img/icn-multi-go.svg) 1px center no-repeat;
+}
+
+.icn_multi_go_back {
+	background: url(/img/icn-multi-go-back.svg) 1px center no-repeat;
+}
+
+.js_current .icn_multi_select_current {
+	background: url(/img/icn-multi-select-active.svg) center center no-repeat;
+}
+
+.icn_multi_select_single {
+	background: url(/img/icn-multi-select-single.svg) center center no-repeat;
+}
+
+.icn_multi_select {
+	background: url(/img/icn-multi-select.svg) 3px center no-repeat;
+}
+
+.icn_password {
+	background: url(/img/icn-password.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_password_gray {
+	background: url(/img/icn-password-gray.svg) center center no-repeat;
+}
+
+.icn_phone {
+	background: url(/img/icn-phone.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_print {
+	background: url(/img/icn-print.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_profile {
+	background: url(/img/icn-profile.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
+.icn_profile_disabled {
+	background: url(/img/icn-profile-disabled.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
+.icn_profile_gray {
+	background: url(/img/icn-profile-gray.svg) center center no-repeat;
+}
+
+.icn_profile_active {
+	background: url(/img/icn-profile-active.svg) center center no-repeat;
+}
+
+.icn_profile_inactive {
+	background: url(/img/icn-profile-inactive.svg) center center no-repeat;
+}
+
+.icn_profile_lb {
+	background: url(/img/icn-profile-lb.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_profile_mb {
+	background: url(/img/icn-profile-mb.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_process {
+	background: url(/img/icn-process.svg) center center no-repeat;
+}
+
+.icn_process_disabled {
+	background: url(/img/icn-process-disabled.svg) center center no-repeat;
+}
+
+.icn_process_gray {
+	background: url(/img/icn-tag-process-gray.svg) center center no-repeat;
+}
+
+.icn_radio {
+	background: url(/img/icn-radio-selected.svg) left center no-repeat;
+}
+
+.icn_radio.unselected {
+	background: url(/img/icn-radio-unselected.svg) left center no-repeat;
+}
+
+.icn_reminder {
+	background: url(/img/icn-reminder.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_reminder_gray {
+	background: url(/img/icn-tag-reminder-gray.svg) center center no-repeat;
+}
+
+.icn_reminder_check {
+	background: url(/img/icn-reminder-check.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_reminder_company_uncheck {
+	background: url(/img/icn-reminder-company-uncheck.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_reminder_uncheck {
+	background: url(/img/icn-reminder-uncheck.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_profile_mb {
+	background: url(/img/icn-profile-mb.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_role {
+	background: url(/img/icn-role.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_role_gray {
+	background: url(/img/icn-role-gray.svg) center center no-repeat;
+}
+
+.icn_search {
+	background: url(/img/icn-search.svg) center center no-repeat;
+}
+
+.icn_search.focus {
+	background: url(/img/icn-search-focus.svg) center center no-repeat;
+}
+
+.icn_search_clear {
+	background: url(/img/icn-search-clear.svg) center center no-repeat;
+}
+
+.icn_search_clear.focus {
+	background: url(/img/icn-search-clear-focus.svg) center center no-repeat;
+}
+
+.icn_search_contacts {
+	background: url(/img/icn-search-contacts.svg) center center no-repeat;
+}
+
+.icn_search_contacts.focus {
+	background: url(/img/icn-search-contacts-focus.svg) center center no-repeat;
+}
+
+.icn_search_conversations {
+	background: url(/img/icn-search-conversations.svg) center center no-repeat;
+}
+
+.icn_search_conversations.focus {
+	background: url(/img/icn-search-conversations-focus.svg) center center no-repeat;
+}
+
+.icn_search_tags {
+	background: url(/img/icn-search-tags.svg) center center no-repeat;
+}
+
+.icn_search_tags.focus {
+	background: url(/img/icn-search-tags-focus.svg) center center no-repeat;
+}
+
+.icn_search_circle {
+	background: url(/img/icn-search-circle.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_search_circle_gray {
+	background: url(/img/icn-search-circle-gray.svg) center center no-repeat;
+}
+
+.icn_search_lg {
+	background: url(/img/icn-search-lg.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_search_mg {
+	background: url(/img/icn-search-mg.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_search_gray {
+	background: url(/img/icn-search-gray.svg) center center no-repeat;
+}
+
+.icn_search_mg_16 {
+	background: url(/img/icn-search-mg.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_search_dg {
+	background: url(/img/icn-search_dg.svg) center center no-repeat;
+	background-size: 22px 22px;
+}
+
+.icn_sign_out {
+	background: url(/img/icn-sign-out.svg) center center no-repeat;
+	background-size: 16px 16px;
+}
+
+.icn_standard_gray {
+	background: url(/img/icn-tag-standard-gray.svg) center center no-repeat;
+}
+
+.icn_tag {
+	background: url(/img/icn-tag.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_personal {
+	background: url(/img/icn-tag-personal.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tags_blue {
+	background: url(/img/icn-tags-blue.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_reminder {
+	background: url(/img/icn-tag-reminder.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_reminder_personal {
+	background: url(/img/icn-tag-reminder-personal.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_process {
+	background: url(/img/icn-tag-process.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_process_personal {
+	background: url(/img/icn-tag-process-personal.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_process_small {
+	background: url(/img/icn-tag-process.svg) left bottom no-repeat;
+	background-size: 14px 14px;
+}
+
+.icn_tag_process_small_personal {
+	background: url(/img/icn-tag-process-personal.svg) left bottom no-repeat;
+	background-size: 14px 14px;
+}
+
+.icn_tag_milestone {
+	background: url(/img/icn-tag-milestone.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tag_milestone_personal {
+	background: url(/img/icn-tag-milestone-personal.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_tags {
+	background: url(/img/icn-tags.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
+.icn_tag_back {
+	background: url(/img/icn-tag-back.svg) center center no-repeat;
+}
+
+.icn_tag_gray {
+	background: url(/img/icn-tag-gray.svg) center center no-repeat;
+}
+
+.icn_tag_back_gray {
+	background: url(/img/icn-tag-back-gray.svg) center center no-repeat;
+}
+
+.icn_timezone {
+	background: url(/img/icn-timezone.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_timezone_gray {
+	background: url(/img/icn-timezone-gray.svg) center center no-repeat;
+}
+
+.icn_twitter {
+	background: url(/img/icn-twitter.svg) center 12px no-repeat;
+	background-size: 22px 22px;
+}
+
+.js_current .icn_top, .icn_top {
+	background-position: center 20px;
+}
+
+.icn_milestone_gray {
+	background: url(/img/icn-tag-milestone-gray.svg) center center no-repeat;
+}
+
+.icn_multi_select.icn_top {
+	background-position: 3px 20px;
+}
+
+/*a[class$="_disabled"] {
+    display: none;
+}*/

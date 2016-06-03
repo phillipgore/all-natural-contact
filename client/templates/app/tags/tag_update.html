@@ -1,0 +1,15 @@
+<template autocomplete="off" name="tagUpdate">
+	
+	{{#if standardTagType}}
+		{{> tagUpdateStandard}}
+	{{/if}}
+	
+	{{#if reminderTagType}}
+		{{> tagUpdateReminder}}
+	{{/if}}
+	
+	{{#if processTagType}}
+		{{> tagUpdateProcess}}
+	{{/if}}
+	
+</template>

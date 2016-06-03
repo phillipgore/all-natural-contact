@@ -1,0 +1,30 @@
+<template name="userRoles">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_role_gray"></div>
+		<h1>User Roles</h1>
+	</div>
+	<form class="js_user_role_update top_50 scroll bg_gray" id="user_role_update_form" action="action">
+		<div class="js_red_alert_msg red_alert_msg hide"></div>
+		{{#each users}}
+			{{#if emails.[0].verified}}
+				<div class="js_user_role radiobutton_container">
+					<div class="radiobutton_label">{{profile.first}} {{profile.last}}</div>
+					<input name="user_id" id="user_id" type="hidden" value="{{_id}}"/>
+					<div class="js_radiobutton_role radiobutton listing icn_radio {{#unless role.administrator}}unselected{{/unless}}">
+						Administrator
+						<input name="administrator_role" id="administrator_role" type="hidden" value="{{#if role.administrator}}true{{else}}false{{/if}}"/>
+					</div>
+					<div class="js_radiobutton_role radiobutton listing icn_radio {{#unless role.user}}unselected{{/unless}}">
+						User
+						<input name="user_role" id="user_role" type="hidden" value="{{#if role.user}}true{{else}}false{{/if}}"/>
+					</div>
+					<div class="js_radiobutton_role radiobutton listing icn_radio {{#unless role.inactive}}unselected{{/unless}}">
+						Inactive
+						<input name="inactive_role" id="inactive_role" type="hidden" value="{{#if role.inactive}}true{{else}}false{{/if}}"/>
+					</div>
+				</div>
+			{{/if}}
+		{{/each}}
+	</form>
+</template>

@@ -1,0 +1,23 @@
+<template name="userBilling">
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_billing_gray"></div>
+		<h1>Billing</h1>
+	</div>
+	<div class="top_50 scroll bg_gray">
+		{{#unless controls.publicBeta}}
+			<div class="js_billing_update_head input_full">
+					<h3 class="js_billing_header">Update Your Credit Card.</h3>
+			</div>
+			<div class="js_billing_save_head input_full hide">
+					<h3 class="js_billing_header">Your {{controls.freeTrial}} day free trial has expired.</h3>
+					<p>Please enter your credit card information to continue using All Natural Contact.</p>
+			</div>
+			{{> groupCard}}
+		{{else}}
+		<div class="input_full ">
+				<h3>Free Public Beta.</h3>
+				<p>All Natural Contact is free to use until public beta testing is concluded.</p>
+		</div>
+		{{/unless}}
+	</div>
+</template>

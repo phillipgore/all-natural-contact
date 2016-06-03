@@ -1,0 +1,78 @@
+<template name="tagUpdateReminder">
+
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_edit_tag_gray"></div>
+		<h1>Edit Reminder Tag</h1>
+	</div>
+	<form class="js_tag_update_form js_reminder_tag_update_form bg_gray top_50 scroll" method="post" action="">
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<input id="tag" name="tag" type="text" autocomplete="off" placeholder="Reminder Tag Name" value="{{tag}}" />
+			</div>
+		</fieldset>	
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<div class="js_checkbox_personal_tag checkbox icn_check {{personalCheck}}">
+					Personal Tag
+					<input name="personal_tag" id="personal_tag" type="hidden" value="{{personal}}"/>
+				</div>
+			</div>
+		</fieldset>	
+		<fieldset class="js_toggle_reminder toggle_radiobutton">
+			<div class="js_reminder_option reminder_option row">
+				<div class="col_2of3">
+					<div class="js_radiobutton_reminder radiobutton icn_radio {{#unless days}}unselected{{/unless}}">
+						Days
+						<input class="js_period js_days" name="days" id="days" type="hidden" value="{{#if days}}true{{else}}false{{/if}}"/>
+					</div>
+				</div>
+				<div class="col_1of3">
+					<div class="input_small">
+						<input class="js_increment js_day_count small {{#unless days}}hide{{/unless}}" name="day_count" id="day_count" type="text" placeholder="Number" value="{{#if days}}{{reminder_time.[0].increment}}{{else}}1{{/if}}"/>
+					</div>
+				</div>
+			</div>
+			<div class="js_reminder_option reminder_option row">
+				<div class="col_2of3">
+					<div class="js_radiobutton_reminder radiobutton icn_radio {{#unless weeks}}unselected{{/unless}}">
+						Weeks
+						<input class="js_period js_weeks" name="weeks" id="weeks" type="hidden" value="{{#if weeks}}true{{else}}false{{/if}}"/>
+					</div>
+				</div>
+				<div class="col_1of3">
+					<div class="input_small">
+						<input class="js_increment js_week_count small {{#unless weeks}}hide{{/unless}}" name="week_count" id="week_count" type="text" placeholder="Number" value="{{#if weeks}}{{reminder_time.[0].increment}}{{else}}1{{/if}}"/>
+					</div>
+				</div>
+			</div>
+			<div class="js_reminder_option reminder_option row">
+				<div class="col_2of3">
+					<div class="js_radiobutton_reminder radiobutton icn_radio {{#unless months}}unselected{{/unless}}">
+						Months
+						<input class="js_period js_months" name="months" id="months" type="hidden" value="{{#if months}}true{{else}}false{{/if}}"/>
+					</div>
+				</div>
+				<div class="col_1of3">
+					<div class="input_small">
+						<input class="js_increment js_month_count small {{#unless months}}hide{{/unless}}" name="month_count" id="month_count" type="text" placeholder="Number" value="{{#if months}}{{reminder_time.[0].increment}}{{else}}1{{/if}}"/>
+					</div>
+				</div>
+			</div>
+			<div class="js_reminder_option reminder_option row">
+				<div class="col_2of3">
+					<div class="js_radiobutton_reminder radiobutton icn_radio {{#unless years}}unselected{{/unless}}">
+						Years
+						<input class="js_period js_years" name="years" id="years" type="hidden" value="{{#if years}}true{{else}}false{{/if}}"/>
+					</div>
+				</div>
+				<div class="col_1of3">
+					<div class="input_small">
+						<input class="js_increment js_year_count small {{#unless years}}hide{{/unless}}" name="year_count" id="year_count" type="text" placeholder="Number" value="{{#if years}}{{reminder_time.[0].increment}}{{else}}1{{/if}}"/>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+</template>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="22" height="22" viewBox="0, 0, 22, 22">
+  <g id="Navigation" transform="translate(-317.999, -64)">
+    <path d="M328.999,64 C322.923,64 317.999,68.926 317.999,75 C317.999,81.076 322.924,86 328.999,86 C335.074,86 339.999,81.075 339.999,75 C339.999,68.925 335.074,64 328.999,64 z M331.263,75 L335.272,79.009 L333.008,81.273 L328.999,77.264 L324.99,81.273 L322.727,79.009 L326.735,75 L322.727,70.993 L324.99,68.729 L328.999,72.736 L333.008,68.729 L335.272,70.992 L331.263,75 z" fill="#A5A5A5"/>
+  </g>
+</svg>

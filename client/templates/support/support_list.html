@@ -1,0 +1,10 @@
+<template name="supportList">
+  <ul class='js_level_items'>
+    <li><a id="welcome" class="js_support_list_item support_list_item" style="margin-left:18px;" href="{{pathFor 'support'}}">
+      <span class="js_support_list_text">Welcome</span>
+    </a></li>
+    {{#each sections}}
+      {{> supportListItem}}
+    {{/each}}
+  </ul>
+</template>

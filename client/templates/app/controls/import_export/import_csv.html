@@ -1,0 +1,74 @@
+<template name="importCSV">
+	<div class="js_initial_loading_overlay initial_loading_overlay bg_gray hide">
+		<div class="toolbar gray">&nbsp;</div>
+		<div class="js_loading loader with_text">
+			<div class="spinner"></div>
+		</div>
+		<div class="js_complete loader with_text icn_import_complete hide"></div>
+		<div class='js_saving_msg saving_msg with_loader'>Importing...</div>
+	</div>
+	
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_import_gray"></div>
+		<h1>Import Contacts</h1>
+	</div>
+	<div autocomplete="off" class="js_import top_50 scroll bg_gray txt_gray">
+		<div class="txt_container">
+			<p>There are three ways to import data.</p>
+			<p><span class="txt_bold">1. Apple vCard (VCF):</span> Most vCard files should import just fine but those exported from Apple's Contact App have been specifically targeted for importation.</p>
+			
+			<p><span class="txt_bold">2. Google CSV:</span> Files exported in the CSV format from Google Contacts have been specifically targeted for importation.</p>
+			
+			<p><span class="txt_bold">3. Formatted CSV:</span> Most applications used to collect contact data will allow you to output that data as a CSV file. To prep the file for import you will need to change the headers to match the following:</p>
+			
+			<p>
+				<ul class="col_1of2">
+					<li>Prefix</li>
+					<li>First</li>
+					<li>Middle</li>
+					<li>Last</li>
+					<li>Suffix</li>
+					<li>Phonetic First</li>
+					<li>Phonetic Middle</li>
+				</ul>
+				<ul class="col_1of2">
+					<li>Phonetic Last</li>
+					<li>Nickname</li>
+					<li>Maiden</li>
+					<li>Job Title</li>
+					<li>Department</li>
+					<li>Company</li>
+					<li>Is Company</li>
+				</ul>
+			</p>
+			
+			<p>There can be as many of the following items as necessary, just be sure to number them correctly. For instance, if a contact has three phone numbers the headers should be changed to read: "Phone 1 - Type", "Phone 1 - Value", "Phone 2 - Type", "Phone 2 - Value", "Phone 3 - Type", "Phone 3 - Value".</p>
+			
+			<p>Note that "type" is the label (work, home, cell, etc) and value is the item itself (555-555-5555, email@email.com, www.website.com, etc)</p>
+			
+			<p>
+				<ul class="col_1of2">
+					<li>Phone 1 - Type</li>
+					<li>Phone 1 - Value</li>
+					<li>Email 1 - Type</li>
+					<li>Email 1 - Value</li>
+					<li>Website 1 - Type</li>
+					<li>Website 1 - Value</li>
+					<li>Date 1 - Type</li>
+					<li>Date 1 - Value</li>
+					<li>Related 1 - Type</li>
+				</ul>
+				<ul class="col_1of2">
+					<li>Related 1 - Value</li>
+					<li>IM 1 - Type</li>
+					<li>IM 1 - Value</li>
+					<li>Address 1 - Type</li>
+					<li>Address 1 - Street</li>
+					<li>Address 1 - City</li>
+					<li>Address 1 - State</li>
+					<li>Address 1 - Postal Code</li>
+				</ul>
+			</p>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,63 @@
+<template name="tagList">
+
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_tag_gray"></div>
+		<h1>Tags</h1>
+		<a href="#" class="js_tool_tag_alpha tool_alpha {{#unless alphaToolTag}}inactive{{/unless}}">ABC...  &#9662;</a>
+	</div>
+	<div class="js_tag_list list scroll top_50">
+		<a id="all_contacts_tag" class="js_all_tag_item list_item divided list_icon" href="#">
+			<div class="icon_box icn_tag"></div>All Contacts
+			<div class="list_select icn_multi_go"></div>
+		</a>
+		{{#if tags}}
+			<button class="js_loading_top_button offscreen"></button>
+			<div class="js_loading_top js_list_item list_item divided txt_center hide">&nbsp;</div>
+			{{#each tags}}
+			<a id="{{_id}}" data-tag-name="{{tagName}}" data-has-tags="{{has_tags}}" class="{{#if processTagType}}js_process_tag_item{{else}}js_tag_item{{/if}} js_tag_list_item list_item divided list_icon multi_select" href="{{#if processTagType}}/list/process/tags/{{_id}}{{else}}#{{/if}}">
+				<div class="icon_box {{#if standardTagType}}{{#if personal}}icn_tag_personal{{else}}icn_tag{{/if}}{{/if}} {{#if reminderTagType}}{{#if personal}}icn_tag_reminder_personal{{else}}icn_tag_reminder{{/if}}{{/if}} {{#if processTagType}}{{#if personal}}icn_tag_process_personal{{else}}icn_tag_process{{/if}}{{/if}} {{#if milestoneTagType}}{{#if personal}}icn_tag_milestone_personal{{else}}icn_tag_milestone{{/if}}{{/if}}"></div>
+				{{#if tag}}{{tag}}{{else}}<span class="txt_missing">Tag Name</span>{{/if}}
+				<a class="js_multi_select_current list_select_current icn_multi_select_current" href="{{pathFor 'tagList'}}"></a>
+				<a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
+				<a class="js_multi_select list_select icn_multi_select" href="#"></a>
+			</a>
+			{{/each}}
+			<div class="js_loading_bottom js_list_item list_item txt_center hide">&nbsp;</div>
+			<button class="js_loading_bottom_button offscreen"></button>
+		{{else}}
+			{{> tagNone}}
+		{{/if}}
+	</div>
+	
+	<span class="js_tag_loader js_loader">{{> loading}}</span>
+	{{> blankToolbar}}
+	
+	<div class="js_alpha_clone_top clone_container top_50 bg_white hide">
+		<div class="clone_offset top">
+			<div class="js_loading_top js_list_item list_item divided txt_center">&nbsp;</div>
+			{{#each tagsScroll}}
+			<div class="list_item divided list_icon multi_select" href="#">
+				<div class="icon_box {{#if standardTagType}}icn_tag{{/if}} {{#if reminderTagType}}icn_tag_reminder{{/if}} {{#if processTagType}}icn_tag_process{{/if}} {{#if milestoneTagType}}icn_tag_milestone{{/if}}"></div>{{tag}}
+				<a class="list_select_current icn_multi_select_current" href="#"></a>
+				<a class="list_select_single icn_multi_select_single" href="#"></a>
+				<a class="list_select icn_multi_select" href="#"></a>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+	
+	<div class="js_alpha_clone_bottom clone_container top_50 bg_white hide">
+		<div class="clone_offset bottom">
+			{{#each tagsScroll}}
+			<div class="list_item divided list_icon multi_select" href="#">
+				<div class="icon_box {{#if standardTagType}}icn_tag{{/if}} {{#if reminderTagType}}icn_tag_reminder{{/if}} {{#if processTagType}}icn_tag_process{{/if}} {{#if milestoneTagType}}icn_tag_milestone{{/if}}"></div>{{tag}}
+				<a class="list_select_current icn_multi_select_current" href="#"></a>
+				<a class="list_select_single icn_multi_select_single" href="#"></a>
+				<a class="list_select icn_multi_select" href="#"></a>
+			</div>
+			{{/each}}
+			<div class="js_loading_bottom js_list_item list_item txt_center divided">&nbsp;</div>
+		</div>
+	</div>
+	
+</template>

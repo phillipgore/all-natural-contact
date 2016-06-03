@@ -1,0 +1,31 @@
+<template name="tagNewProcess">
+	
+	<input id="standard_tag_type" name="standard_tag_type" type="hidden" autocomplete="off" value="false" />
+	<input id="reminder_tag_type" name="reminder_tag_type" type="hidden" autocomplete="off" value="false" />
+	<input id="process_tag_type" name="process_tag_type" type="hidden" autocomplete="off" value="true" />
+	<input id="milestone_tag_type" name="milestone_tag_type" type="hidden" autocomplete="off" value="false" />
+
+	<div class="toggle_msg hide">Process tags create milestones for contacts who have been added to the tag.</div>
+	<fieldset class="input_wrap">
+		<div class="input_full">
+			<input id="tag" name="tag" type="text" autocomplete="off" placeholder="Process Tag Name" value="" />
+		</div>
+	</fieldset>	
+	<fieldset class="input_wrap">
+		<div class="input_full">
+			<div class="js_checkbox_personal_tag checkbox icn_check unchecked">
+				Personal Tag
+				<input name="personal_tag" id="personal_tag" type="hidden" value="open"/>
+			</div>
+		</div>
+	</fieldset>	
+	<fieldset id="milestone" class="js_paste_input">
+		<div class="js_copy_input js_delete_input js_input input_wrap">
+			<div class="input_full multi_input_adjust">
+				<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
+				<input class="js_input js_multi_input multi_input" name="milestone" type="text" autocomplete="off" placeholder="Milestone" value="" />
+			</div>
+		</div>
+	</fieldset>
+	
+</template>

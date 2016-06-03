@@ -1,0 +1,59 @@
+<template name="search">
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_search_gray"></div>
+		<h1>Search Results</h1>
+	</div>
+	<div class="js_search_list list scroll top_50">
+		{{#each contacts}}
+			<a id="{{id}}" data-first="{{first}}" data-last="{{last}}" data-name-first="{{nameFirst}}" data-name-last="{{nameLast}}" class="js_contact_list_item js_list_item js_contact_item list_item divided list_icon multi_select" href="/info/contact/{{id}}">
+				<div class="icon_box
+					{{#if latest_conversation_date}}
+						{{#if is_company}}
+							{{#if overdue}}
+								icn_reminder_company_uncheck
+							{{else}}
+								icn_company_mb
+							{{/if}}
+						{{else}}
+							{{#if overdue}}
+								icn_reminder_uncheck
+							{{else}}
+								icn_profile_mb
+							{{/if}}
+						{{/if}}
+					{{else}}
+						{{#if is_company}}
+							icn_company_mb
+						{{else}}
+							icn_profile_mb
+						{{/if}}
+					{{/if}}
+				"></div>
+					{{#if is_company}}
+						{{#if company}}
+							{{company}}
+						{{else}}
+							<span class="txt_missing">Company</span>
+						{{/if}}
+					{{else}}
+						{{#if first}}
+							{{first}}
+						{{else}}
+							<span class="txt_missing">First</span>
+						{{/if}}
+						{{#if last}}
+							{{last}}
+						{{else}}
+							<span class="txt_missing">Last</span>
+						{{/if}}
+					{{/if}}
+					{{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
+				<a class="js_multi_select_current list_select_current icn_multi_select_current" href="#"></a>
+				<a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
+				<a class="js_multi_select list_select icn_multi_select" href="#"></a>
+			</a>
+		{{/each}}
+	</div>
+	<span class="js_search_loader js_loader">{{> loading}}</span>
+	{{> blankToolbar}}
+</template>

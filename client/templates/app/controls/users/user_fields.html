@@ -1,0 +1,96 @@
+<template name="userFields">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_fields_gray"></div>
+		<h1>{{fieldsUser.profile.first}} {{fieldsUser.profile.last}}: Fields</h1>
+	</div>
+	<form class="js_user_fields_update_form top_50 scroll bg_gray" id="register_form" action="action">
+		<div class="red_alert_msg hide"></div>
+		<fieldset class="checkbox_container">
+			<div class="js_checkbox_fields checkbox listing icn_check {{#unless fieldsUser.fields.prefix_field}}unchecked{{/unless}}">
+				Prefix
+				<input name="prefix_field" id="prefix_field" type="hidden" value="{{fieldsUser.fields.prefix_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.middle_field}}unchecked{{/unless}}">
+				Middle
+				<input name="middle_field" id="middle_field" type="hidden" value="{{fieldsUser.fields.middle_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.suffix_field}}unchecked{{/unless}}">
+				Suffix
+				<input name="suffix_field" id="suffix_field" type="hidden" value="{{fieldsUser.fields.suffix_field}}"/>
+			</div>
+		</fieldset>
+		<fieldset class="checkbox_container">
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.phonetic_field}}unchecked{{/unless}}">
+				Phonetic Name
+				<input name="phonetic_field" id="phonetic_field" type="hidden" value="{{fieldsUser.fields.phonetic_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.nickname_field}}unchecked{{/unless}}">
+				Nickname
+				<input name="nickname_field" id="nickname_field" type="hidden" value="{{fieldsUser.fields.nickname_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.maiden_field}}unchecked{{/unless}}">
+				Maiden
+				<input name="maiden_field" id="maiden_field" type="hidden" value="{{fieldsUser.fields.maiden_field}}"/>
+			</div>
+		</fieldset>
+		<fieldset class="checkbox_container">
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.job_title_field}}unchecked{{/unless}}">
+				Job Title
+				<input name="job_title_field" id="job_title_field" type="hidden" value="{{fieldsUser.fields.job_title_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.department_field}}unchecked{{/unless}}">
+				Department
+				<input name="department_field" id="department_field" type="hidden" value="{{fieldsUser.fields.department_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.company_field}}unchecked{{/unless}}">
+				Company
+				<input name="company_field" id="company_field" type="hidden" value="{{fieldsUser.fields.company_field}}"/>
+			</div>
+		</fieldset>
+		<fieldset class="checkbox_container">
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.phone_field}}unchecked{{/unless}}">
+				Phone
+				<input name="phone_field" id="phone_field" type="hidden" value="{{fieldsUser.fields.phone_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.email_field}}unchecked{{/unless}}">
+				Email
+				<input name="email_field" id="email_field" type="hidden" value="{{fieldsUser.fields.email_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.url_field}}unchecked{{/unless}}">
+				Web
+				<input name="url_field" id="url_field" type="hidden" value="{{fieldsUser.fields.url_field}}"/>
+			</div>
+		</fieldset>
+		<fieldset class="checkbox_container">
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.date_field}}unchecked{{/unless}}">
+				Dates
+				<input name="date_field" id="date_field" type="hidden" value="{{fieldsUser.fields.date_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.related_field}}unchecked{{/unless}}">
+				Related
+				<input name="related_field" id="related_field" type="hidden" value="{{fieldsUser.fields.related_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.immp_field}}unchecked{{/unless}}">
+				Messaging
+				<input name="immp_field" id="immp_field" type="hidden" value="{{fieldsUser.fields.immp_field}}"/>
+			</div>
+			<div class="js_checkbox_fields checkbox listing icn_check checked {{#unless fieldsUser.fields.address_field}}unchecked{{/unless}}">
+				Address
+				<input name="address_field" id="address_field" type="hidden" value="{{fieldsUser.fields.address_field}}"/>
+			</div>
+		</fieldset>
+		
+		<input type="submit" value="Submit" class="js_submit offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+	</form>
+</template>
+
+
+
+
+
+
+
+
+

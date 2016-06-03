@@ -1,0 +1,22 @@
+<template name="tagNew">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_add_tag_gray"></div>
+		<h1>New Tag</h1>
+	</div>
+	<form class="js_tag_new_form top_50 bg_gray scroll" method="post" action="">
+		
+		<fieldset class="border_none">
+			<div class="toggle_container row">
+				<a class="js_toggle js_standard_toggle toggle selected" href="{{pathFor 'tagNewStandard'}}">Standard</a>
+				<a class="js_toggle js_reminder_toggle toggle" href="{{pathFor 'tagNewReminder'}}">Reminder</a>
+				<a class="js_toggle js_process_toggle toggle" href="{{pathFor 'tagNewProcess'}}">Process</a>
+			</div>
+		</fieldset>
+		
+		{{> yield region='newTag'}}
+		
+		<input type="submit" value="Submit" class="js_submit offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+	</form>
+</template>

@@ -1,0 +1,14 @@
+<template name="deleteRemove">
+	<div class="initial_loading_overlay bg_gray">
+		<div class="toolbar gray">&nbsp;</div>
+
+		<div class="vertical_center">
+			<img class="delete_icn" src="/img/icn-delete-alert.svg" />
+			<div class='js_delete_msg delete_msg'>
+				Delete the selected {{currentType}}{{#if plural}}s{{/if}}{{#if isContact}} or remove the selected {{currentType}}{{#if plural}}s{{/if}} from the selected tag{{/if}}?
+			</div>
+			<div class="delete_sub_msg">This action cannot be undone.</div>
+		</div>
+		
+	</div>
+</template>

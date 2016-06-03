@@ -1,0 +1,24 @@
+<template name="tagUpdateStandard">
+
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_edit_tag_gray"></div>
+		<h1>Edit Standard Tag</h1>
+	</div>
+	<form class="js_tag_update_form js_standard_tag_update_form bg_gray top_50 scroll" method="post" action="">
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<input id="tag" name="tag" type="text" autocomplete="off" placeholder="Standard Tag Name" value="{{tag}}" />
+			</div>
+		</fieldset>	
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<div class="js_checkbox_personal_tag checkbox icn_check {{personalCheck}}">
+					Personal Tag
+					<input name="personal_tag" id="personal_tag" type="hidden" value="{{personal}}"/>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+</template>

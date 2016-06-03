@@ -1,0 +1,28 @@
+<template name="headerToolbar">
+	<a href="#" class="js_tool_action tool width_50 icn_action fl_right hide_768"></a>
+	<span class="fl_right toolbar_action">
+	
+		<a href="{{pathFor 'tagNewStandard'}}" class="tool icn_add_tag"></a>
+		<a href="#" class="tool icn_add_tag_disabled"></a>
+		
+		<a href="{{pathFor 'contactNew'}}" class="tool icn_add_contact"></a>
+		<a href="#" class="tool icn_add_contact_disabled"></a>
+		
+		<a href="/new/conversation/{{currentContact}}" class="js_add_to_conversation tool icn_add_conversation"></a>
+		<a href="#" class="tool icn_add_conversation_disabled"></a>
+		
+		<div class="divide spacer"></div>
+		
+		<a href="{{updateRoute}}" class="tool icn_edit"></a>
+		<a href="#" class="tool icn_edit_disabled"></a>
+		
+		<a href="{{deleteRoute}}" class="tool icn_delete"></a>
+		<a href="#" class="tool icn_delete_disabled"></a>
+		
+		<div class="divide spacer"></div>
+		
+		<a href="{{pathFor 'tagSelect'}}" class="tool icn_add_to_tag"></a>
+		<a href="#" class="tool icn_add_to_tag_disabled"></a>
+		
+	</span>
+</template>

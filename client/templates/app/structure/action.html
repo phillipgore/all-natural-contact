@@ -1,0 +1,22 @@
+<template name="action">
+	<div class="js_sheet_action list padded dark_blue top right narrow hide">
+	
+		<a href="{{pathFor 'tagNewStandard'}}" class="tool percent_33 icn_add_tag"></a>
+		<a href="#" class="tool percent_33 icn_add_tag_disabled"></a>
+		
+		<a href="{{pathFor 'contactNew'}}" class="tool percent_33 icn_add_contact"></a>
+		<a href="#" class="tool percent_33 icn_add_contact_disabled"></a>
+		
+		<a href="/new/conversation/{{currentContact}}" class="js_add_to_conversation tool percent_33 icn_add_conversation"></a>
+		<a href="#" class="tool percent_33 icn_add_conversation_disabled"></a>
+		
+		<a href="{{updateRoute}}" class="tool percent_33 icn_edit"></a>
+		<a href="#" class="tool percent_33 icn_edit_disabled"></a>
+		
+		<a href="{{deleteRoute}}" class="tool percent_33 icn_delete"></a>
+		<a href="#" class="tool percent_33 icn_delete_disabled"></a>
+		
+		<a href="{{pathFor 'tagSelect'}}" class="tool percent_33 icn_add_to_tag"></a>
+		<a href="#" class="tool percent_33 icn_add_to_tag_disabled"></a>
+	</div>	  
+</template>

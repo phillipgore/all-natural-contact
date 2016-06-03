@@ -1,0 +1,52 @@
+<template name="groupCard">
+  <form class="js_user_billing_update_form pos_relative" id="user_billing_update_form" action="action">
+
+		<fieldset class="input_wrap">
+			<div class="input_full">
+          <input type="text" data-stripe='cardNarm' name="fullName" placeholder="Name On Card">
+      </div>
+
+      <div class="input_full horizontal_2">
+        <div class="col_4of5">
+          <div class="js_input">
+            <div class="input_horizontal_box">
+              <input type="text" data-stripe="cardNumber" placeholder="Card Number">
+            </div>
+          </div>
+        </div>
+
+        <div class="col_1of5">
+          <div class="js_input">
+            <div class="input_horizontal_box">
+              <input type="text" data-stripe="cvc" placeholder="CVC">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input_full horizontal_2">
+        <div class="col_3of5">
+          <div class="js_input">
+            <div class="input_horizontal_box">
+              <div class="js_label btn drop"><span class="js_label_txt">01 - January</span><span class="fl_right">&#9662;</span></div>
+              <input data-stripe="expMonth" class="js_input_label" type="hidden" name="month_label" value="01 - January" />
+              {{> labelMonth}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col_2of5">
+          <div class="js_input">
+            <div class="input_horizontal_box">
+              <div class="js_label btn drop"><span class="js_label_txt">2016</span><span class="fl_right">&#9662;</span></div>
+              <input data-stripe="expYear" class="js_input_label" type="hidden" name="year_label" value="2016" />
+              {{> labelYear}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+  <div class="red_alert_msg hide">Hello</div>
+</template>

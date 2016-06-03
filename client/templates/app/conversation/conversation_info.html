@@ -1,0 +1,80 @@
+<template name="conversationInfo">
+
+	<div class="js_conversation_toolbar conversation_toolbar toolbar gray">
+		<span class="hide_639">
+			<div class="toolbar_img icn_conversation_gray"></div>
+			<h1 class="js_contact_name" data-name-first="{{contact.nameFirst}}" data-name-last="{{contact.nameLast}}">{{contact.first}} {{contact.last}}</h1>
+		</span>
+		<a href="#" class="js_tool_date js_inactive tool_date icn_calendar_gray {{#unless dateTool}}inactive{{/unless}}"></a>
+	</div>
+
+	<span class="pickadate_gray">
+		<input class="js_datepicker hide" type="date" name="conversation_date" />
+		<div class="date_container">
+			<div class="js_list_date list_date list gray hide">
+				<a id="newestEntry" href="#" class="js_tool_newest_entry tool_lettered percent_100 border_top">Newest Entry</a>
+				<a id="oldestEntry" href="#" class="js_tool_oldest_entry tool_lettered percent_100 border_top">Oldest Entry</a>
+			</div>
+		</div>
+	</span>
+	<div id="js_conversation" class="js_conversation_list scroll list top_50">
+		{{#if noConversations}}
+			{{> conversationNone}}
+		{{else}}
+			<button class="js_loading_top_button offscreen"></button>
+			<div class="js_loading_top js_list_item list_item divided txt_center hide">&nbsp;</div>
+			{{#each conversations}}
+			<div id="{{_id}}" data-conversation-date="{{conversation_date}}" data-conversation-local-date="{{date conversation_date}}" class="js_conversation_list_item list_item divided list_icon txt_wrap">
+				<div class="js_conversation_sub_item icon_box icn_conversation_blue"></div>
+				<label class="js_conversation_sub_item prime_label multi_select">{{conversation_label}}</label>
+				<label class="js_conversation_sub_item sub_label">{{author created_by}}<br>{{formatDateTime conversation_date}}</label>
+				<div class="conversation_txt">{{conversation}}</div>
+				<a class="js_multi_select_current list_select_current icn_multi_select_current icn_top" href="#"></a>
+				<a class="js_multi_select_single list_select_single icn_multi_select_single icn_top" href="#"></a>
+				<a class="js_multi_select list_select icn_multi_select icn_top" href="#"></a>
+			</div>
+			{{/each}}
+			<div class="js_loading_bottom js_list_item list_item txt_center hide">&nbsp;</div>
+			<button class="js_loading_bottom_button offscreen"></button>
+		{{/if}}
+	</div>
+	<span class="js_conversation_loader">{{> loading}}</span>
+	<div class="js_conversation_initial_loading_overlay initial_loading_overlay">
+		<div class="toolbar gray">&nbsp;</div>
+	</div>
+
+	<div class="js_alpha_clone_top clone_container top_50 bg_white hide">
+		<div class="clone_offset top">
+			<div class="js_loading_top js_list_item list_item divided txt_center">&nbsp;</div>
+			{{#each conversationsScroll}}
+			<div class="list_item divided list_icon txt_wrap">
+				<div class="js_conversation_sub_item icon_box icn_conversation_blue"></div>
+				<label class="js_conversation_sub_item prime_label multi_select">{{conversation_label}}</label>
+				<label class="js_conversation_sub_item sub_label">{{author created_by}}<br>{{formatDateTime conversation_date}}</label>
+				<div class="conversation_txt">{{conversation}}</div>
+				<a class="js_multi_select_current list_select_current icn_multi_select_current icn_top" href="#"></a>
+				<a class="js_multi_select_single list_select_single icn_multi_select_single icn_top" href="#"></a>
+				<a class="js_multi_select list_select icn_multi_select icn_top" href="#"></a>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+
+	<div class="js_alpha_clone_bottom clone_container top_50 bg_white hide">
+		<div class="clone_offset bottom">
+			{{#each conversationsScroll}}
+			<div class="list_item divided list_icon txt_wrap">
+				<div class="js_conversation_sub_item icon_box icn_conversation_blue"></div>
+				<label class="js_conversation_sub_item prime_label multi_select">{{conversation_label}}</label>
+				<label class="js_conversation_sub_item sub_label">{{author created_by}}<br>{{formatDateTime conversation_date}}</label>
+				<div class="conversation_txt">{{conversation}}</div>
+				<a class="js_multi_select_current list_select_current icn_multi_select_current icn_top" href="#"></a>
+				<a class="js_multi_select_single list_select_single icn_multi_select_single icn_top" href="#"></a>
+				<a class="js_multi_select list_select icn_multi_select icn_top" href="#"></a>
+			</div>
+			{{/each}}
+			<div class="js_loading_bottom js_list_item list_item txt_center divided">&nbsp;</div>
+		</div>
+	</div>
+
+</template>
