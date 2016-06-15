@@ -28,10 +28,16 @@ Template.register.events({
 		var password_check = $(e.target).find('[name=account_password_check]').val();
 		var email_updates = $(e.target).find('[name=email_updates]').val() == "true";
 		var logout_time = moment().add(1, 'd').toISOString();
+		var group_id = new Mongo.ObjectID().toHexString();
 
 		if (group_name.length === 0) {
 			var group_name = first.toLowerCase() + "_" + last.toLowerCase()
 		}
+
+		var group = {
+      group_id: group_id,
+      group_name: group_name,
+    }
 
 		var profile = {
 			first: first,
@@ -40,12 +46,7 @@ Template.register.events({
 			remember_me: false,
 			logout_time: logout_time,
 			timezone: jstz.determine().name(),
-		}
-
-		var group = {
-			group_id: new Mongo.ObjectID().toHexString(),
-			group_name: group_name,
-			group_created_on: moment().toISOString(),
+			belongs_to_group: group_id,
 		}
 
 		var role = {
@@ -122,10 +123,10 @@ Template.register.events({
 					if (email === email_check) {
 						if (password === password_check) {
 							Accounts.createUser({
+								group: group,
 								email: email,
 								password: password,
 								profile: profile,
-								group: group,
 								role: role,
 								fields: fields
 							}, function(error) {

@@ -1,7 +1,7 @@
 // Count Tag Publications
 Meteor.publish('accountTagCount', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		Counts.publish(this, 'accountTagCount', Tags.find({groupId: groupId, belongs_to: {$exists: false }}), {nonReactive: false});
 	} else {
 		return this.ready();
@@ -10,7 +10,7 @@ Meteor.publish('accountTagCount', function() {
 
 Meteor.publish('accountConversationCount', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		Counts.publish(this, 'accountConversationCount', Conversations.find({groupId: groupId}), {nonReactive: false});
 	} else {
 		return this.ready();
@@ -19,7 +19,7 @@ Meteor.publish('accountConversationCount', function() {
 
 Meteor.publish('tagAlphaCounts', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		Counts.publish(this, 'aTagCount', Tags.find({groupId: groupId, tag: { $gt: "a", $lt: "b" }, tag: { $gt: "A", $lt: "B" }}), {nonReactive: true});
 		Counts.publish(this, 'bTagCount', Tags.find({groupId: groupId, tag: { $gt: "b", $lt: "c" }, tag: { $gt: "B", $lt: "C" }}), {nonReactive: true});
 		Counts.publish(this, 'cTagCount', Tags.find({groupId: groupId, tag: { $gt: "c", $lt: "d" }, tag: { $gt: "C", $lt: "D" }}), {nonReactive: true});
@@ -53,7 +53,7 @@ Meteor.publish('tagAlphaCounts', function() {
 
 Meteor.publish('counts', function(tagId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(tagId, String);
 
 		if (tagId === "all_contacts_tag") {

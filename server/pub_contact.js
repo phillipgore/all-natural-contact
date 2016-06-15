@@ -1,6 +1,6 @@
 Meteor.methods({
 	mostRecent: function(contactId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var conversation = Conversations.findOne({groupId: groupId, belongs_to_contact: contactId}, {sort: {conversation_date: -1}})
 
 		if (conversation) {
@@ -16,7 +16,7 @@ Meteor.methods({
 // Contact Publications
 Meteor.publish('firstConversation', function(contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(contactId, String);
 
 		var contact = Contacts.findOne({groupId: groupId, _id: contactId})
@@ -33,7 +33,7 @@ Meteor.publish('firstConversation', function(contactId) {
 
 Meteor.publish('lastConversation', function(contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(contactId, String);
 
 		var contact = Contacts.findOne({groupId: groupId, _id: contactId})
@@ -50,7 +50,7 @@ Meteor.publish('lastConversation', function(contactId) {
 
 Meteor.publish('contactInfo', function(contactId, conScrollDir, conPivotDate) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(contactId, String);
 		var contact = Contacts.findOne({groupId: groupId, _id: contactId})
 		var conversationIds = contact.has_conversations
@@ -148,7 +148,7 @@ Meteor.publish('conversationCount', function(contactId) {
 
 Meteor.publish('accountContactCount', function(contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		Counts.publish(this, 'accountContactCount', Contacts.find({groupId: groupId}), {nonReactive: false});
 		Counts.publish(this, 'totalConversationCount', Conversations.find({groupId: groupId}), {nonReactive: false});
 	} else {
@@ -158,7 +158,7 @@ Meteor.publish('accountContactCount', function(contactId) {
 
 Meteor.publish('deleteContacts', function(contactIds) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		return [
 			Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {fields: {_id: 1}}),
 		]
@@ -172,7 +172,7 @@ Meteor.publish('deleteContacts', function(contactIds) {
 //Conversation Information
 Meteor.publish('allConversations', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		return Conversations.find({groupId: groupId}, {fields: {contact_id: 1}})
 	} else {
 		return this.ready();
@@ -181,7 +181,7 @@ Meteor.publish('allConversations', function() {
 
 Meteor.publish('conversationNew', function(contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(contactId, String);
 		return Contacts.find({groupId: groupId, _id: contactId}, {fields: {has_conversations: 0}});
 	} else {
@@ -191,7 +191,7 @@ Meteor.publish('conversationNew', function(contactId) {
 
 Meteor.publish('conversationUpdate', function(conversationId, contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(conversationId, String);
 
 		return [
@@ -205,7 +205,7 @@ Meteor.publish('conversationUpdate', function(conversationId, contactId) {
 
 Meteor.publish('conversationRecent', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		return Conversations.find({groupId: groupId}, {sort: {conversation_date: -1}, fields: {conversation_date: 1}, limit: 1})
 	} else {
 		return this.ready();

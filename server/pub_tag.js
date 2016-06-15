@@ -1,6 +1,6 @@
 Meteor.publish('firstTag', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		var firstTag = Tags.find({groupId: groupId, milestoneTagType: false, personal: {$in: personal}}, {sort: {tagName: 1}, fields: {_id: 1, tagName: 1}, limit: 1});
 		if (firstTag) {
@@ -15,7 +15,7 @@ Meteor.publish('firstTag', function() {
 
 Meteor.publish('lastTag', function(contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		var lastTag = Tags.find({groupId: groupId, milestoneTagType: false, personal: {$in: personal}}, {sort: {tagName: -1}, fields: {_id: 1, tagName: 1}, limit: 1});
 		if (lastTag) {
@@ -30,7 +30,7 @@ Meteor.publish('lastTag', function(contactId) {
 
 Meteor.publish('tagScroll', function(tagScrollDir, tagPivotName) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		var tagCount = Tags.find({groupId: groupId, milestoneTagType: false, personal: {$in: personal}}).count()
 		if (tagCount > 0 && tagCount < 300) {
@@ -93,7 +93,7 @@ Meteor.publish('tagScroll', function(tagScrollDir, tagPivotName) {
 Meteor.publish('infoTag', function(tagId) {
 	if (this.userId) {
 		check(tagId, String);
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		return Tags.find({groupId: groupId, _id: tagId, personal: {$in: personal}})
 	} else {
@@ -104,7 +104,7 @@ Meteor.publish('infoTag', function(tagId) {
 Meteor.publish('milestoneTags', function(tagId) {
 	if (this.userId) {
 		check(tagId, String);
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		return Tags.find({groupId: groupId, belongs_to: tagId, personal: {$in: personal}}, {sort: {created_on: 1}})
 	} else {
@@ -114,7 +114,7 @@ Meteor.publish('milestoneTags', function(tagId) {
 
 Meteor.reactivePublish('contactProcessTags', function(contactId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		var contact = Contacts.findOne({groupId: groupId, _id: contactId}, {reactive: true})
 
@@ -147,7 +147,7 @@ Meteor.publish('processCount', function(contactId) {
 	if (this.userId) {
 		var self = this
 
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		var contact = Contacts.findOne({groupId: groupId, _id: contactId}, {reactive: true})
 
@@ -191,7 +191,7 @@ Meteor.publish('processCount', function(contactId) {
 Meteor.publish('tagCount', function(userId) {
 	if (this.userId) {
 		var self = this
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var personal = ['open', this.userId]
 		var tagCount = Tags.find({groupId: groupId, milestoneTagType: false, personal: {$in: personal}}).count()
 

@@ -264,6 +264,10 @@ a, button {
 	width: 199px;
 }
 
+.toolbar .settings_name {
+	width: 269px;
+}
+
 .toolbar .reminder_tag_name_wrap {
 	width: 199px;
 	display: inline-block;
@@ -1796,7 +1800,7 @@ button.btn {
 }
 
 .saving_msg.with_loader {
-	transform: translate(-100px,21px);
+	transform: translate(-142px,21px);
 }
 
 .vertical_center {

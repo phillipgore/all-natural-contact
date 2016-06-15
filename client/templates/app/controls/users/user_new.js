@@ -29,6 +29,13 @@ Template.userNew.events({
 		var password_check = $(e.target).find('[name=account_password_check]').val();
 		var email_updates = $(e.target).find('[name=email_updates]').val() == "true";
 		var logout_time = moment().add(1, 'd').toISOString();
+		var group_id = Meteor.user().profile.belongs_to_group;
+
+		var group = {
+			group_id: group_id,
+			group_name: Groups.findOne({_id: group_id}).name,
+		}
+
 		var profile = {
 			first: first,
 			last: last,
@@ -36,12 +43,7 @@ Template.userNew.events({
 			remember_me: false,
 			logout_time: logout_time,
 			timezone: jstz.determine().name(),
-		}
-
-		var group = {
-			group_id: Meteor.user().group.group_id,
-			group_name: Meteor.user().group.group_name,
-			group_created_on: Meteor.user().group.group_created_on,
+			belongs_to_group: group_id,
 		}
 
 		var role = {
@@ -116,10 +118,10 @@ Template.userNew.events({
 					if (email === email_check) {
 						if (password === password_check) {
 							Accounts.createUser({
-								email: email,
-								password : password,
-								profile: profile,
 								group: group,
+								email: email,
+								password: password,
+								profile: profile,
 								role: role,
 								fields: fields
 							}, function(error) {

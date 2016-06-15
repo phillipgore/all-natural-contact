@@ -1,6 +1,6 @@
 Meteor.publish('allContacts', function() {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		return Contacts.find({groupId: groupId})
 	} else {
 		return this.ready();
@@ -9,7 +9,7 @@ Meteor.publish('allContacts', function() {
 
 Meteor.publish('selectedContacts', function(contactIds) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		return Contacts.find({groupId: groupId, _id: {$in: contactIds}})
 	} else {
 		return this.ready();
@@ -18,7 +18,7 @@ Meteor.publish('selectedContacts', function(contactIds) {
 
 Meteor.publish('taggedContacts', function(tagIds) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 
 		var tags = Tags.find({groupId: groupId, _id: {$in: tagIds}})
 		var contactIds = []

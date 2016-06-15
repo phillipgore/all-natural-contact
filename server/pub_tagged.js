@@ -1,7 +1,7 @@
 // Contact Lists Publications
 Meteor.publish('firstContact', function(tagId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 
 		if (tagId === 'all_contacts_tag') {
 			return Contacts.find({groupId: groupId}, {sort: {nameLast: 1, nameFirst: 1, company: 1}, fields: {nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
@@ -26,7 +26,7 @@ Meteor.publish('firstContact', function(tagId) {
 
 Meteor.publish('lastContact', function(tagId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 
 		if (tagId === 'all_contacts_tag') {
 			return Contacts.find({groupId: groupId}, {sort: {nameLast: -1, nameFirst: -1, company: -1}, fields: {nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
@@ -51,7 +51,7 @@ Meteor.publish('lastContact', function(tagId) {
 
 Meteor.reactivePublish('contactScroll', function(tagId, contactScrollDir, contactPivotNameLast) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var contactCount = Contacts.find({groupId: groupId}).count()
 
 		if (tagId === 'all_contacts_tag') {
@@ -202,7 +202,7 @@ Meteor.publish('taggedCount', function(tagId) {
 		var tag = Tags.findOne(tagId)
 
 		if (tagId === 'all_contacts_tag') {
-			var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+			var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 			var count = Contacts.find({groupId: groupId}).count()
 		} else if (_.has(tag, 'has_contacts')) {
 			var count = tag.has_contacts.length
@@ -228,7 +228,7 @@ Meteor.publish('taggedCount', function(tagId) {
 
 Meteor.publish('taggedContactCount', function(tagIds, userId) {
 	if (this.userId) {
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		Counts.publish(this, 'taggedContactCount', Contacts.find({groupId: groupId, belongs_to_tags: {$in: tagIds}}), {nonReactive: true});
 	} else {
 		return this.ready();
@@ -242,7 +242,7 @@ import Future from 'fibers/future';
 Meteor.publish('contactsSearch', function(searchText, userId) {
 	if (this.userId) {
 		var self = this
-		var groupId = Meteor.users.findOne({_id: this.userId}).group.group_id;
+		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		var future = new Future();
 
 		EsClient.search({

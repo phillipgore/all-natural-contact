@@ -54,6 +54,15 @@
 	background: url(/img/icn-user-verification-gray.svg) center center no-repeat;
 }
 
+.icn_account_name {
+	background: url(/img/icn-account-name.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_account_name_gray {
+	background: url(/img/icn-account-name-gray.svg) center center no-repeat;
+}
+
 .icn_action {
 	background: url(/img/icn-action.svg) center center no-repeat;
 }

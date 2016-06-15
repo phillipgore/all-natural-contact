@@ -17,6 +17,10 @@ Template.settings.helpers({
 		return Meteor.users.findOne(Meteor.userId());
 	},
 
+	group: function() {
+		return Groups.findOne();
+	},
+
 	isAdmin: function() {
 		if (Meteor.users.findOne(Meteor.userId()).role.administrator === true || Meteor.users.findOne(Meteor.userId()).role.app_administrator === true) {
 			return true;

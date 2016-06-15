@@ -12,7 +12,14 @@ Accounts.config ({
 Meteor.startup(function () {
   process.env.MAIL_URL = 'smtp://keynotestore.com:Vandalia6578@smtp.sendgrid.net:587';
   var email = Meteor.users.find({"emails.0.address": "anc_admin@icloud.com"}).fetch()
+  var group_id = new Mongo.ObjectID().toHexString();
+
   if (email.length === 0) {
+    var group = {
+      group_id: group_id,
+      group_name: 'App Administration',
+    }
+
 		var profile = {
 			first: 'Phillip',
 			last: 'Gore',
@@ -20,12 +27,7 @@ Meteor.startup(function () {
 			remember_me: false,
 			logout_time: moment().add(1, 'd').toISOString(),
 			timezone: jstz.determine().name(),
-		}
-
-		var group = {
-			group_id: new Mongo.ObjectID().toHexString(),
-			group_name: 'App Administration',
-      group_created_on: moment().toISOString(),
+      belongs_to_group: group_id,
 		}
 
 		var role = {
@@ -59,10 +61,10 @@ Meteor.startup(function () {
 		}
 
     var userId = Accounts.createUser({
+      group: group,
       email: 'anc_admin@icloud.com',
       password: '6578ayanal6578',
       profile: profile,
-      group: group,
       role: role,
       fields: fields
     })
@@ -113,10 +115,30 @@ Accounts.validateLoginAttempt(function(attempt) {
 
 Accounts.onCreateUser(function(options, user) {
 	user.profile = options.profile || {};
-	user.group = options.group || {};
 	user.role = options.role || {};
 	user.fields = options.fields || {};
 
+  var current_group = Groups.findOne({_id: options.group.group_id})
+  if (current_group) {
+
+    var user_array = current_group.has_users
+    user_array.push(user._id)
+
+    var groupProperties = {
+      has_users: user_array,
+    }
+    Meteor.call('groupUpdate', options.group.group_id, groupProperties);
+  } else {
+
+    var user_array = []
+    user_array.push(user._id)
+    var groupProperties = {
+      _id: options.group.group_id,
+      name: options.group.group_name,
+      has_users: user_array,
+    }
+    Meteor.call('groupInsert', groupProperties);
+  }
 	return user;
 });
 

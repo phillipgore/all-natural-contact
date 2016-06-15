@@ -6,7 +6,7 @@
 	<div id="dashboard" class="js_contact_info list scroll top_50">
 		<!--<div class="js_list_item js_billing list_item divided">Remember: {{currentUser.profile.remember_me}}</div>
 		<div class="js_list_item js_billing list_item divided">Logout Time: {{currentUser.profile.logout_time}}</div>-->	
-		<div class="js_list_item js_billing list_item divided">Account: {{currentUser.group.group_name}}</div>
+		<div class="js_list_item js_billing list_item divided">Account: {{currentUser.profile.belongs_to_group}}</div>
 		<div class="js_list_item js_billing list_item divided">User: {{currentUser.profile.first}} {{currentUser.profile.last}}</div>
 		<div class="js_list_item js_billing list_item divided">Timezone: {{currentUser.profile.timezone}}</div>
 		<div class="js_list_item js_billing list_item divided">Tags: {{getPublishedCount 'accountTagCount'}}</div>

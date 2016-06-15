@@ -1,11 +1,16 @@
 <template name="settings">
 	<div class="toolbar gray">
 		<div class="toolbar_img icn_manage_account_gray"></div>
-		<h1>Settings</h1>
+		<h1 class="settings_name txt_ellipsis">{{#if currentUser.role.app_administrator}}Settings{{else}}{{group.name}}{{/if}}</h1>
 	</div>
 	<div class="js_contact_list list scroll top_50" data-scroll-dir="up">
 	{{#if isAdmin}}
 		<div class="list_item_division">Manage Account</div>
+		{{#unless currentUser.role.app_administrator}}
+			<a class="js_list_item js_account_name list_item divided list_icon" href="{{pathFor 'userAccountName'}}">
+				<div class="icon_box icn_account_name"></div>Account Name
+			</a>
+		{{/unless}}
 		<a class="js_list_item js_users list_item divided list_icon" href="{{pathFor 'userNew'}}">
 			<div class="icon_box icn_add_blue"></div>New User
 		</a>
