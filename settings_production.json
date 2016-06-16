@@ -17,7 +17,7 @@
   },
   "galaxy.meteor.com": {
     "env": {
-      "MONGO_URL": "mongodb://all-natural-apps:6578ayanal6578@aws-us-east-1-portal.20.dblayer.com:10787/admin?ssl=true",
+      "MONGO_URL": "mongodb://all-natural-apps:6578ayanal6578@aws-us-east-1-portal.20.dblayer.com:10787/all-natural-apps?ssl=true",
       "MONGO_OPLOG_URL": "mongodb://oploguser:Ocdbqt7VzFrG6vbkg5v98NmCEjE4U7msA_MawnNTwQs@haproxy825.aws-us-east-1-portal.20.dblayer.com:10825/local?authSource=admin&ssl=true"
     }
   }
