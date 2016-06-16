@@ -1,0 +1,18 @@
+{
+  "public": {
+    "plans": [{
+      "name": "Simple",
+      "amount": {
+        "cents": 1500,
+        "usd": "$15"
+      },
+      "limit": 1,
+      "interval": "month"
+    }],
+    "stripePublishableKey": "pk_test_z9qioT2pcpTSSQViE1sXjCHA"
+  },
+  "private": {
+    "stripeSecretKey": "sk_test_gWbfk5UGuB6HHP7FJi1z80ak",
+    "esUrl": "localhost:9200"
+  }
+}

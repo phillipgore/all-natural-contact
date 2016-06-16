@@ -1,7 +1,7 @@
 import ElasticSearch from 'elasticsearch';
 
 EsClient = new ElasticSearch.Client({
-  host: 'localhost:9200',
+  host: Meteor.settings.private.esUrl,
 });
 
 Accounts.config ({
