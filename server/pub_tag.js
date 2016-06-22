@@ -196,7 +196,7 @@ Meteor.publish('tagCount', function(userId) {
 		var tagCount = Tags.find({groupId: groupId, milestoneTagType: false, personal: {$in: personal}}).count()
 
 		var tagCount = [{
-			belongs_to_group: 'groupId',
+			belongs_to_group: groupId,
 			tag_count: tagCount
 		}];
 

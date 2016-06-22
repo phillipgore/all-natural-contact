@@ -2,13 +2,15 @@
   <header>
     <div class="header">
       <div class="header_wrap">
-        <a class="header_logo" href="{{pathFor 'home'}}">
+        <a class="js_header_logo header_logo" href="{{pathFor 'home'}}">
       		<img src='/img/site/all-natural-contacts-logo.svg'>
-      		<span class="header_logo_txt">All Natural Contact</span>
+      		<div class="header_logo_txt">All Natural Contact</div>
         </a>
-    		<a class="js_menu_btn btn_nav_drop" href="#">
-          <span></span>
-        </a>
+        <div class="js_menu_btn btn_nav_drop">
+      		<a class="icn_nav_drop" href="#">
+            <span></span>
+          </a>
+        </div>
         <nav>
       		<ul>
             <span class="hide">
@@ -71,7 +73,7 @@
           </a>
         </li>
         <li>
-          <a class="js_nav_item" href="{{pathFor 'contact'}}">
+          <a class="js_nav_item border_none" href="{{pathFor 'contact'}}">
             <span class="txt_nav">Contact</span>
           </a>
         </li>

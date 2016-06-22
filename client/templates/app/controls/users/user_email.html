@@ -9,11 +9,18 @@
 		<div class="red_alert_msg hide"></div>
 		<fieldset class="input_wrap">
 			<div class="input_full">
-				<input class="js_required" type="email" name="account_email_update" id="account_email_update" placeholder="New Email*" value=""/>
-				<input class="js_required" type="email" name="account_email_update_check" id="account_email_update_check" placeholder="Retype New Email*" value=""/>
+				<label class="block">Current Email</label>
+				<div class="txt_form">{{emailUser.emails.[0].address}}</div>
 			</div>
 		</fieldset>
-		
+		<fieldset class="input_wrap">
+			<div class="input_full">
+				<label class="block">New Email</label>
+				<input class="js_required" type="email" name="account_email_update" id="account_email_update" placeholder="Email*" value=""/>
+				<input class="js_required" type="email" name="account_email_update_check" id="account_email_update_check" placeholder="Retype Email*" value=""/>
+			</div>
+		</fieldset>
+
 		<input type="submit" value="Submit" class="js_submit offscreen"/>
 		<input type="reset" value="Reset" class="js_reset offscreen"/>
 	</form>

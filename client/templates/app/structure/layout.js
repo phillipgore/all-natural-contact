@@ -1,4 +1,6 @@
 Template.layout.onRendered(function() {
+	$('html, body').addClass('app_scroll');
+
 	if ($(window).width() > 639) {
 		Session.set('currentTool', 'js_tool_conversation')
 	} else {

@@ -1,14 +1,14 @@
 <template name="controls">
 	<div class="js_sheet_controls list padded_no_top dark_blue top left narrow hide">
 		<a class="js_sign_out list_item list_icon" href="#"><div class="icon_box icn_sign_out"></div>Sign Out {{currentUser.profile.first}} {{currentUser.profile.last}}</a>
-		<a class="list_item list_icon" href="{{pathFor 'settings'}}"><div class="icon_box icn_manage_account"></div>Manage Settings</a>
+		<a class="list_item list_icon" href="{{pathFor 'settings'}}"><div class="icon_box icn_manage_account"></div>Settings</a>
 		<a class="list_item list_icon divided_top" href="{{pathFor 'importCSV'}}"><div class="icon_box icn_import"></div>Import Contacts</a>
 		<a class="js_export_data list_item list_icon" href="#"><div class="icon_box icn_export"></div>Export Contacts</a>
 		<!--<a class="list_item list_icon" href="#"><div class="icon_box icn_print"></div>Print (disabled)</a>-->
 		<a class="js_support list_item list_icon divided_top" href="{{pathFor 'support'}}"><div class="js_ion_box icon_box icn_support"></div>Support</a>
 
 		{{#if controls.bugReporting}}
-			<a class="js_bug_report list_item list_icon" href="mailto:phillipagore@me.com"><div class="js_ion_box icon_box icn_bug_report"></div>Report A Bug</a>
+			<a class="js_bug_report list_item list_icon" href="mailto:bug-report@allnaturalcontact.com"><div class="js_ion_box icon_box icn_bug_report"></div>Report A Bug</a>
 		{{/if}}
 
 		{{#if currentUser.role.app_administrator}}

@@ -11,7 +11,7 @@ Accounts.config ({
 
 Meteor.startup(function () {
   process.env.MAIL_URL = 'smtp://keynotestore.com:Vandalia6578@smtp.sendgrid.net:587';
-  var email = Meteor.users.find({"emails.0.address": "anc_admin@icloud.com"}).fetch()
+  var email = Meteor.users.find({"emails.0.address": "admin@allnaturalapps.com"}).fetch()
   var group_id = new Mongo.ObjectID().toHexString();
 
   if (email.length === 0) {
@@ -62,14 +62,14 @@ Meteor.startup(function () {
 
     var userId = Accounts.createUser({
       group: group,
-      email: 'anc_admin@icloud.com',
+      email: 'admin@allnaturalapps.com',
       password: '6578ayanal6578',
       profile: profile,
       role: role,
       fields: fields
     })
 
-    Accounts.sendVerificationEmail(userId, 'anc_admin@icloud.com');
+    Accounts.sendVerificationEmail(userId, 'admin@allnaturalapps.com');
   }
 
   var controls = Controls.findOne()
@@ -79,7 +79,7 @@ Meteor.startup(function () {
 });
 
 Accounts.emailTemplates = {
-	from: 'All Natural Contact <phillipagore@me.com>',
+	from: 'All Natural Contact <no-reply@allnaturalcontact.com>',
 	siteName: 'All Natural Contact',
 
 	resetPassword: {

@@ -1,3 +1,7 @@
+Template.officeLayout.onRendered(function() {
+  $('html, body').addClass('app_scroll');
+});
+
 Template.officeLayout.events({
   'click .js_office': function(e) {
     $('.js_delete').addClass('hide');

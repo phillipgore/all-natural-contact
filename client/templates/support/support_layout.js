@@ -1,3 +1,7 @@
+Template.supportLayout.onRendered(function() {
+  $('html, body').addClass('support_scroll');
+});
+
 Template.supportLayout.events({
 
   'click .btn_nav_slide': function(e) {

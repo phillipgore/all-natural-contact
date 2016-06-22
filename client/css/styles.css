@@ -5,7 +5,7 @@
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-html, body {
+html.app_scroll, body.app_scroll {
   height: 100%;
   overflow: hidden;
 }
@@ -929,6 +929,13 @@ input:focus, textarea:focus {
 input.small {
 	font-size: 14px;
 	padding: 4px 7px;
+}
+
+.txt_form {
+	font-size: 16px;
+	padding: 7px 0px;
+	margin: 0 0 6px;
+	width: 100%;
 }
 
 .multi_input_adjust {

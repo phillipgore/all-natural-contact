@@ -64,7 +64,7 @@ Template.tagInfo.onRendered(function() {
 				Session.set('taggedCount', taggedCount)
 
 				if (taggedCount === 0) {
-					if (TagCount.findOne().tag_count === 0) {
+					if (TaggedCount.findOne().tagged_count === 0) {
 						$('.icn_add_tag, .icn_add_contact, .icn_add_conversation_disabled, .icn_edit_disabled, .icn_delete_disabled, .icn_add_to_tag_disabled').show();
 						$('.icn_add_tag_disabled, .icn_add_contact_disabled, .icn_add_conversation, .icn_edit, .icn_delete, .icn_add_to_tag').hide();
 					} else {
@@ -141,10 +141,10 @@ Template.tagInfo.onRendered(function() {
 									if (!Session.get('currentContact')) {
 										var contactSelect = Contacts.findOne();
 										Session.set('currentContact', contactSelect._id);
-										
+
 										ContactSelect.remove({});
 										ContactSelect.insert({
-											contactId: contactId,
+											contactId: contactSelect._id,
 											first: contactSelect.first,
 											last: contactSelect.last,
 											nameFirst: contactSelect.nameFirst,

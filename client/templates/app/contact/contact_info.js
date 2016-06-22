@@ -83,7 +83,7 @@ Template.contactInfo.helpers({
 			return false;
 		}
 	},
-
+	
 	hasPhonetic: function() {
 		var contact = Contacts.findOne({_id: Session.get('currentContact')});
 		if (contact.phonetic_first || contact.phonetic_middle || contact.phonetic_last) {

@@ -7,24 +7,27 @@
 	<form class="js_user_profile_update_form top_50 scroll bg_gray" id="profile_update_form" action="action">
 		<div class="red_alert_msg hide"></div>
 		<fieldset class="input_wrap">
+			<div class="input_full">
+				<label class="block">Current Name</label>
+				<div class="txt_form">{{profileUser.profile.first}} {{profileUser.profile.last}}</div>
+			</div>
+		</fieldset>
+		<fieldset class="input_wrap">
 				<div class="input_full">
-				
-					<input class="js_required" type="text" name="account_first_update" id="account_first_update" placeholder="First Name*" value="{{profileUser.profile.first}}"/>
-					<input class="js_required" type="text" name="account_last_update" id="account_last_update" placeholder="Last Name*" value="{{profileUser.profile.last}}"/>
-					
-					
-					
+					<label class="block">New Name</label>
+					<input class="js_required" type="text" name="account_first_update" id="account_first_update" placeholder="First Name*"/>
+					<input class="js_required" type="text" name="account_last_update" id="account_last_update" placeholder="Last Name*"/>
 				</div>
-		</fieldset>	
-		<div class="input_wrap">
+		</fieldset>
+		<fieldset class="input_wrap">
 			<div class="input_full">
 				<div class="js_checkbox_email_updates checkbox icn_check checked {{#unless profileUser.profile.email_updates}}unchecked{{/unless}}">
 					Email user updates about Contact.
 					<input name="email_updates_update" id="email_updates_update" type="hidden" value="{{#if profileUser.profile.email_updates}}true{{else}}false{{/if}}"/>
 				</div>
 			</div>
-		</div>
-		
+		</fieldset>
+
 		<input type="submit" value="Submit" class="js_submit offscreen"/>
 		<input type="reset" value="Reset" class="js_reset offscreen"/>
 	</form>
