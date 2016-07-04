@@ -2169,7 +2169,7 @@ button.btn {
 
 .data {
 	position: absolute;
-	z-index: 1000000000000;
+	z-index: 1000000000000000;
 	top: 118px;
 	/*bottom: 68px;*/
 	right: 9px;

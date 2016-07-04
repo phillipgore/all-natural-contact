@@ -42,4 +42,24 @@ Template.data.helpers({
 	conversationCount: function() {
 		return Conversations.find({created_on: { $exists: true }}).count();
 	},
+
+	contactScrollDir: function() {
+		return Session.get('contactScrollDir')
+	},
+
+	contactPivotId: function() {
+		return Session.get('contactPivotId')
+	},
+
+	contactPivotNameLast: function() {
+		return Session.get('contactPivotNameLast')
+	},
+
+	contactPivotOffset: function() {
+		return Session.get('contactPivotOffset')
+	},
+
+	startUp: function() {
+		return Session.get('startUp')
+	},
 });
