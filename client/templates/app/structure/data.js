@@ -32,15 +32,14 @@ Template.data.helpers({
 	},
 
 	tagCount: function() {
-		return Counts.get('accountTagCount');
+		return Tags.find({created_on: { $exists: true }}).count();
 	},
 
 	contactCount: function() {
-//		return Counts.get('accountContactCount');
 		return Contacts.find({created_on: { $exists: true }}).count();
 	},
 
 	conversationCount: function() {
-		return Counts.get('accountConversationCount');
+		return Conversations.find({created_on: { $exists: true }}).count();
 	},
 });

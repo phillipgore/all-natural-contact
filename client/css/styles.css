@@ -2171,17 +2171,18 @@ button.btn {
 	position: absolute;
 	z-index: 1000000000000;
 	top: 118px;
-	bottom: 68px;
+	/*bottom: 68px;*/
 	right: 9px;
 	/*left: 529px;*/
-	width: 283px;
+	/*width: 283px;*/
+	display: inline-block;
 	background-color: rgba(0, 0, 0, .75);
 	color: #fff;
 	border-radius: 5px;
-	padding: 9px;
+	padding: 18px 27px;
 	overflow-x: scroll;
 	-webkit-overflow-scrolling: touch;
-	display: none;
+	/*display: none;*/
 }
 
 .data.txt_small {
@@ -2189,10 +2190,15 @@ button.btn {
 }
 
 .data h2 {
-	padding-bottom: 9px;
+	font-size: 16px;
+	padding-bottom: 12px;
 	border-bottom: 1px solid #fff;
-	margin-bottom: 9px;
-	margin-top: 27px;
+	margin-top: 12px;
+}
+
+.data h2:last-of-type {
+	border: none;
+	padding-bottom: 0px;
 }
 
 .data h2:first-of-type {
@@ -2207,4 +2213,7 @@ button.btn {
 	margin: 9px 0;
 }
 
+.data.hide {
+	display: none;
+}
 /* @end */
