@@ -1,5 +1,6 @@
 <template name="layout">
 
+	{{> status}}
 	<div class="js_startup_loader alert_full bg_light_blue">
 		<div class="loader_overlay">
 			<div class="loader">
@@ -24,6 +25,6 @@
 			<div class="js_toolbox_three toolbox three">{{> footerConversationProcess}}</div>
 		</div>
 	</footer>
-	<div class="data {{#unless currentUser.role.app_administrator}}hide{{/unless}}">{{> yield region='data'}}</div>
+	<div class="data">{{> yield region='data'}}</div>
 
 </template>

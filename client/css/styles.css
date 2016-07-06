@@ -215,6 +215,19 @@ a, button {
 	font-color: #294A6C;
 }
 
+.alert_status {
+	font-size: 14px;
+	color: #fff;
+	position: absolute;
+	top: 9px;
+	right: 9px;
+	left: 9px;
+	z-index: 90000000000;
+	padding: 25px 27px 27px 27px;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, .75);
+}
+
 /* @end */
 
 /* @group Toolbars */
@@ -1673,6 +1686,11 @@ button.btn {
 
 @media only screen and (min-width: 640px) {
 
+	.alert_status {
+		width: 248px;
+		left: auto;
+	}
+
 	.toolbar_active {
 		width: 30px;
 		position: absolute;
@@ -1937,6 +1955,18 @@ button.btn {
 	border-radius: 50%;
 }
 
+.spinner.white {
+	margin: 0px 9px 0px 0px;
+	height: 12px;
+	width: 12px;
+	-webkit-animation: rotate 1.2s infinite linear;
+	      animation: rotate 1.2s infinite linear;
+	border: 2px solid #fff;
+	border-right-color: transparent;
+	border-radius: 50%;
+	float: left;
+}
+
 .bg_light_blue .spinner {
 	margin: 18px auto 0px;
 	height: 16px;
@@ -2182,7 +2212,7 @@ button.btn {
 	padding: 18px 27px;
 	overflow-x: scroll;
 	-webkit-overflow-scrolling: touch;
-	/*display: none;*/
+	display: none;
 }
 
 .data.txt_small {
