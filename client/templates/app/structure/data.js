@@ -43,20 +43,20 @@ Template.data.helpers({
 		return Conversations.find({created_on: { $exists: true }}).count();
 	},
 
-	contactScrollDir: function() {
-		return Session.get('contactScrollDir')
+	conScrollDir: function() {
+		return Session.get('conScrollDir')
 	},
 
-	contactPivotId: function() {
-		return Session.get('contactPivotId')
+	conPivotId: function() {
+		return Session.get('conPivotId')
 	},
 
-	contactPivotNameLast: function() {
-		return Session.get('contactPivotNameLast')
+	conPivotDate: function() {
+		return Session.get('conPivotDate')
 	},
 
-	contactPivotOffset: function() {
-		return Session.get('contactPivotOffset')
+	conPivotOffset: function() {
+		return Session.get('conPivotOffset')
 	},
 
 	startUp: function() {

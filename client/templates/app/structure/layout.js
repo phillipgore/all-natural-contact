@@ -306,6 +306,10 @@ Template.layout.events({
 
 	'click .js_delete_contact': function(e) {
 		e.preventDefault();
+		$('.js_delete').attr('disabled', 'disabled');
+		$('.js_delete').text('Deleting...').addClass('js_inactive');
+		$('.js_deleting_msg').show();
+		$('.js_delete_alert').hide();
 
 		var contactSelect = ContactSelect.find();
 		var contact_ids = []
@@ -332,6 +336,10 @@ Template.layout.events({
 
 	'click .js_delete_conversation': function(e) {
 		e.preventDefault();
+		$('.js_delete').attr('disabled', 'disabled');
+		$('.js_delete').text('Deleting...').addClass('js_inactive');
+		$('.js_deleting_msg').show();
+		$('.js_delete_alert').hide();
 
 		var conversationSelect = ConversationSelect.find();
 		var conversation_ids = []
@@ -351,6 +359,10 @@ Template.layout.events({
 
 	'click .js_delete_tag': function(e) {
 	 	e.preventDefault();
+		$('.js_delete').attr('disabled', 'disabled');
+		$('.js_delete').text('Deleting...').addClass('js_inactive');
+		$('.js_deleting_msg').show();
+		$('.js_delete_alert').hide();
 
  		var tagSelect = TagSelect.find();
  		var tag_ids = []

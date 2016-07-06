@@ -43,104 +43,113 @@ Template.tagList.onRendered(function() {
 	this.autorun(function() {
 		Template.currentData()
 
-		var checkTagCount = setInterval(function() {
-			if (TagCount.find().count() > 0) {
-				clearInterval(checkTagCount);
-				var tagCount = TagCount.findOne().tag_count;
-				Session.set('tagCount', tagCount)
+		var currentTags = $('.js_existing_tag').length
+		var checkCurrentTags = setInterval(function() {
+			var reducedTags = $('.js_existing_tag').length
+			if (currentTags > reducedTags || reducedTags === 0) {
+				clearInterval(checkCurrentTags);
 
-				if (tagCount === 0) {
-					$('.js_tag_list').css({left: 0, width: 'auto'}).removeClass('disable_scrolling');
-					$('.js_loading_top_button, .js_loading_bottom_button').addClass('js_active');
+				var checkTagCount = setInterval(function() {
+					if (TagCount.find().count() > 0) {
+						clearInterval(checkTagCount);
+						var tagCount = TagCount.findOne().tag_count;
+						Session.set('tagCount', tagCount)
 
-					$('.js_loader, .js_initial_loading_overlay, .js_alpha_clone_top, .js_alpha_clone_bottom').hide();
-					$('.js_startup_loader').fadeOut('fast');
-				} else {
-					if (tagCount < 300) {
-						var expectedTags = tagCount;
-					} else {
-						var expectedTags = 300;
-					}
+						if (tagCount === 0) {
+							$('.js_tag_list').css({left: 0, width: 'auto'}).removeClass('disable_scrolling');
+							$('.js_loading_top_button, .js_loading_bottom_button').addClass('js_active');
 
-					var checkTagRecieved = setInterval(function() {
-						var receivedTags = Tags.find({created_on: { $exists: true }}).count();
-						if (receivedTags === expectedTags) {
-							clearInterval(checkTagRecieved);
-							var checkTagCount = setInterval(function() {
-								var visibleTagCount = $('.js_tag_list_item').length;
+							$('.js_loader, .js_initial_loading_overlay, .js_alpha_clone_top, .js_alpha_clone_bottom').hide();
+							$('.js_startup_loader').fadeOut('fast');
+						} else {
+							if (tagCount < 300) {
+								var expectedTags = tagCount;
+							} else {
+								var expectedTags = 300;
+							}
 
-								if (visibleTagCount === receivedTags) {
-									clearInterval(checkTagCount);
+							var checkTagRecieved = setInterval(function() {
+								var receivedTags = Tags.find({created_on: { $exists: true }}).count();
+								if (receivedTags === expectedTags) {
+									clearInterval(checkTagRecieved);
+									var checkTagCount = setInterval(function() {
+										var visibleTagCount = $('.js_tag_list_item').length;
 
-									//Determine if the first available tag is showing and take action accordingly.
-									var topTag = Tags.find({}, {sort: {tagName: 1}, limit: 1}).fetch();
-									var topListTag = Tags.find({created_on: { $exists: true }}, {sort: {tagName: 1}, limit: 1}).fetch();
+										if (visibleTagCount === receivedTags) {
+											clearInterval(checkTagCount);
 
-									//All Contacts Tag and "load more" top blank hide/show.
-									if (topTag[0]._id === topListTag[0]._id) {
-										$('.js_all_tag_item').show();
-										$('.js_loading_top').hide();
-									} else {
-										$('.js_all_tag_item').hide();
-										$('.js_loading_top').show();
-									}
+											//Determine if the first available tag is showing and take action accordingly.
+											var topTag = Tags.find({}, {sort: {tagName: 1}, limit: 1}).fetch();
+											var topListTag = Tags.find({created_on: { $exists: true }}, {sort: {tagName: 1}, limit: 1}).fetch();
 
-									//Determine if the last available tag is showing and take action accordingly.
-									var bottomTag = Tags.find({}, {sort: {tagName: -1}, limit: 1}).fetch();
-									var bottomListTag = Tags.find({created_on: { $exists: true }}, {sort: {tagName: -1}, limit: 1}).fetch();
+											//All Contacts Tag and "load more" top blank hide/show.
+											if (topTag[0]._id === topListTag[0]._id) {
+												$('.js_all_tag_item').show();
+												$('.js_loading_top').hide();
+											} else {
+												$('.js_all_tag_item').hide();
+												$('.js_loading_top').show();
+											}
 
-									//"Load more" bottom blank hide/show.
-									if (bottomTag[0]._id === bottomListTag[0]._id) {
-										$('.js_loading_bottom').hide();
-									} else {
-										$('.js_loading_bottom').show();
-									}
+											//Determine if the last available tag is showing and take action accordingly.
+											var bottomTag = Tags.find({}, {sort: {tagName: -1}, limit: 1}).fetch();
+											var bottomListTag = Tags.find({created_on: { $exists: true }}, {sort: {tagName: -1}, limit: 1}).fetch();
 
-									//Retrieve scrolling variables and take action accordingly.
-									var tagScrollDir = Session.get('tagScrollDir');
-									var tagPivotId = Session.get('tagPivotId');
-									var tagPivotOffset = Session.get('tagPivotOffset');
+											//"Load more" bottom blank hide/show.
+											if (bottomTag[0]._id === bottomListTag[0]._id) {
+												$('.js_loading_bottom').hide();
+											} else {
+												$('.js_loading_bottom').show();
+											}
 
-									//Find first tag starting with the letter of the pivotTag on an Alpha scroll.
-									if (tagScrollDir === 'alpha') {
-										var tagPivotId = $('.js_tag_list_item[data-tag-name^='+ Session.get('tagPivotName') +']:first').attr('id')
-									}
+											//Retrieve scrolling variables and take action accordingly.
+											var tagScrollDir = Session.get('tagScrollDir');
+											var tagPivotId = Session.get('tagPivotId');
+											var tagPivotOffset = Session.get('tagPivotOffset');
 
-									//Constrain the tag list width to it's future width prior to scroll.
-									$('.js_tag_list').width($('.content.one').width()).scrollTop(0);
+											//Find first tag starting with the letter of the pivotTag on an Alpha scroll.
+											if (tagScrollDir === 'alpha') {
+												var tagPivotId = $('.js_tag_list_item[data-tag-name^='+ Session.get('tagPivotName') +']:first').attr('id')
+											}
 
-									//Deterine the scrollTop based on the provided scrolling variables.
-									if (tagPivotId && tagPivotId != 'all_contacts_tag') {
-										var tagPivotTop = $('.js_tag_list').find('#' + tagPivotId).offset().top
-										if (tagScrollDir === 'up' || tagScrollDir === 'middle') {
-											var listPos = tagPivotTop - 150
-										} else if (tagScrollDir === 'alpha') {
-											var listPos = tagPivotTop - 100
-										} else {
-											var adjust = tagPivotOffset - $('#' + tagPivotId).outerHeight();
-											var listPos = tagPivotTop - adjust;
+											//Constrain the tag list width to it's future width prior to scroll.
+											$('.js_tag_list').width($('.content.one').width()).scrollTop(0);
+
+											//Deterine the scrollTop based on the provided scrolling variables.
+											if (tagPivotId && tagPivotId != 'all_contacts_tag') {
+												var tagPivotTop = $('.js_tag_list').find('#' + tagPivotId).offset().top
+												if (tagScrollDir === 'up' || tagScrollDir === 'middle') {
+													var listPos = tagPivotTop - 150
+												} else if (tagScrollDir === 'alpha') {
+													var listPos = tagPivotTop - 100
+												} else {
+													var adjust = tagPivotOffset - $('#' + tagPivotId).outerHeight();
+													var listPos = tagPivotTop - adjust;
+												}
+											} else {
+												var listPos = 0;
+											}
+
+											//Reset and reveal the tag list based on the provided scrolling variables.
+											$('.js_tag_list').scrollTop(listPos);
+											$('#' + Session.get('currentTag')).addClass('js_current active');
+
+											$('.js_tag_list').css({left: 0, width: 'auto'}).removeClass('disable_scrolling');
+											$('.js_loading_top_button, .js_loading_bottom_button').addClass('js_active');
+
+											$('.js_loader, .js_initial_loading_overlay, .js_alpha_clone_top, .js_alpha_clone_bottom').hide();
+											$('.js_startup_loader').fadeOut('fast');
+
 										}
-									} else {
-										var listPos = 0;
-									}
-
-									//Reset and reveal the tag list based on the provided scrolling variables.
-									$('.js_tag_list').scrollTop(listPos);
-									$('#' + Session.get('currentTag')).addClass('js_current active');
-
-									$('.js_tag_list').css({left: 0, width: 'auto'}).removeClass('disable_scrolling');
-									$('.js_loading_top_button, .js_loading_bottom_button').addClass('js_active');
-
-									$('.js_loader, .js_initial_loading_overlay, .js_alpha_clone_top, .js_alpha_clone_bottom').hide();
-									$('.js_startup_loader').fadeOut('fast');
-
+									}, 300)
 								}
 							}, 300)
 						}
-					}, 300)
-				}
+					}
+				}, 300);
 			}
-		}, 300);
+		}, 300)
+
 	});
 
 	$('.js_tag_list').on('scroll', function() {
@@ -149,10 +158,12 @@ Template.tagList.onRendered(function() {
 		var bottomPos = $('.js_loading_bottom').offset().top - 50;
 
 		if (topPos === 0 && $('.js_loading_top_button').hasClass('js_active')) {
+			$('.js_tag_list_item').addClass('js_existing_tag')
 			$('.js_loading_top_button').click();
 		}
 
 		if (scrollHeight === bottomPos && $('.js_loading_bottom_button').hasClass('js_active')) {
+			$('.js_tag_list_item').addClass('js_existing_tag')
 			$('.js_loading_bottom_button').click();
 		}
 	});

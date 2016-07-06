@@ -1795,7 +1795,7 @@ button.btn {
 
 /* @group Loaders */
 
-.saving_msg {
+.saving_msg, .deleting_msg {
 	font-size: 22px;
 	color: #7F7F7F;
 	text-align: center;
@@ -1806,7 +1806,7 @@ button.btn {
 	transform: translate(-142px,-11px);
 }
 
-.saving_msg.with_loader {
+.saving_msg.with_loader, .deleting_msg.with_loader {
 	transform: translate(-142px,21px);
 }
 
@@ -2174,7 +2174,7 @@ button.btn {
 	/*bottom: 68px;*/
 	right: 9px;
 	/*left: 529px;*/
-	/*width: 283px;*/
+	max-width: 248px;
 	display: inline-block;
 	background-color: rgba(0, 0, 0, .75);
 	color: #fff;

@@ -67,7 +67,6 @@ Meteor.methods({
 		}).then(function (body) {
 			body.hits.hits.map(function(doc) {
 				var results = doc._source;
-				console.log(results.id +" "+ results.conversation_label +" "+ results.conversation_date)
 			});
 		}, function (error) {
 			console.trace(error.message);

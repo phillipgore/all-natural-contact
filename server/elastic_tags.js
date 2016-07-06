@@ -83,7 +83,6 @@ Meteor.methods({
 		}).then(function (body) {
 			body.hits.hits.map(function(doc) {
 				var results = doc._source;
-				console.log(results.id +" "+ results.tag)
 			});
 		}, function (error) {
 			console.trace(error.message);

@@ -83,7 +83,7 @@ Template.contactInfo.helpers({
 			return false;
 		}
 	},
-	
+
 	hasPhonetic: function() {
 		var contact = Contacts.findOne({_id: Session.get('currentContact')});
 		if (contact.phonetic_first || contact.phonetic_middle || contact.phonetic_last) {
@@ -131,7 +131,6 @@ Template.contactInfo.events({
 		var related = $.trim($(e.target).attr('data-related'));
 		var last = $.trim($(e.target).attr('data-last'));
 		var company = $.trim($(e.target).attr('data-company'));
-		console.log(label +" "+ related +" "+ last +" "+ company)
 
 		if (family.indexOf(label) >= 0) {
 			if (related.split(/\s+/).length > 1) {

@@ -8,7 +8,6 @@ Template.tagInfo.onRendered(function() {
 
 	//Set currently selected contact if not already set
 	if (Session.get('currentContact')) {
-		console.log('contact settings')
 		var contactId = Session.get('currentContact');
 		var contactSelect = Contacts.findOne({_id: contactId});
 		ContactSelect.remove({});
@@ -25,7 +24,7 @@ Template.tagInfo.onRendered(function() {
 	//Reset and Reveal Infinite Scrolling Contact List.
 	this.autorun(function() {
 		Template.currentData()
-		console.log('autorun')
+		
 		var currentContacts = $('.js_existing_contact').length
 		var checkCurrentContacts = setInterval(function() {
 			var reducedContacts = $('.js_existing_contact').length

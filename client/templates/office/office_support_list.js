@@ -4,15 +4,12 @@ Template.officeSupportList.onRendered(function() {
     var checkCurrentSection = setInterval(function() {
       if (Support.find().count() === SupportCount.findOne().support_count) {
         clearInterval(checkCurrentSection);
-        console.log('clear')
         var section = Support.findOne({_id: Session.get('currentSection')}).section_belongs_to
-        console.log(section)
         var open = []
         for (var b = 'none'; b != section;) {
           open.push(section)
           var section = Support.findOne({_id: section}).section_belongs_to
         }
-        console.log(open)
         open.forEach(function(id) {
           $('#' + id).find('.js_list_item_arrow').toggleClass('open');
           $('#' + id).next('.sub_section').slideToggle('fast');

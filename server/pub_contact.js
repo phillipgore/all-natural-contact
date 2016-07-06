@@ -52,6 +52,7 @@ Meteor.publish('contactInfo', function(contactId, conScrollDir, conPivotDate) {
 	if (this.userId) {
 		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
 		check(contactId, String);
+
 		var contact = Contacts.findOne({groupId: groupId, _id: contactId})
 		var conversationIds = contact.has_conversations
 
@@ -79,7 +80,18 @@ Meteor.publish('contactInfo', function(contactId, conScrollDir, conPivotDate) {
 			var negative = -50
 		};
 
-		if (!last) {
+		if (last) {
+			if (conCount > 0) {
+				return [
+					Contacts.find({groupId: groupId, _id: contactId}, {fields: {has_conversations: 0}}),
+					Conversations.find({groupId: groupId, belongs_to_contact: contactId}, {sort: {conversation_date: 1}, limit: 300}),
+				]
+			} else {
+				return [
+					Contacts.find({groupId: groupId, _id: contactId}, {fields: {has_conversations: 0}}),
+				]
+			}
+		} else {
 			var conversations = Conversations.find({groupId: groupId, belongs_to_contact: contactId, "conversation_date": { $gte: conPivotDate }}, {sort: {conversation_date: -1}}).fetch();
 
 			if (conversations.length > positive) {
@@ -90,18 +102,6 @@ Meteor.publish('contactInfo', function(contactId, conScrollDir, conPivotDate) {
 				return [
 					Contacts.find({groupId: groupId, _id: contactId}, {fields: {has_conversations: 0}}),
 					Conversations.find({groupId: groupId, belongs_to_contact: contactId, "conversation_date": { $lte: conversations[0].conversation_date }}, {sort: {conversation_date: -1}, limit: 300}),
-				]
-			} else {
-				return [
-					Contacts.find({groupId: groupId, _id: contactId}, {fields: {has_conversations: 0}}),
-				]
-			}
-
-		} else {
-			if (conCount > 0) {
-				return [
-					Contacts.find({groupId: groupId, _id: contactId}, {fields: {has_conversations: 0}}),
-					Conversations.find({groupId: groupId, belongs_to_contact: contactId}, {sort: {conversation_date: 1}, limit: 300}),
 				]
 			} else {
 				return [
