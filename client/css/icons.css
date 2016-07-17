@@ -375,11 +375,6 @@
 	background-size: 30px 22px;
 }
 
-.icn_support {
-	background: url(/img/icn-support.svg) center center no-repeat;
-	background-size: 16px 16px;
-}
-
 .icn_img_upload {
 	background: url(/img/icn-img-upload.svg) center center no-repeat #fff;
 	background-size: 68px 68px;
@@ -646,6 +641,16 @@
 
 .icn_standard_gray {
 	background: url(/img/icn-tag-standard-gray.svg) center center no-repeat;
+}
+
+.icn_support {
+	background: url(/img/support/icn-support.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_support_blue {
+	background: url(/img/support/icn-support-blue.svg) center center no-repeat;
+	background-size: 18px 16px;
 }
 
 .icn_tag {

@@ -1,6 +1,6 @@
 Template.officeSupportUpdate.onRendered(function() {
   $('.js_delete').addClass('hide')
-  $('.js_delete_inactive').show();
+  $('.js_delete_inactive').removeClass('hide');
 })
 
 Template.officeSupportNew.helpers({

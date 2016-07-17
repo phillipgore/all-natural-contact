@@ -1,4 +1,7 @@
 Template.officeControlsList.onRendered(function() {
+  $('.js_delete').addClass('hide')
+  $('.js_delete_inactive').removeClass('hide');
+  
   $('.js_tool').removeClass('active')
   $('.js_tool_office_controls').addClass('active');
 });

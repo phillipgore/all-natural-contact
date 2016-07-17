@@ -14,6 +14,7 @@ Template.tagAlpha.helpers({
 Template.tagAlpha.events({
 	'click .js_tool_lettered': function(e) {
 		e.preventDefault();
+		$('.js_tag_list_item').addClass('js_existing_tag')
 
 		//Retrive alpha find variables and take action accordingly.
 		var findLetter = $(e.target).attr('id');
@@ -51,11 +52,9 @@ Template.tagAlpha.events({
 				//Compare the find letter to the first letter.
 				if (findLetter === firstLetter) {
 					//If the find letter and first letter are the same.
-					('.js_tag_list_item').addClass('js_existing_tag')
 					Session.set({tagScrollDir: 'up', tagPivotId: '', tagPivotName: '', tagPivotOffset: ''});
 				} else {
 					//If the find letter and first letter are different.
-					('.js_tag_list_item').addClass('js_existing_tag')
 					Session.set({tagScrollDir: 'alpha', tagPivotId: '', tagPivotName: findLetter, tagPivotOffset: ''});
 				}
 			}
@@ -64,6 +63,7 @@ Template.tagAlpha.events({
 
 	'click .js_tool_current': function(e) {
 		e.preventDefault();
+		$('.js_tag_list_item').addClass('js_existing_tag')
 
 		//Retrive alpha find variable and take action accordingly.
 		var findLetter = Session.get('currentTagName').charAt(0);;
@@ -97,13 +97,13 @@ Template.tagAlpha.events({
 			$('.js_loader, .js_initial_loading_overlay').show();
 			$('.js_tag_list').css('left', "10000px");
 
-			('.js_tag_list_item').addClass('js_existing_tag')
 			Session.set({tagScrollDir: 'middle', tagPivotId: Session.get('currentTag'), tagPivotName: Session.get('currentTagName'), tagPivotOffset: ''});
 		}
 	},
 
 	'click .js_tool_all_contacts': function(e) {
 		e.preventDefault();
+		$('.js_tag_list_item').addClass('js_existing_tag')
 
 		var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ]
 
@@ -126,7 +126,6 @@ Template.tagAlpha.events({
 			$('.js_loader, .js_initial_loading_overlay').show();
 			$('.js_tag_list').css('left', "10000px");
 
-			('.js_tag_list_item').addClass('js_existing_tag')
 			Session.set({tagScrollDir: 'up', tagPivotId: '', tagPivotName: '', tagPivotOffset: ''});
 		}
 	},

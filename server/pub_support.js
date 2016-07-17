@@ -32,31 +32,40 @@ Meteor.publish('supportSearch', function(supportSearchText) {
 	var future = new Future();
 
 	EsClient.search({
-		index: "supportindex",
-		type: "support",
+		index: 'supportindex',
+		type: 'support',
 		body: {
 			query: {
 				bool: {
-					should: [{
+					must: [{
 						multi_match: {
 							query: supportSearchText,
-							type: "most_fields",
+							type: 'most_fields',
 							fields: ['section_title^1', 'section_text']
 						}
 					}],
 				}
-			}
+			},
+      highlight: {
+        fields: {
+          section_title: {'number_of_fragments': 0},
+          section_text: {'number_of_fragments': 0}
+        }
+      }
 		},
-		size: 10,
+
 	}).then(function(body) {
-		var sections = _.pluck(body.hits.hits, '_source');
+		var sections = body.hits.hits;
 		future.return(sections);
 	}, function(error) {
 		results.reject(error);
 	})
 
 	_.each(future.wait(), function(support) {
-		self.added('supportSearch', Random.id(), support);
+    var source = support._source
+    var highlight = support.highlight
+    var new_support = _.extend(source, highlight);
+		self.added('supportSearch', Random.id(), new_support);
 	});
 
 	self.ready();

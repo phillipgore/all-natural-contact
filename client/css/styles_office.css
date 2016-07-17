@@ -15,6 +15,10 @@
   justify-content: flex-end;
 }
 
+#office .header {
+  padding: 9px 0px 9px 9px;
+}
+
 #office .sub_header {
   background-color: #C3E5CB;
   color: #000;
@@ -42,6 +46,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#office .header_divide {
+  width: 1px;
+  height: 32px;
+  margin: 0px 3px;
+  background-color: #fff;
 }
 
 #office .sub_header_icn {

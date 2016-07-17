@@ -1,5 +1,6 @@
 Template.officeSupportUpdate.onRendered(function() {
-
+  $('.js_delete').removeClass('hide');
+  $('.js_delete_inactive').addClass('hide');
 });
 
 Template.officeSupportUpdate.helpers({
@@ -80,6 +81,7 @@ Template.officeSupportUpdate.events({
       if (error) {
 				return alert(error.reason);
 			} else {
+        $('.support_list_item').removeClass('active');
         Router.go('officeSupport')
 			}
     });

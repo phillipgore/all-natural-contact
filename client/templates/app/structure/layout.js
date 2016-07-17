@@ -295,7 +295,6 @@ Template.layout.events({
 					contactScrollDir: 'up',
 					contactPivotNameLast: '',
 					contactPivotId: '',
-					currentTag: 'all_contacts_tag',
 					currentContact: '',
 					currentNameLast: ''
 				});
@@ -325,7 +324,6 @@ Template.layout.events({
 					contactScrollDir: 'up',
 					contactPivotNameLast: '',
 					contactPivotId: '',
-					currentTag: 'all_contacts_tag',
 					currentContact: '',
 					currentNameLast: ''
 				});

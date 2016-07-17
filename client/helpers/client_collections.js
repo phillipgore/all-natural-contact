@@ -11,3 +11,6 @@ TagSelect = new Mongo.Collection(null);
 /* --------- Export Data ---------- */
 selectedContacts = new Mongo.Collection(null);
 selectedTags = new Mongo.Collection(null);
+
+/* --------- Search Data ---------- */
+FoundContacts = new Mongo.Collection(null);

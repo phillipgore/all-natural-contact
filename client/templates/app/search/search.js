@@ -10,7 +10,7 @@ Template.search.onRendered(function() {
 
 Template.search.helpers({
 	contacts: function() {
-		return ContactsSearch.find({created_on: { $exists: true }})
+    return ContactsSearch.find({created_on: { $exists: true }})
 	},
 });
 

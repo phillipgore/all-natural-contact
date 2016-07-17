@@ -1,6 +1,7 @@
 Template.contactAlpha.events({
 	'click .js_tool_lettered': function(e) {
 		e.preventDefault();
+		$('.js_contact_list_item').addClass('js_existing_contact')
 
 		//Retrive alpha find variables and take action accordingly.
 		var findLetter = $(e.target).attr('id');
@@ -38,11 +39,10 @@ Template.contactAlpha.events({
 				//Compare the find letter to the first letter.
 				if (findLetter === firstLetter) {
 					//If the find letter and first letter are the same.
-					$('.js_contact_list_item').addClass('js_existing_contact')
 					Session.set({contactScrollDir: 'start', contactPivotId: '', contactPivotNameLast: '', contactPivotId: '', contactPivotOffset: ''});
 				} else {
 					//If the find letter and first letter are different.
-					$('.js_contact_list_item').addClass('js_existing_contact')
+
 					Session.set({contactScrollDir: 'alpha', contactPivotId: '', contactPivotNameLast: findLetter, contactPivotId: '', contactPivotOffset: ''});
 				}
 			}
@@ -51,6 +51,7 @@ Template.contactAlpha.events({
 
 	'click .js_tool_current': function(e) {
 		e.preventDefault();
+		$('.js_contact_list_item').addClass('js_existing_contact')
 
 		var findLetter = Session.get('currentNameLast').charAt(0);;
 
@@ -64,7 +65,6 @@ Template.contactAlpha.events({
 			$('.js_loader, .js_initial_loading_overlay').show();
 			$('.js_contact_list').css('left', "10000px");
 
-			$('.js_contact_list_item').addClass('js_existing_contact')
 			Session.set({contactScrollDir: 'middle', contactPivotNameLast: Session.get('currentNameLast'), contactPivotId: Session.get('currentContact')});
 		}
 	}

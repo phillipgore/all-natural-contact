@@ -246,34 +246,60 @@ Meteor.publish('contactsSearch', function(searchText, userId) {
 		var future = new Future();
 
 		EsClient.search({
-			index: "contactsindex",
-			type: "contacts",
+			index: 'contactsindex',
+			type: 'contacts',
 			body: {
 				query: {
 					bool: {
 						filter: {
-							"term": { groupId: groupId }
+							'term': { groupId: groupId }
 						},
-						should: [{
+						must: [{
 							multi_match: {
 								query: searchText,
-								type: "most_fields",
-								fields: ['prefix', 'first^1.3', 'middle', 'last^1.4', 'suffix', 'phonetic_first', 'phonetic_middle', 'phonetic_last', 'nickname^1.2', 'job_title', 'department', 'company^1.1', 'maiden', 'phones.phone^1.0', 'emails.email^1.09', 'urls.url^1.05', 'relateds.related^1.03', 'immps.immp_user_name^1.04', 'immps.immp_service', 'addresses.street^1.08', 'addresses.city^1.06', 'addresses.state^1.01', 'addresses.postal_code^1.07', 'notes^1.02']
+								type: 'most_fields',
+								fields: ['prefix', 'first^1.3', 'middle', 'last^1.4', 'suffix', 'phonetic_first', 'phonetic_middle', 'phonetic_last', 'nickname^1.2', 'job_title', 'department', 'company^1.1', 'maiden', 'phones.phone^1.0', 'emails.email^1.09', 'urls.url^1.05', 'dates.date_entry', 'relateds.related^1.03', 'immps.immp_user_name^1.04', 'immps.immp_service', 'addresses.street^1.08', 'addresses.city^1.06', 'addresses.state^1.01', 'addresses.postal_code^1.07', 'notes^1.02']
 							}
 						}],
 					}
-				}
+				},
+			  highlight: {
+			    fields: {
+						first: {'number_of_fragments': 0},
+			      last: {'number_of_fragments': 0},
+			      company: {'number_of_fragments': 0},
+			      'addresses.street': {'number_of_fragments': 0},
+			      'addresses.city': {'number_of_fragments': 0},
+			      'addresses.state': {'number_of_fragments': 0},
+			      'addresses.postal_code': {'number_of_fragments': 0},
+			      'urls.url': {'number_of_fragments': 0},
+			      'immps.immp_user_name': {'number_of_fragments': 0},
+			      'immps.immp_service': {'number_of_fragments': 0},
+			      notes: {'number_of_fragments': 0},
+			      maiden: {'number_of_fragments': 0},
+			      middle: {'number_of_fragments': 0},
+			      'relateds.related': {'number_of_fragments': 0},
+			      prefix: {'number_of_fragments': 0},
+			      suffix: {'number_of_fragments': 0},
+			      phonetic_first: {'number_of_fragments': 0},
+			      phonetic_middle: {'number_of_fragments': 0},
+			      phonetic_last: {'number_of_fragments': 0}
+			    }
+			  }
 			},
-			size: 10,
+			//size: 10,
 		}).then(function(body) {
-			var contacts = _.pluck(body.hits.hits, '_source');
+			var contacts = body.hits.hits;
 			future.return(contacts);
 		}, function(error) {
 			results.reject(error);
 		})
 
 		_.each(future.wait(), function(contact) {
-			self.added('contactsSearch', Random.id(), contact);
+			var source = contact._source
+			var highlight = contact.highlight
+			var new_contact = _.extend(source, highlight);
+			self.added('contactsSearch', Random.id(), new_contact);
 		});
 
 		self.ready();

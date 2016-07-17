@@ -2,6 +2,7 @@ import ElasticSearch from 'elasticsearch';
 
 EsClient = new ElasticSearch.Client({
   host: Meteor.settings.private.esUrl,
+  // log: 'trace'
 });
 
 Accounts.config ({
