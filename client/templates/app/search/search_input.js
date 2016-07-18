@@ -14,24 +14,26 @@ Template.searchInput.events({
 			$('.js_search_clear').addClass('js_active');
 			Router.go('/search/' + searchText);
 		} else {
-			$('.js_search_clear').removeClass('js_active');
+			if ($('.js_search_clear').hasClass('js_active')) {
+				$('.js_search_clear').removeClass('js_active');
 
-			$('.js_tool_search').hide();
-			$('.js_tool').removeClass('js_tool_current active');
-			$('.js_tool_list').addClass('js_tool_current active').show();
+				$('.js_tool_search').hide();
+				$('.js_tool').removeClass('js_tool_current active');
+				$('.js_tool_list').addClass('js_tool_current active').show();
 
-			$('.js_contact_list').addClass('disable_scrolling');
-			$('.js_contact_list').css('left', "10000px");
+				$('.js_contact_list').addClass('disable_scrolling');
+				$('.js_contact_list').css('left', "10000px");
 
-			Session.set({
-				contactScrollDir: 'up',
-				contactPivotNameLast: '',
-				contactPivotId: '',
-				currentTag: 'all_contacts_tag',
-				currentContact: '',
-				currentNameLast: ''
-			});
-			Router.go('/info/tag/all_contacts_tag')
+				Session.set({
+					contactScrollDir: 'up',
+					contactPivotNameLast: '',
+					contactPivotId: '',
+					currentTag: 'all_contacts_tag',
+					currentContact: '',
+					currentNameLast: ''
+				});
+				Router.go('/info/tag/all_contacts_tag')
+			}
 		}
 
 	}, 1000),
@@ -39,12 +41,14 @@ Template.searchInput.events({
 	'click .js_search_clear': function(e) {
 		e.preventDefault();
 
-		if ($(e.target).hasClass('js_active')) {
-			$('.js_search_input').val('');
-			$('.js_tool_search').hide();
-			$('.js_tool').removeClass('js_tool_current active');
-			$('.js_tool_list').addClass('js_tool_current active').show();
+		$('.js_search_input').val('');
+		$('.js_search_icon, .js_search_clear').removeClass('focus');
 
+		$('.js_tool_search').hide();
+		$('.js_tool').removeClass('js_tool_current active');
+		$('.js_tool_list').addClass('js_tool_current active').show();
+
+		if ($(e.target).hasClass('js_active')) {
 			$('.js_search_clear').removeClass('js_active');
 
 			$('.js_contact_list').addClass('disable_scrolling');
