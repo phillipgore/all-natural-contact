@@ -15,6 +15,8 @@ Template.supportLayout.events({
     $('.js_support_search').val('').removeAttr('style');
     $('.js_search_icn_blue').hide();
     $('.js_search_icn_gray').show();
+    $('.support_list_item').removeClass('active');
+    $('.support_list_item:first').addClass('active');
     Router.go('support')
   },
 

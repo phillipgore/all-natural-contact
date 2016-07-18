@@ -1,9 +1,20 @@
 Template.search.onRendered(function() {
-  $('.js_tool_profile, .js_tool_conversation, .js_tool_process').hide();
+  $('.icn_add_tag, .icn_add_contact, .icn_add_conversation_disabled, .icn_edit, .icn_delete, .icn_add_to_tag').show();
+  $('.icn_add_tag_disabled, .icn_add_contact_disabled, .icn_add_conversation, .icn_edit_disabled, .icn_delete_disabled, .icn_add_to_tag_disabled').hide();
+
+	$('.js_tool_profile, .js_tool_conversation, .js_tool_process').hide();
 	$('.js_tool_profile_disabled, .js_tool_conversation_disabled, .js_tool_process_disabled').show();
+
+  $('.js_tool_list').hide();
+	$('.js_tool').removeClass('js_tool_current active');
+	$('.js_tool_search').show().addClass('js_tool_current active');
 
   $('.js_loader, .js_initial_loading_overlay').hide();
   $('.js_startup_loader').fadeOut('fast');
+
+  $('.js_search_input').val(Session.get('searchText'));
+  $('.js_search_icon').addClass('focus')
+  $('.js_search_clear').addClass('focus js_active')
 
   ContactSelect.remove({});
 });
