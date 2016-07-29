@@ -4,27 +4,27 @@ Template.passwordNew.events({
 		$('.js_submit').attr('disabled', 'disabled').text('Changing Password...');
 		$('.js_form_overlay').show();
 		$('.login_alert').slideUp('fast');
-		
+
 		var password = $(e.target).find('[name=new_account_password]').val();
 		var password_check = $(e.target).find('[name=new_account_password_check]').val();
-		
+
 		var isValidPassword = function(val) {
-			return val.length >= 6 ? true : false; 
+			return val.length >= 6 ? true : false;
 		}
-		
+
 		var count = 0;
 		$('.js_required').each(function(){
 			if ($(this).val() === "") {
 				count++;
-			} 
+			}
 		});
-		
+
 		if (count > 0) {
 			isRequired = false;
 		} else {
 			isRequired = true;
 		}
-		
+
 		$('.js_required').each(function() {
 			if (!$(this).val()) {
 				$(this).css('border-color', 'red');
@@ -32,7 +32,7 @@ Template.passwordNew.events({
 				$(this).removeAttr('style');
 			}
 		});
-		
+
 		if (isRequired) {
 			if (isValidPassword(password)) {
 				if (password === password_check) {

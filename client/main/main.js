@@ -20,7 +20,7 @@ Meteor.startup(function () {
 	});
 });
 
-Status.setTemplate('natural')
+Status.setTemplate('natural');
 
 UI.registerHelper('currentType', function() {
 	return Session.get('currentType');

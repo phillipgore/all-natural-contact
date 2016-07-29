@@ -1,14 +1,17 @@
 <template name="userSettings">
-	<a class="js_list_item js_profile list_item divided list_icon" href="/profile/user/{{updateUser._id}}">
-		<div class="icon_box icn_edit_blue"></div>Profile
+	<a class="js_list_item js_dropdowns list_item divided list_icon" href="/dropdowns/user/{{updateUser._id}}">
+		<div class="icon_box icn_dropdowns"></div>Dropdowns
 	</a>
 	<a class="js_list_item js_email list_item divided list_icon" href="/email/user/{{updateUser._id}}">
 		<div class="icon_box icn_email_blue"></div>Email
 	</a>
-	<a class="js_list_item js_timezone list_item divided list_icon" href="/timezone/user/{{updateUser._id}}">
-		<div class="icon_box icn_timezone"></div>Timezone
-	</a>
 	<a class="js_list_item js_fields list_item divided list_icon" href="/fields/user/{{updateUser._id}}">
 		<div class="icon_box icn_fields"></div>Fields
+	</a>
+	<a class="js_list_item js_profile list_item divided list_icon" href="/profile/user/{{updateUser._id}}">
+		<div class="icon_box icn_edit_blue"></div>Profile
+	</a>
+	<a class="js_list_item js_timezone list_item divided list_icon" href="/timezone/user/{{updateUser._id}}">
+		<div class="icon_box icn_timezone"></div>Timezone
 	</a>
 </template>

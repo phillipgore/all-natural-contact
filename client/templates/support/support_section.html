@@ -1,5 +1,7 @@
 <template name="supportSection">
-  <article>
+  <span class="js_section_loader js_loader">{{> loading}}</span>
+  <div class="js_section_loading_overlay initial_loading_overlay"></div>
+  <article class="support_article">
     <h1>{{section.section_title}}</h1>
     <hr>
     {{{section.section_text}}}

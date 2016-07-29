@@ -24,7 +24,7 @@ Template.tagInfo.onRendered(function() {
 	//Reset and Reveal Infinite Scrolling Contact List.
 	this.autorun(function() {
 		Template.currentData()
-		
+
 		var currentContacts = $('.js_existing_contact').length
 		var checkCurrentContacts = setInterval(function() {
 			var reducedContacts = $('.js_existing_contact').length

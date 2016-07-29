@@ -14,3 +14,6 @@ selectedTags = new Mongo.Collection(null);
 
 /* --------- Search Data ---------- */
 FoundContacts = new Mongo.Collection(null);
+
+/* --------- Delete Labels ---------- */
+DeleteLabels = new Mongo.Collection(null);

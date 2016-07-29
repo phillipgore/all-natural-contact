@@ -1,25 +1,27 @@
 <template name="tagNewReminder">
-	
+
 	<input id="standard_tag_type" name="standard_tag_type" type="hidden" autocomplete="off" value="false" />
 	<input id="reminder_tag_type" name="reminder_tag_type" type="hidden" autocomplete="off" value="true" />
 	<input id="process_tag_type" name="process_tag_type" type="hidden" autocomplete="off" value="false" />
 	<input id="milestone_tag_type" name="milestone_tag_type" type="hidden" autocomplete="off" value="false" />
 
 	<div class="toggle_msg hide">Reminder tags show contacts added to the tag who have not had a conversation entry in the specified period of time.</div>
+
 	<fieldset class="input_wrap">
 		<div class="input_full">
 			<input id="tag" name="tag" type="text" autocomplete="off" placeholder="Reminder Tag Name" value="" />
 		</div>
-	</fieldset>	
-	<fieldset class="input_wrap">
-		<div class="input_full">
-			<div class="js_checkbox_personal_tag checkbox icn_check unchecked">
-				Personal Tag
-				<input name="personal_tag" id="personal_tag" type="hidden" value="open"/>
-			</div>
+	</fieldset>
+
+	<fieldset class="checkbox_container">
+		<div class="js_checkbox_personal_tag checkbox listing icn_check unchecked">
+			Personal Tag
+			<input name="personal_tag" id="personal_tag" type="hidden" value="open"/>
 		</div>
-	</fieldset>	
-	<fieldset class="js_toggle_reminder toggle_radiobutton">
+	</fieldset>
+
+	<fieldset class="js_toggle_reminder radiobutton_container">
+		<div class="radiobutton_label">Reminder Period</div>
 		<div class="js_reminder_option reminder_option row">
 			<div class="col_2of3">
 				<div class="js_radiobutton_reminder radiobutton icn_radio unselected">
@@ -73,5 +75,15 @@
 			</div>
 		</div>
 	</fieldset>
-	
+
+	<fieldset class="checkbox_container">
+		<div class="checkbox_label">Accepted Conversation Entries</div>
+		{{#each conversationLabel}}
+			<div data-label-name="{{labelName}}" class="js_checkbox_labels checkbox listing icn_check {{#unless labelVisible}}unchecked{{/unless}}">
+				{{labelName}}
+				<input name="label_attach" id="label_attach" type="hidden" value="true"/>
+			</div>
+		{{/each}}
+	</fieldset>
+
 </template>

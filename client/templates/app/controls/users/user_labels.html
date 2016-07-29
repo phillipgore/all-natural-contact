@@ -1,0 +1,49 @@
+<template name="userLabels">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_label_gray"></div>
+		<h1 class="txt_ellipsis settings_name">{{labelsUser.profile.first}} {{labelsUser.profile.last}}: {{labelHeading}}s</h1>
+	</div>
+	<form class="js_user_labels_update_form js_labels top_50 scroll bg_gray" autocomplete="off">
+		<div class="red_alert_msg hide"></div>
+		<div class="btn_labels input_wrap">
+			<div class="col_3of4">
+				<div class="input_full">
+					<input class="js_new_label" type="text" name="new_label" autocomplete="off" placeholder="New {{labelHeading}}">
+				</div>
+			</div>
+			<div class="col_1of4">
+				<button class="js_insert_label btn blue" type="button" name="button">Insert</button>
+			</div>
+		</div>
+
+		<ul id="sortable" class="js_label_list">
+			{{#each label}}
+				<li id="{{labelId}}" data-label-name="{{labelName}}" class="js_checkbox_labels js_existing checkbox reorder icn_check_pad {{#unless labelVisible}}unchecked{{/unless}} bg_gray">
+					<span class="label_name">{{labelName}}</span>
+					<!-- <span class="order">{{labelOrder}}</span> -->
+					<div class="js_label_delete delete icn_delete_blue"></div>
+					<div class="handle icn_reorder"></div>
+					<input name="label_id" id="label_id" type="hidden" value="{{labelId}}"/>
+					<input name="label_name" id="label_name" type="hidden" value="{{labelName}}"/>
+					<input name="label_type" id="label_type" type="hidden" value="{{labelType}}"/>
+					<input name="label_order" id="label_order" type="hidden" value="{{labelOrder}}"/>
+					<input name="label_visible" id="label_visible" type="hidden" value="{{labelVisible}}"/>
+				</li>
+			{{/each}}
+		</ul>
+
+		<li data-label-name="" class="js_lable_clone js_checkbox_labels checkbox reorder icn_check_pad bg_gray hide">
+			<span class="label_name_text"></span>
+			<!-- <span class="order"></span> -->
+			<a href="#" class="js_label_delete delete icn_delete_blue"></a>
+			<div class="handle icn_reorder"></div>
+			<input name="label_name" id="label_name" type="hidden" value=""/>
+			<input name="label_order" id="label_order" type="hidden" value=""/>
+			<input name="label_visible" id="label_visible" type="hidden" value="true"/>
+		</li>
+
+		<input type="submit" value="Submit" class="js_submit offscreen"/>
+		<input type="reset" value="Reset" class="js_reset offscreen"/>
+	</form>
+</template>

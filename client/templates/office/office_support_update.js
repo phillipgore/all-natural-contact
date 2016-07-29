@@ -71,6 +71,8 @@ Template.officeSupportUpdate.events({
 
     var supportProperties = {
       section_perma_link: $(e.target).find('[name=section_title]').val().trim().replace(/\s+/g, "-").toLowerCase(),
+      section_meta_title: $(e.target).find('[name=section_meta_title]').val().trim(),
+      section_meta_description: $(e.target).find('[name=section_meta_description]').val().trim(),
       section_order: $(e.target).find('[name=section_order]').val().trim(),
       section_title: $(e.target).find('[name=section_title]').val().trim(),
       section_text: $(e.target).find('[name=section_text]').val().trim(),

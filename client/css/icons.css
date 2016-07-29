@@ -190,8 +190,16 @@
 	background: url(/img/icn-check-checked.svg) left center no-repeat;
 }
 
+.icn_check_pad {
+	background: url(/img/icn-check-checked.svg) 9px center no-repeat;
+}
+
 .icn_check.unchecked {
 	background: url(/img/icn-check-unchecked.svg) left center no-repeat;
+}
+
+.icn_check_pad.unchecked {
+	background: url(/img/icn-check-unchecked.svg) 9px center no-repeat;
 }
 
 .icn_clear {
@@ -278,12 +286,25 @@
 	background: url(/img/icn-delete.svg) center center no-repeat;
 }
 
+.icn_delete_blue {
+	background: url(/img/icn-delete-blue.svg) center center no-repeat;
+}
+
 .icn_delete_disabled {
 	background: url(/img/icn-delete-disabled.svg) center center no-repeat;
 }
 
 .icn_drop_arrow {
 	background: url(/img/icn-drop-arrow.svg) right center no-repeat #fff;
+}
+
+.icn_dropdowns {
+	background: url(/img/icn-dropdowns.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_dropdowns_gray {
+	background: url(/img/icn-dropdowns-gray.svg) center center no-repeat;
 }
 
 .icn_edit {
@@ -407,6 +428,15 @@
 
 .icn_info_gray {
 	background: url(/img/icn-info-gray.svg) center center no-repeat;
+}
+
+.icn_label {
+	background: url(/img/icn-label.svg) center center no-repeat;
+	background-size: 18px 16px;
+}
+
+.icn_label_gray {
+	background: url(/img/icn-label-gray.svg) center center no-repeat;
 }
 
 .icn_linkedin {
@@ -545,6 +575,10 @@
 .icn_reminder_uncheck {
 	background: url(/img/icn-reminder-uncheck.svg) center center no-repeat;
 	background-size: 18px 16px;
+}
+
+.icn_reorder {
+	background: url(/img/icn-reorder.svg) center center no-repeat;
 }
 
 .icn_profile_mb {

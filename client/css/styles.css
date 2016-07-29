@@ -966,15 +966,15 @@ input.multi_input {
 	padding-right: 30px;
 }
 
-.checkbox_container, .radiobutton_container, .verify_container {
+.checkbox_container, .verify_container {
 	margin: 0;
 	padding: 0 9px;
 }
 
 .radiobutton_container {
 	position: relative;
-	padding-top: 16px;
-	padding-bottom: 6px;
+	margin: 0;
+	padding: 7px 9px;
 }
 
 .verify_container {
@@ -1000,11 +1000,44 @@ input.multi_input {
 	-ms-user-select: none;
 }
 
-.checkbox_lable {
+.radiobutton_label {
+	padding-top: 8px;
+	padding-bottom: 7px;
+}
+
+.checkbox.reorder {
+	margin: -1px 0px 0px 0px;
+	padding: 14px 0px 13px 35px;
+	border-bottom: 1px solid #CFDAE4;
+	border-top: 1px solid #CFDAE4;
+	position: relative;
+}
+
+.checkbox.reorder .handle {
+	width: 38px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+}
+
+.checkbox.reorder .handle:hover {
+	cursor: move;
+}
+
+.checkbox.reorder .delete {
+	width: 38px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 38px;
+}
+
+.checkbox_label {
 	padding-top: 15px;
 }
 
-.checkbox_lable.icn_left {
+.checkbox_label.icn_left {
 	padding-left: 21px;
 }
 
@@ -1498,6 +1531,15 @@ button.btn {
 
 .btn.small {
 	font-size: 14px;
+}
+
+.btn_labels {
+	padding: 9px 0px 2px;
+}
+
+.btn_labels .btn {
+	padding: 7px 0px;
+	width: 71px;
 }
 
 /* @end */
@@ -2096,6 +2138,10 @@ button.btn {
 
 .bg_white {
 	background-color: #fff;
+}
+
+.bg_light_pink {
+	background-color: lightpink;
 }
 
 .border_none {

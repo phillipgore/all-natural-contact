@@ -101,7 +101,7 @@
   margin: 0px 36px 0px 36px;
 }
 
-#office .support_eidtor input {
+#office .support_eidtor .upper_input input {
   padding: 36px 0px 12px 0px;
   margin: 0px;
   font-size: 22px;
@@ -116,6 +116,28 @@
 
 #office #section_title {
   width: 303px;
+}
+
+#office .support_eidtor .middle_input {
+  border-bottom: #6CA67B solid 1px;
+  padding: 0px;
+  margin: 0px 36px 0px 36px;
+}
+
+#office .support_eidtor .middle_input input {
+  padding: 12px 0px 12px 0px;
+  margin: 0px;
+  border: none;
+  border-radius: 0px;
+}
+
+#office .support_eidtor .middle_input textarea {
+  padding: 0px;
+  margin: 12px 0px 12px;
+  border: none;
+  border-radius: 0px;
+  width: 100%;
+  height: 72px;
 }
 
 #office .support_eidtor textarea {

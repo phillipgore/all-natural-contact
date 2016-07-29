@@ -1,22 +1,9 @@
 <template name="labelConversation">
 
 	<div class="js_select dropdown hide">
-		<a class="js_option drop_option" data-value="Phone" href="#">Phone<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Voicemail" href="#">Voicemail<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Email" href="#">Email<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Text" href="#">Text<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Meeting" href="#">Meeting<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Video Chat" href="#">Video Chat<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Conference Call" href="#">Conference Call<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Newsletter" href="#">Newsletter<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Fax" href="#">Fax<span class="js_check fl_right hide">&#10003;</span></a>
-		<div class="js_label_custom hide">
-			<a class="js_option custom_drop_option" data-value="" href="#"></a>
-		</div>
-		<div class="drop_custom_label">
-			<input class="js_label_custom_input drop_custom_input" type="text" placeholder="Custom Label" name="" value="" />
-		</div>
-
+		{{#each conversationLabel}}
+			<a class="js_option drop_option {{#unless labelVisible}}hide{{/unless}}" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+		{{/each}}
 	</div>
 
 </template>

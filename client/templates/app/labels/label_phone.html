@@ -1,18 +1,9 @@
 <template name="labelPhone">
 
 	<div class="js_select dropdown hide">
-		<a class="js_option drop_option" data-value="Mobile" href="#">Mobile<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Work" href="#">Work<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Home" href="#">Home<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Main" href="#">Main<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Fax" href="#">Fax<span class="js_check fl_right hide">&#10003;</span></a>
-		<div class="js_label_custom hide">
-			<a class="js_option custom_drop_option" data-value="" href="#"></a>
-		</div>
-		<div class="drop_custom_label">
-			<input class="js_label_custom_input drop_custom_input" type="text" placeholder="Custom Label" name="" value="" />
-		</div>
-
+		{{#each phoneLabel}}
+			<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+		{{/each}}
 	</div>
 
 </template>

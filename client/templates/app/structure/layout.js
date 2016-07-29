@@ -72,7 +72,6 @@ Template.layout.onRendered(function() {
 });
 
 Template.layout.events({
-
 	'focus .js_search_input': function(e) {
 		$(e.target).parent().find('.js_search_icon').addClass('focus')
 		$(e.target).parent().find('.js_search_clear').addClass('focus')
@@ -128,44 +127,11 @@ Template.layout.events({
 		$(e.target).parentsUntil('.js_input').find('.js_input_label').val(data_value);
 	},
 
-	'keydown .js_label_custom_input': function(e) {
-		var code = e.keyCode || e.which;
-		if (code == 9 || code == 13) {
-			e.preventDefault();
-			$(e.target).focus();
-			return false;
-		}
-	},
-
-	'keyup .js_label_custom_input': function(e) {
-		var value = $(e.target).val();
-		var label = $(e.target).parentsUntil('.js_input').parent().find('.js_label_custom');
-		var code = e.keyCode || e.which;
-
-		if (code == 13 && value) {
-			e.preventDefault();
-			$(label).find('a').click();
-		}
-
-		if (code == 9 || code == 13) {
-			e.preventDefault();
-			$(e.target).focus();
-			return false;
-		} else if (code == 8 && value.length == 0) {
-			$(label).hide();
-		} else {
-			$(label).find('a').html(value + '<span class="js_check fl_right hide">&#10003;</span>').attr('data-value', value);
-			$(label).show();
-		}
-	},
-
 	'click': function(e) {
 		if (!$(e.target).hasClass('js_time_select')) {
 			if (!$(e.target).hasClass('js_time_drop_option')) {
 				if (!$(e.target).hasClass('js_label')) {
-					if (!$(e.target).hasClass('js_label_custom_input')) {
-						$('.js_select').fadeOut(100);
-					}
+					$('.js_select').fadeOut(100);
 				}
 				$('.time_active').removeClass('time_active');
 			}

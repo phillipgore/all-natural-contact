@@ -1,16 +1,9 @@
 <template name="labelImmpServices">
 
 	<div class="js_select dropdown fl_right full wide hide">
-		<a class="js_option drop_option" data-value="AIM" href="#">AIM<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Facebook" href="#">Facebook<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Gadu-Gadu" href="#">Gadu-Gadu<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Google Talk" href="#">Google Talk<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="ICQ" href="#">ICQ<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="Jabber" href="#">Jabber<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="MSN" href="#">MSN<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option" data-value="QQ" href="#">QQ<span class="js_check fl_right hide">&#10003;</span></a>
-		<a class="js_option drop_option border_none" data-value="Skype" href="#">Skype<span class="js_check fl_right hide">&#10003;</span></a>
-
+		{{#each immpServiceLabel}}
+			<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+		{{/each}}
 	</div>
 
 </template>

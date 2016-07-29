@@ -1,0 +1,36 @@
+<template name="userDropdowns">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_dropdowns_gray"></div>
+		<h1>{{dropdownsUser.profile.first}} {{dropdownsUser.profile.last}}: Dropdowns</h1>
+	</div>
+	<div class="top_50 scroll">
+		<a class="js_list_item list_item divided list_icon" href="/labels/address_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Address Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/conversation_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Conversation Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/date_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Date Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/email_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Email Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/immp_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>IM Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/immp_service_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>IM Service Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/phone_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Phone Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/related_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Related Labels
+		</a>
+		<a class="js_list_item list_item divided list_icon" href="/labels/url_label/user/{{dropdownsUser._id}}">
+			<div class="icon_box icn_label"></div>Website Labels
+		</a>
+	</div>
+</template>

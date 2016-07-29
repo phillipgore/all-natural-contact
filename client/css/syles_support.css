@@ -25,6 +25,7 @@ html.support_scroll, body.support_scroll {
 }
 
 #support .sub_header {
+  height: 49px;
   background-color: #E5E5E5;
   color: #000;
   border-bottom: #CCCCCC solid 1px;
@@ -190,6 +191,10 @@ html.support_scroll, body.support_scroll {
   bottom: 0;
   left: 0;
   transition: all 0.3s ease-in-out;
+}
+
+#support .support_article {
+  margin-bottom: 90px;
 }
 
 #support .support_welcome {

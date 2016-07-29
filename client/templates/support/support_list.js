@@ -17,6 +17,8 @@ Template.supportList.onRendered(function() {
             })
           }
           $('#' + Session.get('currentPermaSection')).addClass('active');
+
+          $('.js_support_loader, .js_support_loading_overlay').fadeOut('fast');
         }
       }, 300)
   });

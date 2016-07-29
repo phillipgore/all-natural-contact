@@ -1,4 +1,6 @@
 <template name="supportList">
+  <span class="js_support_loader js_loader">{{> loading}}</span>
+  <div class="js_support_loading_overlay initial_loading_overlay"></div>
   <ul class='js_level_items'>
     <li><a id="welcome" class="js_support_list_item support_list_item" style="margin-left:18px;" href="{{pathFor 'support'}}">
       <span class="js_support_list_text">Welcome</span>
