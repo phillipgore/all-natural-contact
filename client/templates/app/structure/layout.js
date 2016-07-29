@@ -103,7 +103,7 @@ Template.layout.events({
 		var parent = $(e.currentTarget).parent()
 		var data_value = $(parent).find('.js_input_label').val();
 		var option = $(parent).find('[data-value="' + data_value + '"]');
-
+		
 		$('.js_check').hide();
 		$(option).find('.js_check').show();
 		$('.js_select').fadeOut(100);
