@@ -16,7 +16,7 @@ Template.userLabels.onRendered(function() {
 			$(ui.item).removeClass('bg_light_blue')
 			$('.red_alert_msg').slideUp();
 			$('.js_new_label').val('');
-			$('.js_checkbox_labels').each(function(index) {
+			$('.js_label_list').find('.js_checkbox_labels').each(function(index) {
 				var order = index + 1;
 				$(this).find('.order').text(order);
 				$(this).find('#label_order').val(order);
@@ -29,6 +29,10 @@ Template.userLabels.onRendered(function() {
 });
 
 Template.userLabels.helpers({
+	currentUser: function() {
+		return Meteor.users.findOne(Meteor.userId());
+	},
+
 	labelsUser: function() {
 		return Meteor.users.findOne(Session.get('updateUser'));
 	},
@@ -93,7 +97,7 @@ Template.userLabels.events({
 				$('.js_lable_clone:first').removeClass('js_lable_clone').slideDown();
 
 
-				$('.js_checkbox_labels').each(function(index) {
+				$('.js_label_list').find('.js_checkbox_labels').each(function(index) {
 					var order = index + 1;
 					$(this).find('.order').text(order);
 					$(this).find('#label_order').val(order);
@@ -110,27 +114,6 @@ Template.userLabels.events({
 			e.preventDefault();
 			$('.js_insert_label').click();
 			return false;
-		}
-	},
-
-	'click .js_label_delete': function(e) {
-		e.preventDefault();
-		var labelName = $(e.target).parent().find('.label_name_text').text()
-		var r = confirm('Deleting a label removes it for your entire team. You can use the checkbox to hide the "'+ labelName +'" label for yourself. Fellow team members still be able to use it.\n\nDelete the "'+ labelName +'" label?')
-		if (r == true) {
-			if ($(e.target).parent().hasClass('js_new')) {
-				$(e.target).parent().remove();
-			} else {
-				DeleteLabels.insert({
-					labelId: $(e.target).parent().attr('id'),
-				});
-				$(e.target).parent().remove();
-			}
-			$('.js_checkbox_labels').each(function(index) {
-				var order = index + 1;
-				$(this).find('.order').text(order);
-				$(this).find('#label_order').val(order);
-			});
 		}
 	},
 
@@ -152,6 +135,9 @@ Template.userLabels.events({
 
 	'submit form': function(e) {
 		e.preventDefault();
+		$('.js_submit').attr('disabled', 'disabled').text('Updating...');
+		$('.js_initial_loading_overlay').show();
+
 		var labelType = $(e.target).find('[name=label_type]:first').val().trim();
 
 		if ($(e.target).find('.js_new').length > 0) {
@@ -196,7 +182,7 @@ Template.userLabels.events({
 
 				var users = []
 				var groupUsers = Meteor.users.find()
-				groupUsers.forEach(function(user) {
+				groupUsers.forEach(function(user, index) {
 					if (Session.get('updateUser') === user._id) {
 						var userUpdate = {
 							userId: Session.get('updateUser'),
@@ -204,10 +190,11 @@ Template.userLabels.events({
 							labelVisible: labelVisible,
 						}
 					} else {
+						var labelUser = Labels.findOne({"user.userId": user._id})
 						var userUpdate = {
 							userId: user._id,
-							labelOrder: 100000,
-							labelVisible: false,
+							labelOrder: labelUser.user[index].labelOrder,
+							labelVisible: labelUser.user[index].labelVisible,
 						}
 					}
 					users.push(userUpdate)
@@ -221,19 +208,11 @@ Template.userLabels.events({
 			});
 		}
 
-		if (DeleteLabels.find().count() > 0) {
-			var labelRemoves = [];
-			var deleteLabels = DeleteLabels.find()
-			deleteLabels.forEach(function(label) {
-				labelRemoves.push(label.labelId)
-			});
-		}
-
-		Meteor.call('labelBulk', labelInserts, labelUpdates, labelRemoves, function(error, result) {
+		Meteor.call('labelBulk', labelInserts, labelUpdates, function(error, result) {
 			if (error) {
 				return alert(error.reason);
 			} else {
-				console.log('bulk')
+				Router.go('/dropdowns/user/' + Session.get('updateUser'))
 			}
 		});
 

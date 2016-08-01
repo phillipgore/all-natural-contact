@@ -245,6 +245,11 @@ Template.tagInfo.helpers({
 		return increment +" "+ period;
 	},
 
+	reminderEntries: function() {
+		var tag = Tags.findOne({_id: Session.get('currentTag')})
+		return tag.reminder_time[0].entries.toString().replace(/,/g, ", ")
+	},
+
 	contacts: function() {
 		if (Session.get('currentTag') != 'all_contacts_tag') {
 			var tag = Tags.findOne({_id: Session.get('currentTag')});

@@ -289,19 +289,19 @@ em {
 }
 
 .toolbar .reminder_tag_name_wrap {
-	width: 199px;
+	width: 273px; /*was 199px*/
 	display: inline-block;
 }
 
 .toolbar .reminder_tag_name {
-	width: 199px;
+	width: 273px; /*was 199px*/
 	margin-top: 3px;
 	margin-bottom: -4px;
 	font-size: 16px;
 }
 
 .toolbar .sub_txt {
-	width: 199px;
+	width: 273px; /*was 199px*/
 	margin-left: 9px;
 	display: inline-block;
 	font-weight: normal;
@@ -1654,8 +1654,8 @@ button.btn {
 }
 
 .custom_drop_option {
-	border-top: 1px solid #6C89A6;
-	border-bottom: none;
+	border-bottom: 1px solid #6C89A6;
+	border-top: none;
 }
 
 .drop_custom_label {
@@ -2224,6 +2224,15 @@ button.btn {
 
 .display_block {
 	display: block;
+}
+
+.padding_top_5px {
+	padding-top: 5px;
+	display: inline-block;
+}
+
+.width_94px {
+	width: 94px;
 }
 
 .orange {

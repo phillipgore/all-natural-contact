@@ -1,7 +1,7 @@
 <template name="tagInfo">
 		<div class="toolbar gray">
 			<div class="toolbar_img {{#if allContacts}}icn_standard_gray{{/if}}{{#if tag.standardTagType}}icn_standard_gray{{/if}}{{#if tag.reminderTagType}}icn_reminder_gray{{/if}}{{#if tag.processTagType}}icn_process_gray{{/if}}{{#if tag.milestoneTagType}}icn_milestone_gray{{/if}}"></div>
-			<div class="reminder_tag_name_wrap">
+			<div class="{{#if tag.reminderTagType}}reminder_tag_name_wrap{{else}}fl_left{{/if}}">
 				<h1 class="js_tag {{#if tag.reminderTagType}}reminder_tag_name{{else}}tag_name{{/if}} txt_ellipsis" data-tag-belongs="{{#unless allContacts}}{{tag.belongs_to}}{{/unless}}">
 				{{#if allContacts}}
 					All Contacts
@@ -9,7 +9,7 @@
 					{{#if tag.tag}}{{tag.tag}}{{else}}<span class="txt_missing">Tag Name</span>{{/if}}
 				{{/if}}
 				</h1>
-				{{#if tag.reminderTagType}}<div class="sub_txt txt_ellipsis txt_capitalize">{{reminderTime}}</div>{{/if}}
+				{{#if tag.reminderTagType}}<div class="sub_txt txt_ellipsis txt_capitalize">{{reminderTime}} ({{reminderEntries}})</div>{{/if}}
 			</div>
 			{{#unless tag.reminderTagType}}<a href="#" class="js_tool_alpha tool_alpha {{#unless alphaTool}}inactive{{/unless}}">ABC...  &#9662;</a>{{/unless}}
 		</div>
@@ -20,7 +20,7 @@
 				<div class="js_loading_top js_list_item list_item divided txt_center hide">&nbsp;</div>
 				{{#each contacts}}
 					<a id="{{_id}}" data-first="{{first}}" data-last="{{last}}" data-name-first="{{nameFirst}}" data-name-last="{{nameLast}}" class="js_contact_list_item js_list_item js_contact_item list_item divided list_icon multi_select" href="/info/contact/{{_id}}">
-						<div class="icon_box 
+						<div class="icon_box
 							{{#if latest_conversation_date}}
 								{{#if is_company}}
 									{{#if overdue}}
@@ -43,7 +43,7 @@
 								{{/if}}
 							{{/if}}
 						"></div>
-							{{#if is_company}}	
+							{{#if is_company}}
 								{{#if company}}
 									{{company}}
 								{{else}}
@@ -60,7 +60,7 @@
 								{{else}}
 									<span class="txt_missing">Last</span>
 								{{/if}}
-							{{/if}} 
+							{{/if}}
 							{{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
 						<a class="js_multi_select_current list_select_current icn_multi_select_current" href="/info/tag/{{currentTag}}"></a>
 						<a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
@@ -72,16 +72,16 @@
 				{{> contactNone}}
 			{{/if}}
 		</div>
-		
+
 		<span class="js_tag_loader js_loader">{{> loading}}</span>
 		{{> blankToolbar}}
-		
+
 		<div class="js_alpha_clone_top clone_container bg_white hide">
 			<div class="clone_offset top">
 				<div class="js_loading_top js_list_item list_item divided txt_center">&nbsp;</div>
 				{{#each contactsScroll}}
 				<div class="js_clone_list_item js_list_item list_item divided list_icon multi_select">
-					<div class="icon_box 
+					<div class="icon_box
 						{{#if latest_conversation_date}}
 							{{#if is_company}}
 								{{#if overdue}}
@@ -104,7 +104,7 @@
 							{{/if}}
 						{{/if}}
 					"></div>
-					{{#if is_company}}	
+					{{#if is_company}}
 						{{#if company}}
 							{{company}}
 						{{else}}
@@ -121,7 +121,7 @@
 						{{else}}
 							<span class="txt_missing">Last</span>
 						{{/if}}
-					{{/if}} 
+					{{/if}}
 					{{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
 					<a class="js_multi_select_current list_select_current icn_multi_select_current" href="/info/tag/{{currentTag}}"></a>
 					<a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
@@ -130,12 +130,12 @@
 				{{/each}}
 			</div>
 		</div>
-		
+
 		<div class="js_alpha_clone_bottom clone_container bg_white hide">
 			<div class="clone_offset bottom">
 				{{#each contactsScroll}}
 				<div class="js_clone_list_item js_list_item list_item divided list_icon multi_select">
-					<div class="icon_box 
+					<div class="icon_box
 						{{#if latest_conversation_date}}
 							{{#if is_company}}
 								{{#if overdue}}
@@ -158,7 +158,7 @@
 							{{/if}}
 						{{/if}}
 					"></div>
-					{{#if is_company}}	
+					{{#if is_company}}
 						{{#if company}}
 							{{company}}
 						{{else}}
@@ -175,7 +175,7 @@
 						{{else}}
 							<span class="txt_missing">Last</span>
 						{{/if}}
-					{{/if}} 
+					{{/if}}
 					{{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
 					<a class="js_multi_select_current list_select_current icn_multi_select_current" href="/info/tag/{{currentTag}}"></a>
 					<a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
@@ -186,6 +186,3 @@
 			</div>
 		</div>
 </template>
-
-
-

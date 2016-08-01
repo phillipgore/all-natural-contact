@@ -13,7 +13,7 @@ Template.conversationNew.onRendered(function() {
 			var date = moment($('.js_datepicker').val()).format('YYYY-MM-DD');
 			var zulu = moment($('[name=conversation_date_time]').val()).format('YYYY-MM-DD');
 			var local = moment.tz(zulu, Meteor.user().profile.timezone).format('HH:mm:ssZ');
-			
+
 			var newLocal = date + "T" + local;
 			var newZulu = moment.tz(newLocal, "Zulu").format();
 			//alert('date: ' + date + '\nzulu: ' + zulu + '\nlocal: ' + local + '\nnewLocal: ' + newLocal + '\nnewZulu: ' + newZulu)
@@ -30,7 +30,32 @@ Template.conversationNew.onRendered(function() {
 Template.conversationNew.helpers({
 	currentDate: function() {
 		return moment().tz("Zulu").format();
-	}
+	},
+
+	conversationLabel: function() {
+    var labels = Labels.find({labelType: 'conversation_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  }
 });
 
 Template.conversationNew.events({
@@ -46,27 +71,27 @@ Template.conversationNew.events({
 	'click .js_time_label': function(e) {
 		e.stopPropagation();
 		e.preventDefault();
-		
+
 		var zulu = $('[name=conversation_date_time]').val();
 		var local = moment.tz(zulu, Meteor.user().profile.timezone).format();
 
 		var hrs = moment.tz(local, Meteor.user().profile.timezone).format('hh');
 		var mins = moment.tz(local, Meteor.user().profile.timezone).format('mm');
 		var per = moment.tz(local, Meteor.user().profile.timezone).format('A');
-				
+
 		$('#hrs_' + hrs).addClass('time_active');
 		$('#mins_' + mins).addClass('time_active');
 		$('#per_' + per).addClass('time_active');
-		
+
 		$('.js_check').hide();
 		$('.js_time_select').show();
 	},
-	
+
 	'click .js_time_drop_option': function(e) {
 		$(e.target).closest('.js_time_select').find('.time_active').removeClass('time_active');
 		$(e.target).addClass('time_active');
 	},
-	
+
 	'click .js_time_set': function(e) {
 		e.preventDefault();
 		var zulu = $('[name=conversation_date_time]').val();
@@ -76,7 +101,7 @@ Template.conversationNew.events({
 		var mins = $('.mins').find('.time_active').attr('id').substr(5);
 		var per = $('.per').find('.time_active').attr('id').substr(4);
 		var offset = moment.tz(local, Meteor.user().profile.timezone).format('Z');
-				
+
 		if (per === 'PM' && hrs != "12") {
 			var fullHrs = parseInt(hrs) + 12;
 		} else if (per === 'AM' && hrs === "12") {
@@ -84,12 +109,12 @@ Template.conversationNew.events({
 		} else {
 			var fullHrs = hrs;
 		}
-		
+
 		var zDate = moment(zulu).format('YYYY-MM-DD');
 		var zSec = moment(zulu).format('ss');
 		var newLocal = zDate + "T" + fullHrs + ":" + mins + ":" + zSec + offset;
 		var newZulu = moment.tz(newLocal, "Zulu").format();
-			
+
 		$('[name=conversation_date_time]').val(newZulu);
 		$('.js_time_label').html(moment.tz(newLocal, Meteor.user().profile.timezone).format('h:mm A') + ' &#9662;');
 		$('.js_time_select').fadeOut(100);
@@ -98,14 +123,14 @@ Template.conversationNew.events({
 	'submit form': function(e) {
 		e.preventDefault();
 		var contactId = $(e.target).find('[name=contact_id]').val()
-		
+
 		var conversationProperties = {
 			belongs_to_contact: contactId,
 			conversation_label: $(e.target).find('[name=conversation_label]').val(),
 			conversation_date: $(e.target).find('[name=conversation_date_time]').val(),
 			conversation: $(e.target).find('[name=conversation]').val()
 		};
-		
+
 		Meteor.call('conversationInsert', contactId, conversationProperties, function(error, result) {
 			if (error) {
 				return alert(error.reason);
@@ -115,10 +140,5 @@ Template.conversationNew.events({
 			}
 		});
 	}
-		
+
 });
-
-
-
-
-

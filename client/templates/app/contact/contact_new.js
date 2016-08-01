@@ -17,7 +17,207 @@ Template.contactNew.helpers({
 		if (currentUser.fields.job_title_field || currentUser.fields.department_field || currentUser.fields.company_field  ) {
 			return true;
 		}
-	}
+	},
+
+	phoneLabel: function() {
+    var labels = Labels.find({labelType: 'phone_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	emailLabel: function() {
+    var labels = Labels.find({labelType: 'email_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	urlLabel: function() {
+    var labels = Labels.find({labelType: 'url_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	dateLabel: function() {
+    var labels = Labels.find({labelType: 'date_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	relatedLabel: function() {
+    var labels = Labels.find({labelType: 'related_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	immpLabel: function() {
+    var labels = Labels.find({labelType: 'immp_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	immpServiceLabel: function() {
+    var labels = Labels.find({labelType: 'immp_service_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  },
+
+	addressLabel: function() {
+    var labels = Labels.find({labelType: 'address_label'})
+    var newLabels = []
+    labels.forEach(function(label) {
+      label.user.forEach(function(user, index) {
+        if (user.userId === Meteor.userId()) {
+          var labelProperties = {
+            labelId: label._id,
+            labelName: label.labelName,
+            labelType: label.labelType,
+            userId: user.userId,
+            labelOrder: user.labelOrder,
+            labelVisible: user.labelVisible,
+          }
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
+        }
+      })
+    });
+    var newLabels = _.sortBy(newLabels, 'labelOrder');
+
+    return newLabels;
+  }
 });
 
 Template.contactNew.events({

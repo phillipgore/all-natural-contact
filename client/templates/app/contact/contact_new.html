@@ -109,9 +109,18 @@
 		<fieldset id="phone" class="js_paste_input js_phone_field {{#unless currentUser.fields.phone_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Mobile</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="phone_label" value="Mobile" />
-					{{> labelPhone}}
+					<label class="js_label left"><span class="js_label_txt">{{phoneLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="phone_label" value="{{phoneLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each phoneLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two multi_input_adjust">
 					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
@@ -124,9 +133,18 @@
 		<fieldset id="email" class="js_paste_input js_email_field {{#unless currentUser.fields.email_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="email_label" value="Work" />
-					{{> labelEmail}}
+					<label class="js_label left"><span class="js_label_txt">{{emailLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="email_label" value="{{emailLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each emailLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two multi_input_adjust">
 					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
@@ -139,9 +157,18 @@
 		<fieldset id="url" class="js_paste_input js_url_field {{#unless currentUser.fields.url_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="url_label" value="Work" />
-					{{> labelUrl}}
+					<label class="js_label left"><span class="js_label_txt">{{urlLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="url_label" value="{{urlLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each urlLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two multi_input_adjust">
 					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
@@ -154,9 +181,18 @@
 		<fieldset id="date" class="js_paste_input js_date_field {{#unless currentUser.fields.date_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Birthday</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="date_label" value="Birthday" />
-					{{> labelDate}}
+					<label class="js_label left"><span class="js_label_txt">{{dateLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="date_label" value="{{dateLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each dateLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two multi_input_adjust">
 					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
@@ -169,9 +205,18 @@
 		<fieldset id="related" class="js_paste_input js_related_field {{#unless currentUser.fields.related_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Mother</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="related_label" value="Mother" />
-					{{> labelRelated}}
+					<label class="js_label left"><span class="js_label_txt">{{relatedLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="related_label" value="{{relatedLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each relatedLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two multi_input_adjust">
 					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>
@@ -184,9 +229,18 @@
 		<fieldset id="immp" class="js_paste_input js_immp_field {{#unless currentUser.fields.immp_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="immp_label" value="Work" />
-					{{> labelImmp}}
+					<label class="js_label left"><span class="js_label_txt">{{immpLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="immp_label" value="{{immpLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each immpLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two horizontal_2">
 					<div class="col_3of5">
@@ -197,9 +251,18 @@
 					</div>
 					<div class="col_2of5">
 						<div class="input_horizontal_box padding_top_3">
-							<label class="js_label"><span class="js_label_txt">AIM</span> &#9662;</label>
-							<input class="js_input_label" type="hidden" name="immp_service" value="AIM" />
-							{{> labelImmpServices}}
+							<label class="js_label"><span class="js_label_txt">{{immpServiceLabel.[0].labelName}}</span> &#9662;</label>
+							<input class="js_input_label" type="hidden" name="immp_service" value="{{immpServiceLabel.[0].labelName}}" />
+
+							<div class="js_select dropdown hide">
+								<div class="js_label_custom hide">
+									<a class="js_option custom_drop_option" data-value="" href="#"></a>
+								</div>
+								{{#each immpServiceLabel}}
+									<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+								{{/each}}
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -210,9 +273,18 @@
 		<fieldset id="address" class="js_paste_input js_address_field {{#unless currentUser.fields.address_field}}hide{{/unless}}">
 			<div class="js_copy_input js_delete_input js_input input_wrap">
 				<div class="input_one">
-					<label class="js_label left"><span class="js_label_txt">Work</span> &#9662;</label>
-					<input class="js_input_label" type="hidden" name="address_label" value="Work" />
-					{{> labelAddress}}
+					<label class="js_label left"><span class="js_label_txt">{{addressLabel.[0].labelName}}</span> &#9662;</label>
+					<input class="js_input_label" type="hidden" name="address_label" value="{{addressLabel.[0].labelName}}" />
+
+					<div class="js_select dropdown hide">
+						<div class="js_label_custom hide">
+							<a class="js_option custom_drop_option" data-value="" href="#"></a>
+						</div>
+						{{#each addressLabel}}
+							<a class="js_option drop_option" data-value="{{labelName}}" href="#">{{labelName}}<span class="js_check fl_right hide">&#10003;</span></a>
+						{{/each}}
+					</div>
+
 				</div>
 				<div class="input_two multi_input_adjust">
 					<a class="js_input_clear btn_clear icn_clear rounded_right small hide" href="#"></a>

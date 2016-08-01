@@ -10,7 +10,7 @@ Meteor.publish('firstContact', function(tagId) {
 			if (_.has(tag, 'has_contacts')) {
 				var contactIds = tag.has_contacts
 				if (tag.reminderTagType) {
-					return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, fields: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
+					return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, fields: {latest_conversation: 1, nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
 				} else {
 					return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {nameLast: 1, nameFirst: 1, company: 1}, fields: {nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
 				}
@@ -35,7 +35,7 @@ Meteor.publish('lastContact', function(tagId) {
 			if (_.has(tag, 'has_contacts')) {
 				var contactIds = tag.has_contacts
 				if (tag.reminderTagType) {
-					return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: -1, nameLast: -1, nameFirst: -1, company: -1}, fields: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
+					return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: -1, nameLast: -1, nameFirst: -1, company: -1}, fields: {latest_conversation: 1, nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
 				} else {
 					return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {nameLast: -1, nameFirst: -1, company: -1}, fields: {nameLast: 1, nameFirst: 1, company: 1}, limit: 1});
 				}
@@ -154,7 +154,7 @@ Meteor.reactivePublish('contactScroll', function(tagId, contactScrollDir, contac
 				if (last) {
 
 					if (tag.reminderTagType) {
-						return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: -1, nameLast: -1, nameFirst: -1, company: -1}, limit: 300, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1, latest_conversation_date: 1}, reactive: true})
+						return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: -1, nameLast: -1, nameFirst: -1, company: -1}, limit: 300, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1, latest_conversation: 1}, reactive: true})
 					} else {
 						return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {nameLast: -1, nameFirst: -1, company: -1}, limit: 300, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1}, reactive: true})
 					}
@@ -170,7 +170,7 @@ Meteor.reactivePublish('contactScroll', function(tagId, contactScrollDir, contac
 					if (contacts[0]._id === firstContact) {
 
 						if (tag.reminderTagType) {
-							return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1, latest_conversation_date: 1}, limit: 300, reactive: true})
+							return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1, latest_conversation: 1}, limit: 300, reactive: true})
 						} else {
 							return Contacts.find({groupId: groupId, _id: {$in: contactIds}}, {sort: {nameLast: 1, nameFirst: 1, company: 1}, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1}, limit: 300, reactive: true})
 						}
@@ -178,7 +178,7 @@ Meteor.reactivePublish('contactScroll', function(tagId, contactScrollDir, contac
 					} else {
 
 						if (tag.reminderTagType) {
-							return Contacts.find({groupId: groupId, _id: {$in: contactIds}, nameLast: { $gte: contacts[0].nameLast }}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1, latest_conversation_date: 1}, limit: 300, reactive: true})
+							return Contacts.find({groupId: groupId, _id: {$in: contactIds}, nameLast: { $gte: contacts[0].nameLast }}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1, latest_conversation: 1}, limit: 300, reactive: true})
 						} else {
 							return Contacts.find({groupId: groupId, _id: {$in: contactIds}, nameLast: { $gte: contacts[0].nameLast }}, {sort: {nameLast: 1, nameFirst: 1, company: 1}, fields: {created_on: 1, first: 1, last: 1, company: 1, is_company: 1, nameLast: 1, nameFirst: 1}, limit: 300, reactive: true})
 						}

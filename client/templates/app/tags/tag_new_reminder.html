@@ -76,12 +76,18 @@
 		</div>
 	</fieldset>
 
-	<fieldset class="checkbox_container">
-		<div class="checkbox_label">Accepted Conversation Entries</div>
+	<fieldset class="js_reminder_entries checkbox_container">
+		<div class="checkbox_label row">
+			<div class="padding_top_5px">Accepted Entries</div>
+			<span class="fl_right">
+				<a class="js_select_all btn blue small fl_right" href="#">Select</a>
+				<a class="js_unselect_all btn blue fl_right small space_right" href="#">Unselect</a>
+			</span>
+		</div>
 		{{#each conversationLabel}}
-			<div data-label-name="{{labelName}}" class="js_checkbox_labels checkbox listing icn_check {{#unless labelVisible}}unchecked{{/unless}}">
+			<div class="js_checkbox_labels js_entries checkbox listing icn_check {{#unless labelVisible}}unchecked{{/unless}}" data-label-name="{{labelName}}">
 				{{labelName}}
-				<input name="label_attach" id="label_attach" type="hidden" value="true"/>
+				<input name="js_accepted_entry" id="js_accepted_entry" type="hidden" value="true"/>
 			</div>
 		{{/each}}
 	</fieldset>

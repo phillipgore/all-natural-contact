@@ -1,15 +1,33 @@
 Meteor.methods({
 	mostRecent: function(contactId) {
 		var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
-		var conversation = Conversations.findOne({groupId: groupId, belongs_to_contact: contactId}, {sort: {conversation_date: -1}})
+		var conversationLabels = Labels.find({groupId: groupId, labelType: 'conversation_label'})
 
-		if (conversation) {
-			var mostRecent = conversation.conversation_date
-		} else {
-			var mostRecent = '1776-07-04T12:00:00+00:00'
-		}
+		var latest_conversation = []
+		conversationLabels.forEach(function(label) {
+			var conversation = Conversations.findOne({groupId: groupId, belongs_to_contact: contactId, conversation_label: label.labelName}, {sort: {conversation_date: -1}})
 
-		Contacts.update({groupId: groupId, _id: contactId}, {$set: {latest_conversation_date: mostRecent}})
+			if (conversation) {
+				var latestProperties = {
+					date: conversation.conversation_date,
+					label: conversation.conversation_label,
+				}
+				latest_conversation.push(latestProperties)
+			}
+		})
+
+		latest_conversation.sort(function (a, b) {
+		  if (a.date < b.date) {
+		    return 1;
+		  }
+		  if (a.date > b.date) {
+		    return -1;
+		  }
+		  // a must be equal to b
+		  return 0;
+		});
+		
+		Contacts.update({groupId: groupId, _id: contactId}, {$set: {latest_conversation: latest_conversation}})
 	},
 });
 

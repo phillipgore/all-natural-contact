@@ -3,7 +3,7 @@ Template.tagNewReminder.onRendered(function() {
 });
 
 Template.tagNewReminder.helpers({
-  conversationLabel: function() {
+	conversationLabel: function() {
     var labels = Labels.find({labelType: 'conversation_label'})
     var newLabels = []
     labels.forEach(function(label) {
@@ -17,7 +17,9 @@ Template.tagNewReminder.helpers({
             labelOrder: user.labelOrder,
             labelVisible: user.labelVisible,
           }
-          newLabels.push(labelProperties)
+          if (labelProperties.labelVisible) {
+            newLabels.push(labelProperties)
+          }
         }
       })
     });
@@ -28,6 +30,16 @@ Template.tagNewReminder.helpers({
 });
 
 Template.tagNewReminder.events({
+	'click .js_select_all': function(e) {
+		$('.js_entries').removeClass('unchecked');
+		$('.js_reminder_entries .js_entries #js_accepted_entry').val(true);
+	},
+
+	'click .js_unselect_all': function(e) {
+		$('.js_entries').addClass('unchecked');
+		$('.js_reminder_entries .js_entries #js_accepted_entry').val(false);
+	},
+
 	'click .js_checkbox_labels': function(e) {
 		e.preventDefault();
 		$(e.target).toggleClass('unchecked')

@@ -103,7 +103,15 @@ Template.layout.events({
 		var parent = $(e.currentTarget).parent()
 		var data_value = $(parent).find('.js_input_label').val();
 		var option = $(parent).find('[data-value="' + data_value + '"]');
-		
+
+		if (option.length === 0) {
+			var custom =$(parent).find('.js_label_custom');
+			$(custom).find('.js_option').attr('data-value', data_value).html(data_value + '*<span class="js_check fl_right">&#10003;</span>');
+			$(custom).show();
+		}
+
+		var option = $(parent).find('[data-value="' + data_value + '"]');
+
 		$('.js_check').hide();
 		$(option).find('.js_check').show();
 		$('.js_select').fadeOut(100);
