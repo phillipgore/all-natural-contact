@@ -299,7 +299,12 @@ Template.tagList.events({
 		var contactPivotName = Session.get('currentNameLast');
 
 		Session.set({scrollDir: 'up', contactPivotId: contactPivotId, contactPivotName: contactPivotName, contactPivotOffset: ''});
-		Router.go('/info/tag/' + Session.get('currentTag'))
+		console.log($(e.target).attr('data-tag-reminder'))
+		if ($(e.target).attr('data-tag-reminder')) {
+			Router.go('/reminder/info/tag/' + Session.get('currentTag'))
+		} else {
+			Router.go('/info/tag/' + Session.get('currentTag'))
+		}
 	},
 
 	'click .js_multi_select_current': function(e) {

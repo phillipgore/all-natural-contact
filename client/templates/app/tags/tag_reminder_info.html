@@ -1,0 +1,17 @@
+<template name="tagReminderInfo">
+  <div class="toolbar gray">
+    <div class="toolbar_img {{#if allContacts}}icn_standard_gray{{/if}}{{#if tag.standardTagType}}icn_standard_gray{{/if}}{{#if tag.reminderTagType}}icn_reminder_gray{{/if}}{{#if tag.processTagType}}icn_process_gray{{/if}}{{#if tag.milestoneTagType}}icn_milestone_gray{{/if}}"></div>
+    <div class="{{#if tag.reminderTagType}}reminder_tag_name_wrap{{else}}fl_left{{/if}}">
+      <h1 class="js_tag {{#if tag.reminderTagType}}reminder_tag_name{{else}}tag_name{{/if}} txt_ellipsis" data-tag-belongs="{{#unless allContacts}}{{tag.belongs_to}}{{/unless}}">
+        {{#if tag.tag}}{{tag.tag}}{{else}}<span class="txt_missing">Tag Name</span>{{/if}}
+      </h1>
+      <div class="sub_txt txt_ellipsis txt_capitalize">{{reminderTime}} ({{reminderEntries}})</div>
+    </div>
+  </div>
+
+  <div class="js_contact_list list scroll top_50">
+    {{#each reminderContacts}}
+      <div>{{last}} {{formatDateTime latest_conversation}}</div>
+    {{/each}}
+  </div>
+</template>

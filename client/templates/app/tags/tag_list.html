@@ -14,7 +14,7 @@
 			<button class="js_loading_top_button offscreen"></button>
 			<div class="js_loading_top js_list_item list_item divided txt_center hide">&nbsp;</div>
 			{{#each tags}}
-			<a id="{{_id}}" data-tag-name="{{tagName}}" data-has-tags="{{has_tags}}" class="{{#if processTagType}}js_process_tag_item{{else}}js_tag_item{{/if}} js_tag_list_item list_item divided list_icon multi_select" href="{{#if processTagType}}/list/process/tags/{{_id}}{{else}}#{{/if}}">
+			<a id="{{_id}}" data-tag-name="{{tagName}}" data-has-tags="{{has_tags}}" data-tag-reminder="{{reminderTagType}}" class="{{#if processTagType}}js_process_tag_item{{else}}js_tag_item{{/if}} js_tag_list_item list_item divided list_icon multi_select" href="{{#if processTagType}}/list/process/tags/{{_id}}{{else}}#{{/if}}">
 				<div class="icon_box {{#if standardTagType}}{{#if personal}}icn_tag_personal{{else}}icn_tag{{/if}}{{/if}} {{#if reminderTagType}}{{#if personal}}icn_tag_reminder_personal{{else}}icn_tag_reminder{{/if}}{{/if}} {{#if processTagType}}{{#if personal}}icn_tag_process_personal{{else}}icn_tag_process{{/if}}{{/if}} {{#if milestoneTagType}}{{#if personal}}icn_tag_milestone_personal{{else}}icn_tag_milestone{{/if}}{{/if}}"></div>
 				{{#if tag}}{{tag}}{{else}}<span class="txt_missing">Tag Name</span>{{/if}}
 				<a class="js_multi_select_current list_select_current icn_multi_select_current" href="{{pathFor 'tagList'}}"></a>

@@ -9,7 +9,6 @@
 					{{#if tag.tag}}{{tag.tag}}{{else}}<span class="txt_missing">Tag Name</span>{{/if}}
 				{{/if}}
 				</h1>
-				{{#if tag.reminderTagType}}<div class="sub_txt txt_ellipsis txt_capitalize">{{reminderTime}} ({{reminderEntries}})</div>{{/if}}
 			</div>
 			{{#unless tag.reminderTagType}}<a href="#" class="js_tool_alpha tool_alpha {{#unless alphaTool}}inactive{{/unless}}">ABC...  &#9662;</a>{{/unless}}
 		</div>
