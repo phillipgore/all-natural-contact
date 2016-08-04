@@ -279,15 +279,18 @@ Template.tagList.events({
 
 		var tagId = $(e.target).attr('id');
 		var tagName = $(e.target).attr('data-tag-name');
+		var reminderTag = $(e.target).attr('data-tag-reminder') == "true";
 		if (tagId != 'all_contacts_tag') {
 			Session.set({
 				currentTag: tagId,
 				currentTagName: tagName,
+				reminderTag: reminderTag,
 			});
 		} else {
 			Session.set({
 				currentTag: 'all_contacts_tag',
 				currentTagName: tagName,
+				reminderTag: reminderTag,
 			});
 		}
 
@@ -299,8 +302,8 @@ Template.tagList.events({
 		var contactPivotName = Session.get('currentNameLast');
 
 		Session.set({scrollDir: 'up', contactPivotId: contactPivotId, contactPivotName: contactPivotName, contactPivotOffset: ''});
-		console.log($(e.target).attr('data-tag-reminder'))
-		if ($(e.target).attr('data-tag-reminder')) {
+
+		if (Session.get('reminderTag') === true) {
 			Router.go('/reminder/info/tag/' + Session.get('currentTag'))
 		} else {
 			Router.go('/info/tag/' + Session.get('currentTag'))
@@ -312,9 +315,11 @@ Template.tagList.events({
 		e.stopPropagation();
 		var tagId = $(e.target).parent().attr('id');
 		var tagName = $(e.target).parent().attr('data-tag-name');
+		var reminderTag = $(e.target).parent().attr('data-tag-reminder') == "true";
 		Session.set({
 			currentTag: tagId,
 			currentTagName: tagName,
+			reminderTag: reminderTag,
 		});
 		$('.active').removeClass('active');
 		$('.js_current').removeClass('js_current active');

@@ -10,8 +10,175 @@
   </div>
 
   <div class="js_contact_list list scroll top_50">
-    {{#each reminderContacts}}
-      <div>{{last}} {{formatDateTime latest_conversation}}</div>
-    {{/each}}
+    {{#if taggedCount}}
+      <button class="js_loading_top_button offscreen"></button>
+      <button class="js_loading_bottom_button offscreen"></button>
+      <div class="js_loading_top js_list_item list_item divided txt_center hide">&nbsp;</div>
+      {{#each reminderContacts}}
+        <a id="{{_id}}" data-position="{{position}}" data-first="{{first}}" data-last="{{last}}" data-name-first="{{nameFirst}}" data-name-last="{{nameLast}}" class="js_contact_list_item js_list_item js_contact_item list_item divided list_icon multi_select" href="/info/contact/{{_id}}">
+          <div class="icon_box
+            {{#if latest_conversation}}
+              {{#if is_company}}
+                {{#if overdue}}
+                  icn_reminder_company_uncheck
+                {{else}}
+                  icn_company_mb
+                {{/if}}
+              {{else}}
+                {{#if overdue}}
+                  icn_reminder_uncheck
+                {{else}}
+                  icn_profile_mb
+                {{/if}}
+              {{/if}}
+            {{else}}
+              {{#if is_company}}
+                icn_company_mb
+              {{else}}
+                icn_profile_mb
+              {{/if}}
+            {{/if}}
+          "></div>
+            {{#if is_company}}
+              {{#if company}}
+                {{company}}
+              {{else}}
+                <span class="txt_missing">Company</span>
+              {{/if}}
+            {{else}}
+              {{#if first}}
+                {{first}}
+              {{else}}
+                <span class="txt_missing">First</span>
+              {{/if}}
+              {{#if last}}
+                {{last}}
+              {{else}}
+                <span class="txt_missing">Last</span>
+              {{/if}}
+            {{/if}}
+            {{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
+          <a class="js_multi_select_current list_select_current icn_multi_select_current" href="/info/tag/{{currentTag}}"></a>
+          <a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
+          <a class="js_multi_select list_select icn_multi_select" href="#"></a>
+        </a>
+      {{/each}}
+      <div class="js_loading_bottom js_list_item list_item txt_center divided hide">&nbsp;</div>
+    {{else}}
+      {{> contactNone}}
+    {{/if}}
+  </div>
+
+  <span class="js_tag_loader js_loader">{{> loading}}</span>
+  {{> blankToolbar}}
+
+  <div class="js_alpha_clone_top clone_container bg_white hide">
+    <div class="clone_offset top">
+      <div class="js_loading_top js_list_item list_item divided txt_center">&nbsp;</div>
+      {{#each reminderContactsScroll}}
+      <div class="js_clone_list_item js_list_item list_item divided list_icon multi_select">
+        <div class="icon_box
+          {{#if latest_conversation}}
+            {{#if is_company}}
+              {{#if overdue}}
+                icn_reminder_company_uncheck
+              {{else}}
+                icn_company_mb
+              {{/if}}
+            {{else}}
+              {{#if overdue}}
+                icn_reminder_uncheck
+              {{else}}
+                icn_profile_mb
+              {{/if}}
+            {{/if}}
+          {{else}}
+            {{#if is_company}}
+              icn_company_mb
+            {{else}}
+              icn_profile_mb
+            {{/if}}
+          {{/if}}
+        "></div>
+        {{#if is_company}}
+          {{#if company}}
+            {{company}}
+          {{else}}
+            <span class="txt_missing">Company</span>
+          {{/if}}
+        {{else}}
+          {{#if first}}
+            {{first}}
+          {{else}}
+            <span class="txt_missing">First</span>
+          {{/if}}
+          {{#if last}}
+            {{last}}
+          {{else}}
+            <span class="txt_missing">Last</span>
+          {{/if}}
+        {{/if}}
+        {{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
+        <a class="js_multi_select_current list_select_current icn_multi_select_current" href="/info/tag/{{currentTag}}"></a>
+        <a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
+        <a class="js_multi_select list_select icn_multi_select" href="#"></a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="js_alpha_clone_bottom clone_container bg_white hide">
+    <div class="clone_offset bottom">
+      {{#each reminderContactsScroll}}
+      <div class="js_clone_list_item js_list_item list_item divided list_icon multi_select">
+        <div class="icon_box
+          {{#if latest_conversation}}
+            {{#if is_company}}
+              {{#if overdue}}
+                icn_reminder_company_uncheck
+              {{else}}
+                icn_company_mb
+              {{/if}}
+            {{else}}
+              {{#if overdue}}
+                icn_reminder_uncheck
+              {{else}}
+                icn_profile_mb
+              {{/if}}
+            {{/if}}
+          {{else}}
+            {{#if is_company}}
+              icn_company_mb
+            {{else}}
+              icn_profile_mb
+            {{/if}}
+          {{/if}}
+        "></div>
+        {{#if is_company}}
+          {{#if company}}
+            {{company}}
+          {{else}}
+            <span class="txt_missing">Company</span>
+          {{/if}}
+        {{else}}
+          {{#if first}}
+            {{first}}
+          {{else}}
+            <span class="txt_missing">First</span>
+          {{/if}}
+          {{#if last}}
+            {{last}}
+          {{else}}
+            <span class="txt_missing">Last</span>
+          {{/if}}
+        {{/if}}
+        {{#if overdue}}<span class="txt_ext_small_gray">({{overdue_by}})</span>{{/if}}
+        <a class="js_multi_select_current list_select_current icn_multi_select_current" href="/info/tag/{{currentTag}}"></a>
+        <a class="js_multi_select_single list_select_single icn_multi_select_single" href="#"></a>
+        <a class="js_multi_select list_select icn_multi_select" href="#"></a>
+      </div>
+      {{/each}}
+      <div class="js_loading_bottom js_list_item list_item txt_center divided">&nbsp;</div>
+    </div>
   </div>
 </template>

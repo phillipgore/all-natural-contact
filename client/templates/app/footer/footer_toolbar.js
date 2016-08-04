@@ -39,7 +39,9 @@ Template.footerToolbar.events({
 
 			Session.set({contactScrollDir: 'middle', contactPivotNameLast: contactPivotNameLast, contactPivotId: contactPivotId});
 
-			if (Session.get('milestoneTag')) {
+			if (Session.get('reminderTag')) {
+				Router.go('/reminder/info/tag/' + Session.get('currentTag'))
+			} else if (Session.get('milestoneTag')) {
 				Router.go('/info/tag/' + Session.get('milestoneTag'))
 			} else {
 				Router.go('/info/tag/' + Session.get('currentTag'))

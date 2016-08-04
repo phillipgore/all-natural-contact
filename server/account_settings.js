@@ -77,16 +77,6 @@ Meteor.startup(function () {
     Accounts.sendVerificationEmail(userId, 'admin@allnaturalapps.com');
   }
 
-  var labels = Labels.findOne()
-  if (!labels) {
-    var user = Meteor.users.findOne({"emails.0.address": "admin@allnaturalapps.com"});
-    var groupId = user.profile.belongs_to_group
-    var userId = user._id
-
-    initiateLabels(userId, groupId)
-
-  }
-
   var controls = Controls.findOne()
   if (!controls) {
     Controls.insert({freeTrial: 30, bugReporting: true, publicBeta: true})
@@ -127,6 +117,15 @@ Accounts.validateLoginAttempt(function(attempt) {
 	return true;
 });
 
+Accounts.onLogin(function() {
+  var userId = Meteor.userId();
+  var groupId = Meteor.users.findOne({_id: userId}).profile.belongs_to_group;
+  var labels = Labels.findOne({'user.userID': userId})
+  if (!labels) {
+    updateLabels(userId, groupId)
+  }
+})
+
 Accounts.onCreateUser(function(options, user) {
 	user.profile = options.profile || {};
 	user.role = options.role || {};
@@ -142,7 +141,6 @@ Accounts.onCreateUser(function(options, user) {
       has_users: user_array,
     }
     Meteor.call('groupUpdate', options.group.group_id, groupProperties);
-    console.log('existing group')
     updateLabels(user._id, options.group.group_id)
   } else {
 
@@ -154,7 +152,6 @@ Accounts.onCreateUser(function(options, user) {
       has_users: user_array,
     }
     Meteor.call('groupInsert', groupProperties);
-    console.log('new group')
     initiateLabels(user._id, options.group.group_id)
   }
 	return user;

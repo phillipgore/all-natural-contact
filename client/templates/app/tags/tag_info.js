@@ -1,5 +1,4 @@
 Template.tagInfo.onRendered(function() {
-	console.log(Session.get('currentTag'))
 	//Bottom toolbar tool hide/show
 	$('.js_tool').removeClass('js_tool_current active');
 	$('.js_tool_list').addClass('js_tool_current active');
@@ -237,38 +236,7 @@ Template.tagInfo.helpers({
 	},
 
 	contacts: function() {
-		if (Session.get('currentTag') != 'all_contacts_tag') {
-			var tag = Tags.findOne({_id: Session.get('currentTag')});
-			if (tag.reminderTagType) {
-				var currentDate = moment();
-				var reminderDate = moment().subtract(tag.reminder_time[0].increment, tag.reminder_time[0].period)
-				var reminderContacts = Contacts.find({created_on: { $exists: true }}, {sort: {latest_conversation_date: 1, nameLast: 1, nameFirst: 1, company: 1}}).fetch()
-
-				for (var i = 0; i < reminderContacts.length; i++) {
-					var days_over = reminderDate.diff(reminderContacts[i].latest_conversation_date, 'days');
-					if (days_over > 0) {
-						var overdue = true;
-					} else {
-						var overdue = false;
-					}
-					var overdue_by = currentDate.diff(reminderContacts[i].latest_conversation_date, 'days');
-					if (moment(reminderContacts[i].latest_conversation_date).isSame('1776-07-04', 'year')) {
-						var overdue_by = 'never'
-					} else {
-						var overdue_by = moment.duration(overdue_by, "days").humanize();
-					}
-
-					reminderContacts[i].overdue = overdue;
-					reminderContacts[i].overdue_by = overdue_by;
-				}
-
-				return reminderContacts
-			} else {
-				return Contacts.find({created_on: { $exists: true }}, {sort: {nameLast: 1, nameFirst: 1, company: 1}})
-			}
-		} else {
-			return Contacts.find({created_on: { $exists: true }}, {sort: {nameLast: 1, nameFirst: 1, company: 1}})
-		}
+		return Contacts.find({created_on: { $exists: true }}, {sort: {nameLast: 1, nameFirst: 1, company: 1}})
 	},
 
 	allContacts: function() {
