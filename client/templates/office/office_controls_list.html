@@ -3,15 +3,16 @@
     <fieldset>
       <div class="select_container">
         <label>Free Trial Period</label>
-        <span class="select_arrow">&#9662;</span>
-        <select id="free_trial" class="free_trial" name="free_trial">
-          <option value="60">60 Days</option>
-          <option value="50">50 Days</option>
-          <option value="40">40 Days</option>
-          <option selected="selected" value="30">30 Days</option>
-          <option value="20">20 Days</option>
-          <option value="10">10 Days</option>
-        </select>
+        <div>
+					<div class="col_3of5">
+						<div class="input_horizontal_box">
+							<input class="free_trial"  name="free_trial" type="text" autocomplete="off" placeholder="Number" value="{{freeTrial}}" />
+						</div>
+					</div>
+					<div class="col_2of5 padding_top_8px">
+						Days
+					</div>
+				</div>
       </div>
     </fieldset>
     <fieldset class="checkbox_container">
@@ -25,6 +26,9 @@
         Public Beta
         <input name="beta_field" id="beta_field" type="hidden" value="{{publicBeta}}"/>
       </div>
+    </fieldset>
+    <fieldset class="hide">
+      <a class="btn_green" href="#">Random Extra Button</a>
     </fieldset>
 	</form>
 </template>

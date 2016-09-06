@@ -49,7 +49,7 @@ Template.footerImportContacts.events({
 		var fileReader = new FileReader();
 		var newContacts = []
 
-		if (file.type === 'text/vcard') {
+		if (file.type === 'text/vcard' || file.type === 'text/directory') {
 			fileReader.onload = function (e) {
 				var vcResults = fileReader.result.split(/\r\n|\r|\n/)
 				var vcArray = []
@@ -640,9 +640,7 @@ Template.footerImportContacts.events({
 
 
 
-
 					for (var c = 0; c < data.length; c++) {
-
 						$(keys).each(function() {
 							var key = this
 							var current_data = data[c]
@@ -710,10 +708,10 @@ Template.footerImportContacts.events({
 								current_data.Company = value;
 							}
 						})
+					}
 
 
-
-
+					for (var c = 0; c < data.length; c++) {
 						var phone_keys = []
 						for (var kp = 0; kp < phone_key_pairs.length; kp++) {
 							var current_data = data[c]
@@ -1021,7 +1019,7 @@ Template.footerImportContacts.events({
 							var comboNameLast = "aaaaaaaa" + date.getTime().toString();
 						}
 
-						if (!firstName && lastName && lastName === item["Company"] || !firstName && !lastName && item["Company"]) {
+						if (!firstName && lastName && lastName === item["Company"] || !lastName && firstName && firstName === item["Company"] || !firstName && !lastName && item["Company"]) {
 							var isCompany = true
 						} else {
 							var isCompany = false

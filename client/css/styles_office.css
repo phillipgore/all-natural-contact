@@ -242,6 +242,16 @@
   margin-right: 27px
 }
 
+#office .group_list_item {
+  font-size: 16px;
+  padding: 11px 9px 11px 9px;
+  margin: 0px;
+  display: block;
+  border-bottom: #A3CCAD solid 1px;
+  display: flex;
+  align-items: center;
+}
+
 #office .support_list_item {
   font-size: 16px;
   padding: 14px 9px 13px 0px;
@@ -297,6 +307,25 @@
   color: #6CA67B;
 }
 
+#office .btn_green {
+	background: #2D5938;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 7px 10px;
+	text-decoration: none;
+	display: block;
+	border: 1px solid #2D5938;
+	color: #fff;
+	text-align: center;
+  margin: 5px 9px 11px 9px;
+}
+
+#office .btn_green.inliine {
+	margin: 0px 6px 0px 0px;
+  font-size: 12px;
+  padding: 5px 8px;
+}
+
 #office input:focus::-webkit-input-placeholder, #office textarea:focus::-webkit-input-placeholder {
   color: #6CA67B;
 }
@@ -308,6 +337,10 @@
 }
 #office input:focus:-ms-input-placeholder, #office textarea:focus::-webkit-input-placeholder {
   color: #6CA67B;
+}
+
+#office #beta_form input:focus {
+  border: 1px solid #6CA67B;
 }
 
 #office .hide {

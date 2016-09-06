@@ -1,4 +1,8 @@
 Template.conversationUpdate.onRendered(function() {
+	if ($(window).width() < 640) {
+		$('.content.two, .content.three, .js_conversation_search, .js_tag_search').hide();
+	}
+
 	$('.icn_add_tag_disabled, .icn_add_contact_disabled, .icn_add_conversation_disabled, .icn_edit_disabled, .icn_delete_disabled, .icn_add_to_tag_disabled').show();
 	$('.icn_add_tag, .icn_add_contact, .icn_add_conversation, .icn_edit, .icn_delete, .icn_add_to_tag').hide();
 
@@ -17,7 +21,8 @@ Template.conversationUpdate.onRendered(function() {
 			var newLocal = date + "T" + local;
 			var newZulu = moment.tz(newLocal, "Zulu").format();
 			//alert('date: ' + date + '\nzulu: ' + zulu + '\nlocal: ' + local + '\nnewLocal: ' + newLocal + '\nnewZulu: ' + newZulu)
-			$('[name=conversation_date_time]').val(newZulu);
+			$('input[name=conversation_date_time]').val(newZulu);
+			$('.js_time_label').html(moment.tz(newLocal, Meteor.user().profile.timezone).format('h:mm A') + ' &#9662;');
 			$('.js_conversation_date').html(moment(date).format('MMM D, YYYY') + ' &#9662;');
 		}
 	});
@@ -86,6 +91,7 @@ Template.conversationUpdate.events({
 	},
 
 	'click .js_time_drop_option': function(e) {
+		e.preventDefault();
 		$(e.target).closest('.js_time_select').find('.time_active').removeClass('time_active');
 		$(e.target).addClass('time_active');
 	},

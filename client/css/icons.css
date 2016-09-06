@@ -381,6 +381,11 @@
 	background: url(/img/icn-fields-gray.svg) center center no-repeat;
 }
 
+.icn_office_accounts {
+	background: url(/img/office/icn-office-accounts.svg) center center no-repeat;
+	background-size: 30px 22px;
+}
+
 .icn_office_controls {
 	background: url(/img/office/icn-office-controls.svg) center center no-repeat;
 	background-size: 30px 22px;

@@ -1,5 +1,5 @@
 <template name="tagUpdateProcess">
-	
+
 	{{> blankSaving}}
 	<div class="toolbar gray">
 		<div class="toolbar_img icn_edit_tag_gray"></div>
@@ -10,7 +10,7 @@
 			<div class="input_full">
 				<input id="tag" name="tag" type="text" autocomplete="off" placeholder="Process Tag Name" value="{{tag}}" />
 			</div>
-		</fieldset>	
+		</fieldset>
 		<fieldset class="input_wrap">
 			<div class="input_full">
 				<div class="js_checkbox_personal_tag checkbox icn_check {{personalCheck}}">
@@ -18,8 +18,8 @@
 					<input name="personal_tag" id="personal_tag" type="hidden" value="{{personal}}"/>
 				</div>
 			</div>
-		</fieldset>	
-		<fieldset id="milestone" class="js_paste_input">
+		</fieldset>
+		<fieldset id="milestone" class="js_paste_input input_wrap">
 			{{#each milestoneTags}}
 				<div class="js_delete_input js_input input_wrap">
 					<div class="input_full multi_input_adjust">

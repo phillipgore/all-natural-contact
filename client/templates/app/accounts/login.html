@@ -4,9 +4,9 @@
 		<h2>Sign in to your account.</h2>
 		<span class="js_login_form">
 			<form class="login_form pos_relative" id="login_form" action="action">
-				<div class="js_form_overlay form_overlay hide">{{> loading}}</div>
-				<input class="js_required" type="email" name="login_email" id="login_email" placeholder="Email"/>
-				<input class="js_required" type="password" name="login_password" id="login_password" placeholder="Password"/>
+				<div class="js_form_overlay form_overlay hide">{{> blankSignIn}}</div>
+				<input class="js_required" type="email" name="login_email" id="login_email" placeholder="Email" value=""/>
+				<input class="js_required" type="password" name="login_password" id="login_password" placeholder="Password" value=""/>
 				<div class="js_checkbox_remember_me checkbox icn_check unchecked">
 					Remember me on this computer.
 					<input name="remember_me" id="remember_me" type="hidden" value="false"/>

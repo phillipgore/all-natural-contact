@@ -11,6 +11,7 @@ Accounts.config ({
 });
 
 Meteor.startup(function () {
+  
   Contacts._ensureIndex({groupId: 1, nameLast: 1, nameFirst: 1, company: 1});
   Tags._ensureIndex({groupId: 1, milestoneTagType: 1, personal: 1, tagName: 1});
   Conversations._ensureIndex({groupId: 1, belongs_to_contact: 1, conversation_date: -1});
@@ -118,12 +119,16 @@ Accounts.validateLoginAttempt(function(attempt) {
 });
 
 Accounts.onLogin(function() {
-  var userId = Meteor.userId();
-  var groupId = Meteor.users.findOne({_id: userId}).profile.belongs_to_group;
-  var labels = Labels.findOne({'user.userID': userId})
-  if (!labels) {
-    updateLabels(userId, groupId)
-  }
+    var userId = Meteor.userId();
+    var groupId = Meteor.users.findOne({_id: userId}).profile.belongs_to_group;
+    var initiate = Labels.find({groupId: groupId}).count()
+    var update = Labels.find({"user.userId": userId}).count()
+
+    if (initiate === 0) {
+      initiateLabels(userId, groupId)
+    } else if (update === 0) {
+      updateLabels(userId, groupId)
+    }
 })
 
 Accounts.onCreateUser(function(options, user) {
@@ -133,26 +138,36 @@ Accounts.onCreateUser(function(options, user) {
 
   var current_group = Groups.findOne({_id: options.group.group_id})
   if (current_group) {
-
     var user_array = current_group.has_users
     user_array.push(user._id)
 
     var groupProperties = {
       has_users: user_array,
     }
-    Meteor.call('groupUpdate', options.group.group_id, groupProperties);
-    updateLabels(user._id, options.group.group_id)
+    Meteor.call('groupUpdate', options.group.group_id, groupProperties, function(error) {
+			if (error) {
+				return alert(error.reason);
+			} else {
+				updateLabels(user._id, options.group.group_id)
+			}
+		});
   } else {
-
     var user_array = []
     user_array.push(user._id)
+
     var groupProperties = {
       _id: options.group.group_id,
       name: options.group.group_name,
       has_users: user_array,
     }
-    Meteor.call('groupInsert', groupProperties);
-    initiateLabels(user._id, options.group.group_id)
+
+    Meteor.call('groupInsert', groupProperties, function(error) {
+			if (error) {
+				return alert(error.reason);
+			} else {
+				initiateLabels(user._id, options.group.group_id)
+			}
+		});
   }
 	return user;
 });

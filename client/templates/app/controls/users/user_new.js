@@ -29,7 +29,7 @@ Template.userNew.events({
 		var password_check = $(e.target).find('[name=account_password_check]').val();
 		var email_updates = $(e.target).find('[name=email_updates]').val() == "true";
 		var logout_time = moment().add(1, 'd').toISOString();
-		var group_id = Meteor.user().profile.belongs_to_group;
+		var group_id = Meteor.users.findOne({_id: Meteor.userId()}).profile.belongs_to_group;
 
 		var group = {
 			group_id: group_id,

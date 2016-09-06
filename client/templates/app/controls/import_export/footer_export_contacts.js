@@ -9,18 +9,20 @@ Template.footerExportContacts.events({
 			Router.go('/info/tag/all_contacts_tag')
 		}
 	},
-	
+
 	'click .js_export_btn': function(e) {
 		e.preventDefault();
-		
+
 		$('.js_export_btns').hide();
 		$('.js_initial_loading_overlay, .js_complete_btns').show();
-		
+
+		var userId = Meteor.userId()
+
 		if (!$(e.target).hasClass('js_inactive')) {
 			if ($('.js_export_data_type').find('[name=all_contacts]').val() === "true") {
 				Session.set('expectedContacts', Counts.get('accountContactCount'))
-				Router.go('/export/all/ids')
-				
+				Router.go('/export/' + userId + '/all/ids')
+
 			} else if ($('.js_export_data_type').find('[name=selected_contacts]').val() === "true") {
 				Session.set('expectedContacts', ContactSelect.find().count())
 				var contacts = ContactSelect.find()
@@ -28,8 +30,8 @@ Template.footerExportContacts.events({
 				contacts.forEach(function(contact) {
 					contactIds.push(contact.contactId)
 				})
-				Router.go('/export/selected/' + contactIds)
-				
+				Router.go('/export/' + userId + '/selected/' + contactIds)
+
 			} else {
 				Session.set('expectedContacts', Counts.get('taggedContactCount'))
 				var tags = TagSelect.find()
@@ -37,18 +39,9 @@ Template.footerExportContacts.events({
 				tags.forEach(function(tag) {
 					tagIds.push(tag.tagId)
 				})
-				Router.go('/export/tagged/' + tagIds)
-				
+				Router.go('/export/' + userId + '/tagged/' + tagIds)
+
 			}
 		}
 	},
 });
-
-
-
-
-
-
-
-
-

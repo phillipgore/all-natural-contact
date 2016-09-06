@@ -28,7 +28,7 @@ Template.tagInfo.onRendered(function() {
 		var currentContacts = $('.js_existing_contact').length
 		var checkCurrentContacts = setInterval(function() {
 			var reducedContacts = $('.js_existing_contact').length
-			if (currentContacts > reducedContacts || reducedContacts === 0) {
+			if (reducedContacts === 0 || currentContacts > reducedContacts) {
 				clearInterval(checkCurrentContacts);
 
 				var checkTaggedCount = setInterval(function() {
@@ -151,7 +151,6 @@ Template.tagInfo.onRendered(function() {
 												Session.set('currentNameLast', contactSelect.nameLast)
 											}
 
-
 											//Retrieve scrolling variables and take action accordingly.
 											var contactScrollDir = Session.get('contactScrollDir');
 											var contactPivotId = Session.get('contactPivotId');
@@ -225,7 +224,6 @@ Template.tagInfo.onRendered(function() {
 			$('.js_loading_bottom_button').click();
 		}
 	});
-
 }),
 
 
@@ -248,7 +246,7 @@ Template.tagInfo.helpers({
 	},
 
 	contactsScroll: function() {
-		return InfiniteScroll.find();
+		return InfiniteScroll.find({}, {sort: {nameLast: 1, nameFirst: 1, company: 1}});
 	},
 
 	taggedCount: function() {
@@ -309,6 +307,8 @@ Template.tagInfo.events({
 						InfiniteScroll.insert({
 							first: reminderContacts[i].first,
 							last: reminderContacts[i].last,
+							nameFirst: reminderContacts[i].nameFirst,
+							nameLast: reminderContacts[i].nameLast,
 							company: reminderContacts[i].company,
 							is_company: reminderContacts[i].is_company,
 							latest_conversation_date: reminderContacts[i].latest_conversation_date,
@@ -322,6 +322,8 @@ Template.tagInfo.events({
 					InfiniteScroll.insert({
 						first: contacts[i].first,
 						last: contacts[i].last,
+						nameFirst: contacts[i].nameFirst,
+						nameLast: contacts[i].nameLast,
 						company: contacts[i].company,
 						is_company: contacts[i].is_company,
 					});
@@ -333,6 +335,8 @@ Template.tagInfo.events({
 				InfiniteScroll.insert({
 					first: contacts[i].first,
 					last: contacts[i].last,
+					nameFirst: contacts[i].nameFirst,
+					nameLast: contacts[i].nameLast,
 					company: contacts[i].company,
 					is_company: contacts[i].is_company,
 				});
@@ -388,6 +392,8 @@ Template.tagInfo.events({
 						InfiniteScroll.insert({
 							first: reminderContacts[i].first,
 							last: reminderContacts[i].last,
+							nameFirst: reminderContacts[i].nameFirst,
+							nameLast: reminderContacts[i].nameLast,
 							company: reminderContacts[i].company,
 							is_company: reminderContacts[i].is_company,
 							latest_conversation_date: reminderContacts[i].latest_conversation_date,
@@ -401,6 +407,8 @@ Template.tagInfo.events({
 					InfiniteScroll.insert({
 						first: contacts[i].first,
 						last: contacts[i].last,
+						nameFirst: contacts[i].nameFirst,
+						nameLast: contacts[i].nameLast,
 						company: contacts[i].company,
 						is_company: contacts[i].is_company,
 					});
@@ -412,6 +420,8 @@ Template.tagInfo.events({
 				InfiniteScroll.insert({
 					first: contacts[i].first,
 					last: contacts[i].last,
+					nameFirst: contacts[i].nameFirst,
+					nameLast: contacts[i].nameLast,
 					company: contacts[i].company,
 					is_company: contacts[i].is_company,
 				});
@@ -436,6 +446,8 @@ Template.tagInfo.events({
 	},
 
 	'click .js_multi_select_current': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		var contactId = $(e.target).parent().attr('id');
 		var first = $(e.target).parent().attr('data-first');
 		var last = $(e.target).parent().attr('data-last');
@@ -455,6 +467,8 @@ Template.tagInfo.events({
 	},
 
 	'click .js_multi_select_single': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		var contactId = $(e.target).parent().attr('id');
 		var first = $(e.target).parent().attr('data-first');
 		var last = $(e.target).parent().attr('data-last');
@@ -473,6 +487,8 @@ Template.tagInfo.events({
 	},
 
 	'click .js_multi_select': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		var selectId = '#' + $(e.target).parent().attr('id');
 
 		if ($(selectId).hasClass('js_current')) {

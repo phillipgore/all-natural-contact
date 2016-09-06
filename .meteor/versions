@@ -6,6 +6,7 @@ aldeed:collection2-core@1.1.1
 aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
+aldeed:template-extension@3.4.3
 alethes:pages@1.8.6
 allow-deny@1.0.5
 autoupdate@1.2.11
@@ -46,6 +47,8 @@ force-ssl@1.0.12
 fortawesome:fontawesome@4.4.0_1
 francocatena:status@1.5.1
 froala:editor@2.3.3
+gadicohen:robots-txt@0.0.10
+gadicohen:sitemaps@0.0.24
 geojson-utils@1.0.9
 harrison:papa-parse@1.1.1
 hot-code-push@1.0.4
@@ -92,6 +95,7 @@ natestrauser:jquery-scrollto@1.4.7
 npm-bcrypt@0.8.6_3
 npm-mongo@1.4.45
 observe-sequence@1.0.12
+okgrow:analytics@2.0.0
 ordered-dict@1.0.8
 peerlibrary:assert@0.2.5
 peerlibrary:fiber-utils@0.6.0
@@ -125,6 +129,8 @@ ui@1.0.11
 underscore@1.0.9
 underscorestring:underscore.string@3.3.4
 url@1.0.10
+visudare:retina@0.0.5
+visudare:retinajs@1.0.0
 webapp@1.2.11
 webapp-hashing@1.0.9
 yagni:log@1.2.1

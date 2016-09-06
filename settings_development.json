@@ -1,5 +1,8 @@
 {
   "public": {
+    "analyticsSettings": {
+      "Google Analytics": {"trackingId": "UA-83581853-1"}
+    },
     "plans": [{
       "name": "Simple",
       "amount": {

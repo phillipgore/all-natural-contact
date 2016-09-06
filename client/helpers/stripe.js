@@ -12,6 +12,7 @@ Meteor.startup(function() {
         }
       });
     },
+    
     setToken: function( token, domElement, callback ) {
       $( domElement ).append( $( "<input type='hidden' name='stripeToken' />" ).val( token ) );
       callback();

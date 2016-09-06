@@ -70,6 +70,16 @@ Template.tagSelect.onRendered(function() {
 									var tagSelect = Tags.findOne();
 									Session.set('currentTag', tagSelect._id);
 
+									var tagId = Session.get('currentTag');
+									var tagName = Session.get('currentTagName');
+									var reminderTag = $('#' + Session.get('currentTag')).attr('data-tag-reminder') == "true";
+
+									Session.set({
+										currentTag: tagSelect._id,
+										currentTagName: tagSelect.tagName,
+										reminderTag: tagSelect.reminderTagType,
+									});
+
 									TagSelect.remove({});
 									TagSelect.insert({
 										tagId: tagSelect._id,
@@ -221,25 +231,40 @@ Template.tagSelect.events({
 	},
 
 	'click .js_tag_list_item': function(e) {
-		if (!$(e.target).hasClass('js_multi_select_single') && !$(e.target).hasClass('js_multi_select')) {
-			if ($(e.target).hasClass('js_tag_list_item')) {
-				var tagId = $(e.target).attr('id');
-				var tagName = $(e.target).attr('data-tag-name');
-			} else {
-				var tagId = $(e.target).parent().attr('id');
-				var tagName = $(e.target).parent().attr('data-tag-name');
+		e.preventDefault()
+		var route = $(e.target).attr('href')
+		if (route === '#') {
+			if (!$(e.target).hasClass('js_multi_select_single') && !$(e.target).hasClass('js_multi_select')) {
+				if ($(e.target).hasClass('js_tag_list_item')) {
+					var tagId = $(e.target).attr('id');
+					var tagName = $(e.target).attr('data-tag-name');
+					var reminderTag = $(e.target).attr('data-tag-reminder') == "true";
+				} else {
+					var tagId = $(e.target).parent().attr('id');
+					var tagName = $(e.target).parent().attr('data-tag-name');
+					var reminderTag = $(e.target).parent().attr('data-tag-reminder') == "true";
+				}
+
+				$('.active').removeClass('active');
+				$('.js_current').removeClass('js_current active');
+				$('#' + tagId).addClass('js_current active');
+
+				TagSelect.remove({});
+				TagSelect.insert({tagId: tagId, tagName: tagName, reminderTag: reminderTag});
+
+				Session.set({
+					currentTag: tagId,
+					currentTagName: tagName,
+					reminderTag: reminderTag,
+				});
 			}
-			$('.active').removeClass('active');
-			$('.js_current').removeClass('js_current active');
-			$('#' + tagId).addClass('js_current active');
-			TagSelect.remove({});
-			TagSelect.insert({tagId: tagId, tagName: tagName});
-			Session.set('currentTag', tagId);
-			Session.set('currentTagName', tagName);
+		} else {
+			Router.go(route)
 		}
 	},
 
 	'click .js_multi_select_single': function(e) {
+		e.preventDefault()
 		if ($('.js_current').attr('id') == 'all_contacts_tag') {
 			$(e.target).parent().find('.js_multi_select_current').click();
 		} else {
@@ -259,6 +284,7 @@ Template.tagSelect.events({
 	},
 
 	'click .js_multi_select': function(e) {
+		e.preventDefault()
 		if ($('.js_current').attr('id') == 'all_contacts_tag') {
 			$(e.target).parent().find('.js_multi_select_current').click();
 		} else {

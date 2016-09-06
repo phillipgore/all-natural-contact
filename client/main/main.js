@@ -1,4 +1,6 @@
 Meteor.startup(function () {
+	Retina({retinajs: true, attribute : 'data-retina'});
+	
 	Session.set({
 		startUp: true,
 		billingExpired: false,
@@ -134,3 +136,7 @@ UI.registerHelper('contactInfoRoute', function() {
 UI.registerHelper('updateUser', function() {
 	return Session.get('updateUser');
 });
+
+UI.registerHelper('today', function() {
+	return new Date();
+})

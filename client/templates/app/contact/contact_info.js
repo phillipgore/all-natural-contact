@@ -116,6 +116,7 @@ Template.contactInfo.helpers({
 
 Template.contactInfo.events({
 	'click .js_contact_info': function(e) {
+		e.preventDefault();
 		if ($(e.target).hasClass('js_contact_info') || $(e.target).hasClass('js_notes_click')) {
 			$('.js_contact_info, .js_notes, .js_notes_input').removeClass('bg_gray').addClass('bg_light_blue');
 			$('.js_notes_input').focus();
@@ -167,6 +168,7 @@ Template.contactInfo.events({
 	},
 
 	'click .js_profile_toolbar, click .js_contact_info': function(e) {
+		e.preventDefault();
 		$('#js_conversation .active').removeClass('active');
 		$('.js_current').removeClass('js_current active');
 		ConversationSelect.remove({});

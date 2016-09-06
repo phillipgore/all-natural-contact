@@ -1,5 +1,13 @@
 Template.login.onRendered(function() {
 	$('.js_startup_loader').hide();
+
+	if (Session.get('logoutReason') === 'time') {
+		$('.login_alert').text('Your time has expired.').slideDown();
+	} else if (Session.get('logoutReason') === 'inactive') {
+		$('.login_alert').text('The user associated with that email is currently set to inactive.').slideDown();
+	}
+
+	Session.set('logoutReason', '')
 });
 
 Template.login.events({
@@ -23,6 +31,11 @@ Template.login.events({
 		var password = $(e.target).find('[name=login_password]').val();
 		var remember_me = $(e.target).find('[name=remember_me]').val() == "true";
 		var logout_time = moment().add(1, 'd').toISOString();
+
+		Session.set({
+			remember_me: remember_me,
+			logout_time: logout_time,
+		})
 
 		var trimInput = function(val) {
 			return val.replace(/^\s*|\s*$/g, "");
@@ -82,12 +95,7 @@ Template.login.events({
 							$('#login_email, #login_password').css('border-color', 'red');
 							$('.login_alert').text('The password you provided does not belong to the email you provided.').slideDown();
 						}
-					} else {
-							Session.set({
-								remember_me: remember_me,
-								logout_time: logout_time,
-							})
-						}
+					}
 				});
 			} else {
 				$('.js_submit').removeAttr('disabled').text('Sign In');

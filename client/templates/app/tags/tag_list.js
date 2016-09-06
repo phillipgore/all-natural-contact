@@ -9,17 +9,25 @@ Template.tagList.onRendered(function() {
 	$('.js_contact_search, .js_conversation_search').hide();
 	$('.js_tag_search').show();
 
+	//Get current tag and tag name
+	var tagId = Session.get('currentTag');
+	var tagName = Session.get('currentTagName');
+	var reminderTag = $('#' + Session.get('currentTag')).attr('data-tag-reminder') == "true";
+
 	//Set current tag and tag name if not already set
 	if (!Session.get('currentTag')) {
 		Session.set({
 			currentTag: 'all_contacts_tag',
 			currentTagName: 'all_contacts_tag',
+			reminderTag: false,
+		});
+	} else {
+		Session.set({
+			currentTag: tagId,
+			currentTagName: tagName,
+			reminderTag: reminderTag,
 		});
 	}
-
-	//Get current tag and tag name
-	var tagId = Session.get('currentTag');
-	var tagName = Session.get('currentTagName');
 
 	//Reset selected contacts
 	ContactSelect.remove({});
@@ -27,7 +35,7 @@ Template.tagList.onRendered(function() {
 	//Set currently selected tag
 	TagSelect.remove({});
 	if (tagId != 'all_contacts_tag') {
-		TagSelect.insert({tagId: tagId, tagName: tagName});
+		TagSelect.insert({tagId: tagId, tagName: tagName, reminderTag: reminderTag});
 	};
 
 	//Upper toolbar tool hide/show
@@ -133,6 +141,7 @@ Template.tagList.onRendered(function() {
 											//Reset and reveal the tag list based on the provided scrolling variables.
 											$('.js_tag_list').scrollTop(listPos);
 											$('#' + Session.get('currentTag')).addClass('js_current active');
+											Session.set('updateRoute', '/update/tag/' + Session.get('currentTag'));
 
 											$('.js_tag_list').css({left: 0, width: 'auto'}).removeClass('disable_scrolling');
 											$('.js_loading_top_button, .js_loading_bottom_button').addClass('js_active');
@@ -156,7 +165,6 @@ Template.tagList.onRendered(function() {
 		var scrollHeight = $(this).outerHeight();
 		var topPos = $('.js_loading_top').offset().top - 100;
 		var bottomPos = $('.js_loading_bottom').offset().top - 50;
-
 		if (topPos === 0 && $('.js_loading_top_button').hasClass('js_active')) {
 			$('.js_tag_list_item').addClass('js_existing_tag')
 			$('.js_loading_top_button').click();
@@ -195,7 +203,7 @@ Template.tagList.helpers({
 	},
 
 	tagsScroll: function() {
-		return TagInfiniteScroll.find();
+		return TagInfiniteScroll.find({}, {sort: {tagName: 1}});
 	},
 
 	alphaToolTag: function() {
@@ -313,22 +321,29 @@ Template.tagList.events({
 	'click .js_multi_select_current': function(e) {
 		e.preventDefault();
 		e.stopPropagation();
+
 		var tagId = $(e.target).parent().attr('id');
 		var tagName = $(e.target).parent().attr('data-tag-name');
 		var reminderTag = $(e.target).parent().attr('data-tag-reminder') == "true";
+
+		$('.active').removeClass('active');
+		$('.js_current').removeClass('js_current active');
+		$('#' + tagId).addClass('js_current active');
+
+		//$('.js_tool_tags').addClass('js_tool_current active');
+		$('.icn_delete, .icn_edit').show();
+		$('.icn_delete_disabled, .icn_edit_disabled').hide();
+
+		TagSelect.remove({});
+		TagSelect.insert({tagId: tagId, tagName: tagName, reminderTag: reminderTag});
+
 		Session.set({
 			currentTag: tagId,
 			currentTagName: tagName,
 			reminderTag: reminderTag,
 		});
-		$('.active').removeClass('active');
-		$('.js_current').removeClass('js_current active');
-		$('#' + tagId).addClass('js_current active');
-		$('.js_tool_tags').addClass('js_tool_current active');
-		$('.icn_delete, .icn_edit').show();
-		$('.icn_delete_disabled, .icn_edit_disabled').hide();
-		TagSelect.remove({});
-		TagSelect.insert({tagId: tagId, tagName: tagName});
+
+		Session.set('updateRoute', '/update/tag/' + tagId);
 	},
 
 	'click .js_multi_select_single': function(e) {

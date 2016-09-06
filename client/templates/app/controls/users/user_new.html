@@ -7,21 +7,24 @@
 	<form class="js_user_new_form top_50 scroll bg_gray" id="register_form" action="action">
 		<div class="red_alert_msg hide"></div>
 		<fieldset class="input_wrap">
-				<div class="input_full">
-					<input class="js_required" type="text" name="account_first" id="account_first" placeholder="First Name*" value=""/>
-					<input class="js_required" type="text" name="account_last" id="account_last" placeholder="Last Name*" value=""/>
+			<div class="input_full">
+				<input class="js_required" type="text" name="account_first" id="account_first" placeholder="First Name*" value=""/>
+				<input class="js_required" type="text" name="account_last" id="account_last" placeholder="Last Name*" value=""/>
 
-					<input class="js_required" type="email" name="account_email" id="account_email" placeholder="Email*" value=""/>
-					<input class="js_required" type="email" name="account_email_check" id="account_email_check" placeholder="Retype Email*" value=""/>
+				<input class="js_required" type="email" name="account_email" id="account_email" placeholder="Email*" value=""/>
+				<input class="js_required" type="email" name="account_email_check" id="account_email_check" placeholder="Retype Email*" value=""/>
 
-					<input class="js_required" type="password" name="account_password" id="account_password" placeholder="Password*" value=""/>
-					<input class="js_required" type="password" name="account_password_check" id="account_password_check" placeholder="Retype Password*" value=""/>
-
-					<div class="js_checkbox_email_updates checkbox icn_check checked">
-						Email this user updates about Contact.
-						<input name="email_updates" id="email_updates" type="hidden" value="true"/>
-					</div>
+				<input class="js_required" type="password" name="account_password" id="account_password" placeholder="Password*" value=""/>
+				<input class="js_required" type="password" name="account_password_check" id="account_password_check" placeholder="Retype Password*" value=""/>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="input_full">
+				<div class="js_checkbox_email_updates checkbox icn_check checked">
+					Email this user updates about Contact.
+					<input name="email_updates" id="email_updates" type="hidden" value="true"/>
 				</div>
+			</div>
 		</fieldset>
 	</form>
 </template>

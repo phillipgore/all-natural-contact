@@ -12,8 +12,17 @@
 	<div class="outer_zig_zag">
 		<div class="inner_zig_zag">
 			<div class="zig_zag">
-				<div class="container">
-					<img alt="All Natural Contact CRM video." src='/img/site/contact-video-cover.jpg' class="zig_zag_video">
+				<div class="zig_zag_video_container">
+					<div class="zig_zag_poster play hide"></div>
+					<video class="zig_zag_video" preload="auto" width="100%">
+						<source src="http://d2o8zbiqu5cs7.cloudfront.net/anc_intro.mp4" />
+					  <source src="http://d2o8zbiqu5cs7.cloudfront.net/anc_intro.ogv" type='video/ogg; codecs="theora, vorbis"' />
+						<iframe class="zig_zag_video"
+							src="https://www.youtube.com/embed/lsWWNesSoWA?rel=0&amp;showinfo=0;vq=hd720;"
+							frameborder="0"
+							allowfullscreen>
+						</iframe>
+					</video>
 				</div>
 				<div class="skew_left"></div>
 				<div class="skew_right"></div>
@@ -25,13 +34,13 @@
 	<article>
 		<div class="article_wrap">
 			<h1>The web app that doesn't<span class="break_960"><br></span> feel like a web app.</h1>
-			<img alt="All Natural Contact CRM conversation log" class="img_interface full left" src="/img/site/anc-interface-contact-1024.svg">
+			<img alt="All Natural Contact CRM conversation log." class="img_interface full left" src="/img/site/anc-interface-contact-1024.png">
 			<div class="article_text right flush">
 		    <img alt="Intuative Interface icon." src="/img/site/icn-intuative-interface.svg">
 		    <h2>Intuative Interface</h2>
 		    <p>Web apps can be clunky, slow and confusing. All Natural Contact is none of these things. No matter what device you’re using (phone, tablet, laptop or desktop) the interface is clean, crisp, fast and most importantly - intuitive. All Natural Contact combines the “data everywhere” power of a web app with the familiar interface conventions of a native app.</p>
 			</div>
-			<img alt="All Natural Contact CRM conversation log" class="img_interface_mobile" src="/img/site/anc-interface-contact-320mobile.svg">
+			<img alt="All Natural Contact CRM conversation log - mobile." class="img_interface_mobile" src="/img/site/anc-interface-contact-320mobile.png">
 		</div>
   </article>
 
@@ -44,9 +53,9 @@
 		    <p>Retrieving your contacts quickly is key to a productive workflow. That’s why we built Elasticsearch into All Natural Contact. Elasticsearch technology is used by Wikipedia, Netflix, Uber and many more. We’re putting it into your hands to find clients using whatever data you have - name,  number, address, email, etc. etc. etc.</p>
 			</div>
 			<div class="img_interface partial right">
-				<img alt="All Natural Contact CRM powerful search." src="/img/site/anc-interface-search-1024.svg">
+				<img alt="All Natural Contact CRM powerful search." class="img_interface" src="/img/site/anc-interface-search-1024.png">
 			</div>
-			<img alt="All Natural Contact CRM powerful search." class="img_interface_mobile" src="/img/site/anc-interface-search-320mobile.svg">
+			<img alt="All Natural Contact CRM powerful search - mobile." class="img_interface_mobile" src="/img/site/anc-interface-search-320mobile.png">
 		</div>
   </article>
 
@@ -58,8 +67,8 @@
 		    <h2>Conversation Log</h2>
 		    <p>More than just an address book, All Natural Contact is a full featured contact relationship management app. The centerpiece of which is the Conversation Log, a place for you and your team members to record interactions with your clients. Everyone on your team will be on the same page about who interacted with which clients and why.</p>
 			</div>
-			<img alt="All Natural Contact CRM conversation log" class="img_interface fit" src="/img/site/anc-interface-conversation-1024.svg">
-			<img alt="All Natural Contact CRM conversation log" class="img_interface_mobile" src="/img/site/anc-interface-conversation-320mobile.svg">
+			<img alt="All Natural Contact CRM conversation log." class="img_interface fit" src="/img/site/anc-interface-conversation-1024.png">
+			<img alt="All Natural Contact CRM conversation log - mobile." class="img_interface_mobile" src="/img/site/anc-interface-conversation-320mobile.png">
 		</div>
   </article>
 
@@ -72,9 +81,9 @@
 		    <p>Clients are often uniquely connected with one another. Good old fashioned tags allow you to reflect these connections in All Natural Contact. Tag all of your company’s top prospects or tag every member of your marketing team. See everyone linked to that tag in an instant.</p>
 			</div>
 			<div class="img_interface partial right">
-				<img alt="All Natural Contact CRM standard tags." class="img_interface" src="/img/site/anc-interface-tags-1024.svg">
+				<img alt="All Natural Contact CRM standard tags." class="img_interface" src="/img/site/anc-interface-tags-1024.png">
 			</div>
-			<img alt="All Natural Contact CRM standard tags." class="img_interface_mobile" src="/img/site/anc-interface-tags-320mobile.svg">
+			<img alt="All Natural Contact CRM standard tags - mobile." class="img_interface_mobile" src="/img/site/anc-interface-tags-320mobile.png">
 		</div>
   </article>
 
@@ -82,14 +91,14 @@
 		<div class="article_wrap">
 	    <h1>Your procedures. Your way.</h1>
 			<div class="img_interface partial left">
-				<img alt="All Natural Contact CRM process tags." class="img_interface" src="/img/site/anc-interface-contact-1024.svg">
+				<img alt="All Natural Contact CRM process tags." class="img_interface" src="/img/site/anc-interface-contact-1024.png">
 			</div>
 			<div class="article_text right">
 		    <img alt="Process Tags icon." src="/img/site/icn-process-tags.svg">
 		    <h2>Process Tags</h2>
 		    <p>Repeatable procedures help businesses run smoothly. Process Tags allow you to connect your procedures to specific sets of clients. Once clients have been placed into a process tag each milestone connected with that tag becomes an item in a checklist on their page.</p>
 			</div>
-			<img alt="All Natural Contact CRM process tags." class="img_interface_mobile" src="/img/site/anc-interface-process-320mobile.svg">
+			<img alt="All Natural Contact CRM process tags - mobile." class="img_interface_mobile" src="/img/site/anc-interface-process-320mobile.png">
 		</div>
   </article>
 
@@ -102,9 +111,9 @@
 		    <p>If you have clients who need to be contacted weekly or monthly (or any length of time you determine) simply create a Reminder Tag. Anyone linked with the tag, whose last entry in the Conversation Log exceeds the set timeframe will be moved to the top of the list. The amount of time the client is overdue for a call or an email will appear next to their name - an instant follow up list.</p>
 			</div>
 			<div class="img_interface partial right">
-				<img alt="All Natural Contact CRM reminder tags." class="img_interface" src="/img/site/anc-interface-reminder-1024.svg">
+				<img alt="All Natural Contact CRM reminder tags." class="img_interface" src="/img/site/anc-interface-reminder-1024.png">
 			</div>
-			<img alt="All Natural Contact CRM reminder tags." class="img_interface_mobile" src="/img/site/anc-interface-reminder-320mobile.svg">
+			<img alt="All Natural Contact CRM reminder tags - mobile." class="img_interface_mobile" src="/img/site/anc-interface-reminder-320mobile.png">
 		</div>
   </article>
 
@@ -115,23 +124,53 @@
 		    <img alt="Responsive Web App icons." src="/img/site/icn-responsive-web-app.svg">
 		    <h2>Responsive Web App</h2>
 		    <p>Through the technique of responsive design All Natural Contact is functional and looks great on any size of device. Use a smart phone, tablet, laptop or desktop. All Natural Contact loves them all.</p>
-		    <p>Because it is web based All Natural Contact works on any web connected system. It does not care if you use Apple, Android or Windows products. All Natural Contact provides the same great experience regardless of platform.</p>
+		    <p>Because it is web based All Natural Contact works on any modern, web connected system. It does not care if you use iOS, MacOS, Android or Windows products. All Natural Contact provides the same great experience regardless of platform or device (Apple iPhone, Samsung Galaxy, Microsoft Lumia, Sony Xperia, LG Nexus, Moto x and many more).</p>
 			</div>
 			<div class="img_devices"></div>
-	    <div class="caption">Any device with a screen and an internet connection.</div>
+	    <div class="caption">
+				Any modern device with a screen and an internet connection.
+			</div>
 		</div>
   </article>
 
   <article>
+
 		<div class="article_wrap">
-	    <h1>Additional cool stuff.</h1>
+	    <h1>Other cool stuff.</h1>
 			<div class="article_text full">
-		    <ul class="blue_bullet">
+
+				<div class="cool_boxes row row_adjust_18px">
+					<div class="col_1of3">
+						<div class="module_18px">
+							<img alt="Process Tags icon." src="/img/site/icn-multi-select.svg">
+							<h2>Multi Select</h2>
+							<p>We've created an innovative and intuitive new way to select multiple tags or contacts on mobile devices.</p>
+						</div>
+					</div>
+					<div class="col_1of3">
+						<div class="module_18px">
+							<img alt="Process Tags icon." src="/img/site/icn-speed-demon.svg">
+							<h2>Speed Demon</h2>
+							<p>Built to dramatically decresse the lag generally associated with web applications.</p>
+						</div>
+					</div>
+					<div class="col_1of3">
+						<div class="module_18px">
+							<img alt="Process Tags icon." src="/img/site/icn-data-sync.svg">
+							<h2>Instant Sync</h2>
+							<p>Make a change in New York and it will immediately show up on your partners
+				     computer in California.</p>
+					 </div>
+					</div>
+				</div>
+
+		    <ul class="cool_bullets blue_bullet break_768">
 		      <li>Mobile Multi Select - An innovative new way to select multiple tags or contacts on mobile devices.</li>
-		      <li>Speed Demon - Speed that dramatically decresses the lag generally associated with web apps.</li>
-		      <li>Data Sync - Make a change in New York and it will instantly show up on your partners
-		     computer in San Antonio.</li>
+		      <li>Speed Demon - Built to dramatically decresses the lag generally associated with web apps.</li>
+		      <li>Instant Sync - Make a change in New York and it will immediately show up on your partners
+		     computer in California.</li>
 		    </ul>
+
 			</div>
 		</div>
   </article>

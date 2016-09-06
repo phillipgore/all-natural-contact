@@ -12,6 +12,7 @@
 			</div>
 			{{#unless tag.reminderTagType}}<a href="#" class="js_tool_alpha tool_alpha {{#unless alphaTool}}inactive{{/unless}}">ABC...  &#9662;</a>{{/unless}}
 		</div>
+
 		<div class="js_contact_list list scroll top_50">
 			{{#if taggedCount}}
 				<button class="js_loading_top_button offscreen"></button>
@@ -66,7 +67,7 @@
 						<a class="js_multi_select list_select icn_multi_select" href="#"></a>
 					</a>
 				{{/each}}
-				<div class="js_loading_bottom js_list_item list_item txt_center divided hide">&nbsp;</div>
+				<div class="js_loading_bottom js_list_item list_item txt_center divided_white hide">&nbsp;</div>
 			{{else}}
 				{{> contactNone}}
 			{{/if}}

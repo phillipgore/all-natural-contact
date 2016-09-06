@@ -75,7 +75,6 @@ Template.tagReminderInfo.onRendered(function () {
               //Establish the number of contacts actually recieved
               var checkRecieved = setInterval(function() {
                 var receivedContacts = ReminderContacts.find().count()
-
                 if (receivedContacts === expectedContacts) {
                   clearInterval(checkRecieved);
 
@@ -86,7 +85,6 @@ Template.tagReminderInfo.onRendered(function () {
                       clearInterval(checkCount);
 
                       //"Load more" top blank hide/show.
-                      console.log('top: ' + ReminderContacts.findOne({}, {sort:{position: 1}}).position +" "+ 0)
                       if (ReminderContacts.findOne({}, {sort:{position: 1}}).position === 0) {
                         $('.js_loading_top').hide()
                       } else {
@@ -94,7 +92,6 @@ Template.tagReminderInfo.onRendered(function () {
                       }
 
                       //"Load more" bottom blank hide/show.
-                      console.log('bottm: ' + ReminderContacts.findOne({}, {sort:{position: -1}}).position +" "+ (taggedCount - 1))
                       if (ReminderContacts.findOne({}, {sort:{position: -1}}).position === (taggedCount - 1)) {
                         $('.js_loading_bottom').hide();
                       } else {
@@ -177,13 +174,11 @@ Template.tagReminderInfo.onRendered(function () {
     var bottomPos = $('.js_loading_bottom').offset().top -50;
 
     if (topPos === 0 && $('.js_loading_top_button').hasClass('js_active')) {
-      console.log('top clicked')
       $('.js_contact_list_item').addClass('js_existing_contact')
       $('.js_loading_top_button').click();
     }
 
     if (scrollHeight === bottomPos && $('.js_loading_bottom_button').hasClass('js_active')) {
-      console.log('bottom clicked')
       $('.js_contact_list_item').addClass('js_existing_contact')
       $('.js_loading_bottom_button').click();
     }

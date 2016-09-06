@@ -1,4 +1,8 @@
 Template.contactNew.onRendered(function() {
+	if ($(window).width() < 640) {
+		$('.content.two, .content.three, .js_conversation_search, .js_tag_search').hide();
+	}
+
 	$('.icn_add_tag_disabled, .icn_add_contact_disabled, .icn_add_conversation_disabled, .icn_edit_disabled, .icn_delete_disabled, .icn_add_to_tag_disabled').show();
 	$('.icn_add_tag, .icn_add_contact, .icn_add_conversation, .icn_edit, .icn_delete, .icn_add_to_tag').hide();
 

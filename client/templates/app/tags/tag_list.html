@@ -1,18 +1,19 @@
 <template name="tagList">
-
 	<div class="toolbar gray">
 		<div class="toolbar_img icn_tag_gray"></div>
 		<h1>Tags</h1>
 		<a href="#" class="js_tool_tag_alpha tool_alpha {{#unless alphaToolTag}}inactive{{/unless}}">ABC...  &#9662;</a>
 	</div>
+
 	<div class="js_tag_list list scroll top_50">
-		<a id="all_contacts_tag" class="js_all_tag_item list_item divided list_icon" href="#">
+		<a id="all_contacts_tag" data-tag-reminder="false" class="js_all_tag_item list_item divided list_icon" href="#">
 			<div class="icon_box icn_tag"></div>All Contacts
 			<div class="list_select icn_multi_go"></div>
 		</a>
 		{{#if tags}}
 			<button class="js_loading_top_button offscreen"></button>
-			<div class="js_loading_top js_list_item list_item divided txt_center hide">&nbsp;</div>
+			<button class="js_loading_bottom_button offscreen"></button>
+			<div class="js_loading_top js_list_item list_item divided txt_center divided hide">&nbsp;</div>
 			{{#each tags}}
 			<a id="{{_id}}" data-tag-name="{{tagName}}" data-has-tags="{{has_tags}}" data-tag-reminder="{{reminderTagType}}" class="{{#if processTagType}}js_process_tag_item{{else}}js_tag_item{{/if}} js_tag_list_item list_item divided list_icon multi_select" href="{{#if processTagType}}/list/process/tags/{{_id}}{{else}}#{{/if}}">
 				<div class="icon_box {{#if standardTagType}}{{#if personal}}icn_tag_personal{{else}}icn_tag{{/if}}{{/if}} {{#if reminderTagType}}{{#if personal}}icn_tag_reminder_personal{{else}}icn_tag_reminder{{/if}}{{/if}} {{#if processTagType}}{{#if personal}}icn_tag_process_personal{{else}}icn_tag_process{{/if}}{{/if}} {{#if milestoneTagType}}{{#if personal}}icn_tag_milestone_personal{{else}}icn_tag_milestone{{/if}}{{/if}}"></div>
@@ -22,8 +23,7 @@
 				<a class="js_multi_select list_select icn_multi_select" href="#"></a>
 			</a>
 			{{/each}}
-			<div class="js_loading_bottom js_list_item list_item txt_center hide">&nbsp;</div>
-			<button class="js_loading_bottom_button offscreen"></button>
+			<div class="js_loading_bottom js_list_item list_item txt_center divided_white hide">&nbsp;</div>
 		{{else}}
 			{{> tagNone}}
 		{{/if}}

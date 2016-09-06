@@ -83,7 +83,6 @@ Template.layout.events({
 	},
 
 	'click .js_tool': function(e) {
-
 		$('.js_tool').removeClass('js_tool_current active');
 		$(e.target).addClass('js_tool_current active');
 
@@ -100,6 +99,7 @@ Template.layout.events({
 	},
 
 	'click .js_label': function(e) {
+		e.preventDefault();
 		var parent = $(e.currentTarget).parent()
 		var data_value = $(parent).find('.js_input_label').val();
 		var option = $(parent).find('[data-value="' + data_value + '"]');
@@ -130,6 +130,7 @@ Template.layout.events({
 	},
 
 	'click .js_option': function(e) {
+		e.preventDefault();
 		var data_value = $(e.target).attr('data-value');
 		$(e.target).parentsUntil('.js_input').find('.js_label_txt').html(data_value);
 		$(e.target).parentsUntil('.js_input').find('.js_input_label').val(data_value);
@@ -191,6 +192,7 @@ Template.layout.events({
 	},
 
 	'click .js_tool_controls': function(e) {
+		e.preventDefault()
 		$('.js_sheet_action').slideUp(100);
 		$('.js_sheet_alpha').slideUp(100);
 		$('.js_sheet_alpha_tag').slideUp(100);
@@ -200,6 +202,7 @@ Template.layout.events({
 	},
 
 	'click .js_tool_action': function(e) {
+		e.preventDefault()
 		$('.js_sheet_controls').slideUp(100);
 		$('.js_sheet_alpha').slideUp(100);
 		$('.js_sheet_alpha_tag').slideUp(100);
@@ -209,6 +212,7 @@ Template.layout.events({
 	},
 
 	'click .js_tool_alpha': function(e) {
+		e.preventDefault()
 		if (!$(e.target).hasClass('inactive')) {
 			$('.js_sheet_action').slideUp(100);
 			$('.js_sheet_controls').slideUp(100);
@@ -220,6 +224,7 @@ Template.layout.events({
 	},
 
 	'click .js_tool_tag_alpha': function(e) {
+		e.preventDefault()
 		if (!$(e.target).hasClass('inactive')) {
 			$('.js_sheet_action').slideUp(100);
 			$('.js_sheet_controls').slideUp(100);
@@ -231,6 +236,7 @@ Template.layout.events({
 	},
 
 	'click .js_tool_fields': function(e) {
+		e.preventDefault()
 		if (!$(e.target).hasClass('inactive')) {
 			$('.js_sheet_action').slideUp(100);
 			$('.js_sheet_controls').slideUp(100);
@@ -242,8 +248,6 @@ Template.layout.events({
 	},
 
 	'click .js_remove_contact': function(e) {
-		e.preventDefault();
-
 		var tag = TagSelect.findOne()
 		if (tag.milestoneTagType) {
 			var tag_ids = [tag.tagId]
@@ -272,13 +276,18 @@ Template.layout.events({
 					currentContact: '',
 					currentNameLast: ''
 				});
-				Router.go('/info/tag/' + Session.get('currentTag'))
+				if (Session.get('reminderTag')) {
+					Router.go('/reminder/info/tag/' + Session.get('currentTag'))
+				} else if (Session.get('milestoneTag')) {
+					Router.go('/info/tag/' + Session.get('milestoneTag'))
+				} else {
+					Router.go('/info/tag/' + Session.get('currentTag'))
+				}
 			}
 		});
 	 },
 
 	'click .js_delete_contact': function(e) {
-		e.preventDefault();
 		$('.js_delete').attr('disabled', 'disabled');
 		$('.js_delete').text('Deleting...').addClass('js_inactive');
 		$('.js_deleting_msg').show();
@@ -301,13 +310,18 @@ Template.layout.events({
 					currentContact: '',
 					currentNameLast: ''
 				});
-				Router.go('/info/tag/' + Session.get('currentTag'));
+				if (Session.get('reminderTag')) {
+					Router.go('/reminder/info/tag/' + Session.get('currentTag'))
+				} else if (Session.get('milestoneTag')) {
+					Router.go('/info/tag/' + Session.get('milestoneTag'))
+				} else {
+					Router.go('/info/tag/' + Session.get('currentTag'))
+				}
 			}
 		});
 	},
 
 	'click .js_delete_conversation': function(e) {
-		e.preventDefault();
 		$('.js_delete').attr('disabled', 'disabled');
 		$('.js_delete').text('Deleting...').addClass('js_inactive');
 		$('.js_deleting_msg').show();
@@ -330,7 +344,6 @@ Template.layout.events({
 	},
 
 	'click .js_delete_tag': function(e) {
-	 	e.preventDefault();
 		$('.js_delete').attr('disabled', 'disabled');
 		$('.js_delete').text('Deleting...').addClass('js_inactive');
 		$('.js_deleting_msg').show();

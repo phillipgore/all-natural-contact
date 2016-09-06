@@ -62,4 +62,20 @@ Template.data.helpers({
 	startUp: function() {
 		return Session.get('startUp')
 	},
+
+	rememberMe: function() {
+		return Meteor.user({_id: Meteor.userId()}).profile.remember_me
+	},
+
+	logoutTime: function() {
+		return Meteor.user({_id: Meteor.userId()}).profile.logout_time
+	},
+
+	groupCreated: function() {
+		return Groups.findOne().created_on
+	},
+
+	freeTrialExpires: function() {
+		return moment(Groups.findOne().created_on).add(Controls.findOne().freeTrial, 'd')
+	}
 });

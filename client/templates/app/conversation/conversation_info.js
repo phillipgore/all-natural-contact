@@ -139,6 +139,7 @@ Template.conversationInfo.onRendered(function() {
 
 		onClose: function(context) {
 			$('.js_tool_date').addClass('js_inactive');
+			if ($('.js_list_date').attr('data-date'))
 			var reload = false;
 			var firstDate = moment(Conversations.findOne({}, {sort: {conversation_date: -1}}).conversation_date).format('YYYY-MM-DD');
 			var firstVisibleDate = moment($('.js_conversation_list').find('.js_conversation_list_item').attr('data-conversation-date')).format('YYYY-MM-DD');
@@ -254,7 +255,7 @@ Template.conversationInfo.helpers({
 	},
 
 	conversationsScroll: function() {
-		return ConversationInfiniteScroll.find();
+		return ConversationInfiniteScroll.find({}, {sort: {conversation_date: -1}});
 	},
 
 	dateTool: function() {
@@ -298,7 +299,7 @@ Template.conversationInfo.events({
 	},
 
 	'click .js_loading_bottom_button': function() {
-
+		
 		$('.js_loading_top_button, .js_loading_bottom_button').removeClass('js_active');
 		$('.js_conversation_list').addClass('disable_scrolling');
 
@@ -327,6 +328,8 @@ Template.conversationInfo.events({
 	},
 
 	'click .js_tool_date': function(e) {
+		e.preventDefault();
+
 		if (!$(e.target).hasClass('inactive')) {
 			if ($(e.target).hasClass('js_inactive')) {
 				e.stopPropagation();
@@ -334,6 +337,7 @@ Template.conversationInfo.events({
 				$(e.target).removeClass('js_inactive');
 				var input = $('.js_datepicker').pickadate();
 				var picker = input.pickadate('picker');
+				$('.js_list_date').show();
 				picker.open();
 			} else {
 				$(e.target).addClass('js_inactive');
@@ -343,17 +347,21 @@ Template.conversationInfo.events({
 
 	'click .js_tool_newest_entry': function(e) {
 		e.preventDefault();
+		e.stopPropagation();
 		var firstDate = moment(Conversations.findOne({}, {sort: {conversation_date: -1}}).conversation_date).format('YYYY-MM-DD');
 		$('.js_datepicker').val(firstDate);
 	},
 
 	'click .js_tool_oldest_entry': function(e) {
 		e.preventDefault();
+		e.stopPropagation();
 		var lastDate = moment(Conversations.findOne({}, {sort: {conversation_date: 1}}).conversation_date).format('YYYY-MM-DD');
 		$('.js_datepicker').val(lastDate);
 	},
 
 	'click .js_conversation_list_item': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		if (!$(e.target).hasClass('js_multi_select_single') && !$(e.target).hasClass('js_multi_select')) {
 			if ($(e.target).hasClass('js_conversation_list_item')) {
 				var conversationId = $(e.target).attr('id');
@@ -375,6 +383,8 @@ Template.conversationInfo.events({
 	},
 
 	'click .js_multi_select_single': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		var conversationId = $(e.target).parent().attr('id');
 		if ($('.js_conversation_list_item').hasClass('js_current') && !$(e.target).parent().hasClass('js_current')) {
 			var multi = ConversationSelect.findOne({conversationId: conversationId});
@@ -389,6 +399,8 @@ Template.conversationInfo.events({
 	},
 
 	'click .js_multi_select': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		var selectId = '#' + $(e.target).parent().attr('id');
 
 		if ($(selectId).hasClass('js_current')) {

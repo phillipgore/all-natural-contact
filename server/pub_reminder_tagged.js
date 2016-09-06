@@ -42,7 +42,6 @@ Meteor.reactivePublish('reminderContacts', function(tagId, contactScrollDir, con
     			// a must be equal to b
     			return 0;
     		});
-        //console.log('CONTACT: ' + contact._id +" "+ contact.first +" "+ contact.last +" "+ 'ACCEPTED: ' + accepted[0].date +" "+ accepted[0].label)
     		var contactProperties = {
     			_id: contact._id,
     			groupId: contact.groupId,
@@ -94,25 +93,15 @@ Meteor.reactivePublish('reminderContacts', function(tagId, contactScrollDir, con
 				var first = pivotIndex[0] <= 150;
 				var start = pivotIndex[0] - 150;
 				var end = pivotIndex[0] + 150;
-        var last = reminderContacts.length - start <= 150;
+        var last = reminderContacts.length - start <= 300;
 			} else if (contactScrollDir === 'down') {
 				var first = false;
 				var start = pivotIndex[0] - 50;
 				var end = pivotIndex[0] + 250;
-        var last = reminderContacts.length - start <= 250;
+        var last = reminderContacts.length - start <= 300;
 			}
 
       if (reminderContacts.length > 300) {
-        console.log(contactPivotNameLast)
-        console.log(pivotIndex[0])
-        console.log('contactScrollDir: ' + contactScrollDir + '\n')
-
-        console.log('first: ' + first)
-        console.log('start: ' + start)
-        console.log('end: ' + end)
-        console.log('last: ' + last + '\n')
-
-
         if (first) {
           var reminderContacts = reminderContacts.slice(0, 300)
         } else if (last) {
@@ -121,9 +110,6 @@ Meteor.reactivePublish('reminderContacts', function(tagId, contactScrollDir, con
           var reminderContacts = reminderContacts.slice(start, end);
         }
       }
-
-      console.log('sent: ' + reminderContacts.length)
-      console.log('\n/----------------------------------------/\n')
 
       _.each(reminderContacts, function(contact) {
         self.added('reminderContacts', contact._id, contact);
