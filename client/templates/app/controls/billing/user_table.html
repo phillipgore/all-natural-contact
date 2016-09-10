@@ -1,0 +1,51 @@
+<template name="userTable">
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th class="txt_center">Role</th>
+        <th class="txt_right">Per Month</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each activeUsers}}
+        <tr>
+          <td>{{profile.first}} {{profile.last}}</td>
+          <td class="txt_center">
+            {{#if emails.[0].verified}}
+              {{#if role.administrator}}
+                Admin
+              {{/if}}
+              {{#if role.user}}
+                User
+              {{/if}}
+              {{#if role.inactive}}
+                Inactive
+              {{/if}}
+            {{else}}
+              Unverified
+            {{/if}}
+          </td>
+          <td class="txt_right">
+            {{#if emails.[0].verified}}
+              {{#if role.inactive}}
+                $0
+              {{else}}
+                $15
+              {{/if}}
+            {{else}}
+              $0
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="txt_right">Total: ${{totalCharge}}</th>
+      </tr>
+    </tfoot>
+  </table>
+</template>

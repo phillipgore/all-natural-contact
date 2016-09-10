@@ -29,6 +29,23 @@ html {
 	z-index: 4000;
 }
 
+#app .header_logo {
+	color: #fff;
+  display: inline-block;
+	/*width: 200px;*/
+  margin: 9px 9px;
+}
+
+#app .header_logo img {
+	float: left;
+	margin-right: 6px
+}
+
+#app .header_logo_txt {
+	white-space: nowrap;
+	margin: 8px 0px 0px 0px;
+}
+
 h1 {
 	font-weight: 300;
 	font-style: normal;
@@ -49,7 +66,7 @@ h2 {
 }
 
 h3 {
-	margin: 18px 0 6px 0;
+	margin: 18px 0 9px 0;
 	font-size: 18px;
 	padding: 0;
 	font-weight: 300;
@@ -59,6 +76,10 @@ p {
 	line-height: 22px;
 	font-size: 13px;
 	margin-bottom: 14px;
+}
+
+p.margin_none {
+	margin-bottom: 0px;
 }
 
 ol, ul {
@@ -73,6 +94,26 @@ a, button {
 	color: #000;
 }
 
+table {
+	width: 100%;
+	font-size: 13px;
+}
+
+th {
+	color: #294A6C;
+	text-align: left;
+	padding: 9px 0px;
+}
+
+tbody {
+	border-top: 1px solid #CFDAE4;
+}
+
+td {
+	padding: 9px 0px;
+	border-bottom: 1px solid #CFDAE4;
+}
+
 em {
 	font-style: normal;
 	/*background-color: #ffeda4;
@@ -81,7 +122,11 @@ em {
 }
 
 .txt_container {
-	padding: 18px 9px;
+	padding: 0px 9px 6px 9px;
+}
+
+.cc_container {
+	padding: 0px 9px;
 }
 
 .hide_mobile_inline {
@@ -2244,6 +2289,11 @@ button.btn {
 
 .width_94px {
 	width: 94px;
+}
+
+.spacer_72px {
+	height: 72px;
+	background: pink;
 }
 
 .orange {

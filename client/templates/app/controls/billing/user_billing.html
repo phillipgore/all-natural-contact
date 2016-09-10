@@ -5,22 +5,37 @@
 	</div>
 	<div class="top_50 scroll bg_gray">
 		{{#if controls.publicBeta}}
-			<div class="input_full ">
-				<h3>Free Public Beta.</h3>
+			<div class="txt_container ">
+				<h3>Free public beta.</h3>
 				<p>All Natural Contact is free to use until public beta testing is concluded.</p>
 			</div>
 		{{else}}
 			{{#if freeTrialExpired}}
-				<div class="js_billing_save_head input_full">
-					<h3 class="js_billing_header">Your {{controls.freeTrial}} day free trial has expired.</h3>
-					<p>Please enter your credit card information to continue using All Natural Contact.</p>
+				<div class="js_billing_save_head txt_container">
+					<h3 class="js_billing_header">Your free trial has expired.</h3>
+					<p>Your {{controls.freeTrial}} day free trial has expired. Please enter your credit card information to continue using All Natural Contact.</p>
+				</div>
+				<div class="js_billing_update_head txt_container">
+					<h3 class="js_billing_header">Review your monthly charges.</h3>
+					{{> userTable}}
+				</div>
+				<div class="js_billing_update_head cc_container">
+					<h3 class="js_billing_header">Input your credit card information.</h3>
 				</div>
 				{{> groupCard}}
 			{{else}}
-				<div class="js_billing_update_head input_full">
+				<div class="js_billing_save_head txt_container">
+					<h3 class="js_billing_header">Please enjoy your free trial.</h3>
+					<p>You have {{freeTrialDaysRemain}} days remaing of your {{controls.freeTrial}} day free trial. On {{formatDateLong freeTrialExpirationDate}} you will be asked to enter your credit card information to continue using All Natural Contact. At that time the following monthly charges will begin to apply.</p>
+				</div>
+				<div class="js_billing_update_head txt_container">
+					<h3 class="js_billing_header">Review your future charges.</h3>
+					{{> userTable}}
+				</div>
+				<!-- <div class="js_billing_update_head cc_container">
 					<h3 class="js_billing_header">Update Your Credit Card.</h3>
 				</div>
-				{{> groupCard}}
+				{{> groupCard}} -->
 			{{/if}}
 		{{/if}}
 	</div>

@@ -1,16 +1,17 @@
 <template name="groupCard">
-  <form class="js_user_billing_update_form pos_relative" id="user_billing_update_form" action="action">
+  <div class="red_alert_msg hide"></div>
+  <form class="js_user_billing_update_form pos_relative" id="billing_form" action="action">
 
 		<fieldset class="input_wrap">
-			<div class="input_full">
-          <input type="text" data-stripe='cardNarm' name="fullName" placeholder="Name On Card">
-      </div>
+			<!-- <div class="input_full">
+        <input type="text" data-stripe='cardEmail' placeholder="Email">
+      </div> -->
 
       <div class="input_full horizontal_2">
         <div class="col_4of5">
           <div class="js_input">
             <div class="input_horizontal_box">
-              <input type="text" data-stripe="cardNumber" placeholder="Card Number">
+              <input type="text" data-stripe="cardNumber" placeholder="Card Number" value="4242424242424242">
             </div>
           </div>
         </div>
@@ -18,7 +19,7 @@
         <div class="col_1of5">
           <div class="js_input">
             <div class="input_horizontal_box">
-              <input type="text" data-stripe="cvc" placeholder="CVC">
+              <input type="text" data-stripe="cvc" placeholder="CVC" value="220">
             </div>
           </div>
         </div>
@@ -48,5 +49,4 @@
 
     </fieldset>
   </form>
-  <div class="red_alert_msg hide">Hello</div>
 </template>

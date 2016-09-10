@@ -1,13 +1,14 @@
-<template name="userAccountName">
+<template name="userAccountInfo">
 	{{> blankSaving}}
 	<div class="toolbar gray">
 		<div class="toolbar_img icn_account_name_gray"></div>
-		<h1>Account Name</h1>
+		<h1>Account Information</h1>
 	</div>
 	<form class="js_account_name_update_form top_50 scroll bg_gray" id="account_name_update_form" action="action">
 		<div class="js_red_alert_msg red_alert_msg hide"></div>
 		<fieldset class="input_wrap">
 			<div class="input_full">
+				<label class="block">Account Name</label>
 				<input class="js_required" type="text" name="account_name_update" id="account_name_update" placeholder="Account Name*" value="{{group.name}}"/>
 			</div>
 		</fieldset>

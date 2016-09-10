@@ -4,12 +4,12 @@
 				<a class="js_cancel_billing btn block" href="{{pathFor 'settings'}}">Return To Settings</a>
 			{{else}}
 				{{#if freeTrialExpired}}
-					<a class="js_billing_submit btn white block" href="#">Charge Credit Card</a>
-				{{else}}
-					<a class="js_cancel_billing btn" href="{{pathFor 'settings'}}">Cancel</a>
+					<a class="js_sign_out_billing btn" href="#">Sign Out</a>
 					<span class="fl_right">
-						<a class="js_billing_submit btn white" href="#">Update</a>
+						<a class="js_billing_submit btn white" href="#">Submit Payment</a>
 					</span>
+				{{else}}
+					<a class="js_cancel_billing btn block" href="{{pathFor 'settings'}}">Return to Settings</a>
 				{{/if}}
 			{{/if}}
 		 </div>

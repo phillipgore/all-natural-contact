@@ -8,23 +8,25 @@
 			</div>
 		</div>
 	</div>
-	<header class="toolbar top">
-		<div class="js_toolbar_disable js_header_toolbar_disable toolbar_disable hide"></div>
-		<div class="toolbox one">{{> headerSearch}}</div>
-		<div class="toolbox two">{{> headerToolbar}}</div>
-	</header>
-		{{> contactImageUpload}}
-		<div class="content one">{{> yield }}</div>
-		<div class="content two">{{> yield region='contentTwo'}}</div>
-		<div class="content three">{{> yield region='contentThree'}}</div>
-		{{> controls}}{{> action}}{{> contactAlpha}}{{> tagAlpha}}
-	<footer class="toolbar bottom">
-		<div class="js_toolbar_disable js_footer_toolbar_disable toolbar_disable hide"></div>
-		<div class="toolbox one">{{> yield region='footerOne'}}</div>
-		<div class="toolbox two">
-			<div class="js_toolbox_three toolbox three">{{> footerConversationProcess}}</div>
-		</div>
-	</footer>
-	<div class="data">{{> yield region='data'}}</div>
+	<span id="app">
+		<header class="toolbar top">
+			<div class="js_toolbar_disable js_header_toolbar_disable toolbar_disable hide"></div>
+			<div class="toolbox one">{{> headerSearch}}</div>
+			<div class="toolbox two">{{> headerToolbar}}</div>
+		</header>
+			{{> contactImageUpload}}
+			<div class="content one">{{> yield }}</div>
+			<div class="content two">{{> yield region='contentTwo'}}</div>
+			<div class="content three">{{> yield region='contentThree'}}</div>
+			{{> controls}}{{> action}}{{> contactAlpha}}{{> tagAlpha}}
+		<footer class="toolbar bottom">
+			<div class="js_toolbar_disable js_footer_toolbar_disable toolbar_disable hide"></div>
+			<div class="toolbox one">{{> yield region='footerOne'}}</div>
+			<div class="toolbox two">
+				<div class="js_toolbox_three toolbox three">{{> footerConversationProcess}}</div>
+			</div>
+		</footer>
+		<div class="data">{{> yield region='data'}}</div>
+	</span>
 
 </template>

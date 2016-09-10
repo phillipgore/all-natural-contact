@@ -39,10 +39,30 @@ Template.layout.onRendered(function() {
 			$('.content.two, .content.three, .js_toolbox_three').hide();
 			$('.js_profile_toolbar, .js_contact_info').show();
 			$('.js_tool_profile').addClass('js_tool_current active');
+			$('.icn_controls').show();
 		}
 
 		if ($(window).width() >= 768) {
 			$('.js_sheet_action').hide();
+			$('.icn_action, .icn_action_disabled').hide();
+			if (Session.get('billingExpired')) {
+				$('..icn_controls').hide();
+				$('.icn_controls_disabled').show();
+			} else {
+				$('.icn_controls_disabled').hide();
+				$('.icn_controls').show();
+			}
+		}
+
+		if ($(window).width() < 768) {
+			$('.js_sheet_action').hide();
+			if (Session.get('billingExpired')) {
+				$('.icn_controls, .icn_action').hide();
+				$('.icn_controls_disabled, .icn_action_disabled').show();
+			} else {
+				$('.icn_controls_disabled, .icn_action_disabled').hide();
+				$('.icn_controls, .icn_action').show();
+			}
 		}
 
 		if ($(window).width() > 962) {

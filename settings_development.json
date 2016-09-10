@@ -9,10 +9,10 @@
         "cents": 1500,
         "usd": "$15"
       },
-      "limit": 1,
       "interval": "month"
     }],
-    "stripePublishableKey": "pk_test_z9qioT2pcpTSSQViE1sXjCHA"
+    "stripePublishableKey": "pk_test_z9qioT2pcpTSSQViE1sXjCHA",
+    "trialTime": "d"
   },
   "private": {
     "stripeSecretKey": "sk_test_gWbfk5UGuB6HHP7FJi1z80ak",

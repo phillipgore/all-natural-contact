@@ -7,8 +7,8 @@
 	{{#if isAdmin}}
 		<div class="list_item_division">Manage Account</div>
 		{{#unless currentUser.role.app_administrator}}
-			<a class="js_list_item js_account_name list_item divided list_icon" href="{{pathFor 'userAccountName'}}">
-				<div class="icon_box icn_account_name"></div>Account Name
+			<a class="js_list_item js_account_name list_item divided list_icon" href="{{pathFor 'userAccountInfo'}}">
+				<div class="icon_box icn_account_name"></div>Account Information
 			</a>
 		{{/unless}}
 		<a class="js_list_item js_users list_item divided list_icon" href="{{pathFor 'userNew'}}">

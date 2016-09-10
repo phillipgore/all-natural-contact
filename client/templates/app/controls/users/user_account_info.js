@@ -1,4 +1,4 @@
-Template.userAccountName.onRendered(function() {
+Template.userAccountInfo.onRendered(function() {
 	$('.icn_add_tag, .icn_add_contact, .icn_add_conversation_disabled, .icn_edit_disabled, .icn_delete_disabled, .icn_add_to_tag_disabled').show();
 	$('.icn_add_tag_disabled, .icn_add_contact_disabled, .icn_add_conversation, .icn_edit, .icn_delete, .icn_add_to_tag').hide();
 
@@ -6,13 +6,13 @@ Template.userAccountName.onRendered(function() {
 });
 
 
-Template.userAccountName.helpers({
+Template.userAccountInfo.helpers({
 	group: function() {
 		return Groups.findOne();
 	},
 });
 
-Template.userAccountName.events({
+Template.userAccountInfo.events({
 	'submit .js_account_name_update_form': function(e) {
 		e.preventDefault();
 
@@ -32,7 +32,22 @@ Template.userAccountName.events({
 				if (error) {
 					return alert(error.reason);
 				} else {
-					Router.go('settings');
+					// Meteor.call('stripeCreateCustomer', customer.token, customer.emailAddress, function(error, stripeCustomer){
+				  //   if (error) {
+				  //     console.log(error);
+				  //   } else {
+				  //     var customerId = stripeCustomer.id,
+				  //         plan       = customer.plan;
+					//
+				  //     Meteor.call('stripeCreateSubscription', customerId, plan, function(error, response){
+				  //       if (error) {
+				  //         console.log(error);
+				  //       } else {
+				  //         // If all goes well with our subscription, we'll handle it here.
+				  //       }
+				  //     });
+				  //   }
+				  // });
 				}
 			});
 		} else {

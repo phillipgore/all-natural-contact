@@ -12,7 +12,7 @@ Meteor.publish('groupData', function() {
 		var app_admin = Meteor.users.findOne({_id: this.userId}).role.app_administrator;
 		return [
 			//Meteor.users.find({"profile.belongs_to_group": groupId}, {fields: {emails: 1, profile: 1, role: 1, fields: 1}}),
-			Meteor.users.find({"profile.belongs_to_group": groupId}, {fields: {"profile.first": 1, "profile.last": 1, role: 1, fields: 1}}),
+			Meteor.users.find({"profile.belongs_to_group": groupId}, {fields: {createdAt: 1, "profile.first": 1, "profile.last": 1, role: 1, fields: 1}}),
 			Groups.find({_id: groupId})
 		]
 	} else {
