@@ -52,3 +52,14 @@ Meteor.publish('settingsData', function() {
 		return this.ready();
 	}
 });
+
+Meteor.publish('officeStats', function() {
+	var role = Meteor.users.findOne({_id: this.userId}).role.app_administrator
+
+	if (role) {
+		Counts.publish(this, 'groupCount', Groups.find());
+		Counts.publish(this, 'userCount', Meteor.users.find());
+	} else {
+		return this.ready();
+	}
+})

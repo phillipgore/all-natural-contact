@@ -197,6 +197,10 @@ em {
 	bottom: 50px;
 }
 
+.scroll.bottom_padding_50 {
+	padding-bottom: 50px;
+}
+
 /* @end */
 
 /* @group Alert */
@@ -2173,6 +2177,10 @@ button.btn {
 
 .txt_white {
 	color: #fff;
+}
+
+.txt_blue {
+	color: #294A6C;
 }
 
 .bg_gray {

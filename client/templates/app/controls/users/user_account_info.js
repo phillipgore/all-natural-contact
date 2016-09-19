@@ -28,26 +28,11 @@ Template.userAccountInfo.events({
 				name: group_name
 			};
 
-			Meteor.call('groupUpdate', group_id, groupProperties, function(error, result) {
+			Meteor.call('groupUpdate', group_id, groupProperties, function(error) {
 				if (error) {
 					return alert(error.reason);
 				} else {
-					// Meteor.call('stripeCreateCustomer', customer.token, customer.emailAddress, function(error, stripeCustomer){
-				  //   if (error) {
-				  //     console.log(error);
-				  //   } else {
-				  //     var customerId = stripeCustomer.id,
-				  //         plan       = customer.plan;
-					//
-				  //     Meteor.call('stripeCreateSubscription', customerId, plan, function(error, response){
-				  //       if (error) {
-				  //         console.log(error);
-				  //       } else {
-				  //         // If all goes well with our subscription, we'll handle it here.
-				  //       }
-				  //     });
-				  //   }
-				  // });
+					Router.go('settings');
 				}
 			});
 		} else {

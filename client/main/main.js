@@ -1,6 +1,9 @@
 Meteor.startup(function () {
 	Retina({retinajs: true, attribute : 'data-retina'});
-	
+
+	var stripeKey = Meteor.settings.public.stripePublishableKey;
+  Stripe.setPublishableKey( stripeKey );
+
 	Session.set({
 		startUp: true,
 		billingExpired: false,
@@ -86,6 +89,19 @@ UI.registerHelper('bottomClick', function() {
 
 UI.registerHelper('tagInfoRoute', function() {
 	return '/info/tag/' + Session.get('currentTag')
+});
+
+UI.registerHelper('formatCardMonth', function(datetime) {
+	if (datetime < 10) {
+		var expMonth = '0' + datetime.toString();
+	} else {
+		var expMonth = datetime.toString();
+	}
+	return expMonth
+});
+
+UI.registerHelper('formatCardYear', function(datetime) {
+	return datetime.toString().slice(2)
 });
 
 UI.registerHelper('date', function(datetime) {

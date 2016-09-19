@@ -242,6 +242,16 @@
   margin-right: 27px
 }
 
+#office .list_item {
+  font-size: 16px;
+  padding: 16px 9px 17px 9px;
+  margin: 0px;
+  display: block;
+  border-bottom: #A3CCAD solid 1px;
+  display: flex;
+  align-items: center;
+}
+
 #office .group_list_item {
   font-size: 16px;
   padding: 11px 9px 11px 9px;

@@ -1,0 +1,10 @@
+<template name="cardInfo">
+  <div class="txt_container">
+    <h3>Current credit card.</h3>
+    <p>
+      <span class="txt_ext_small txt_blue txt_bold">Card Type: </span>{{card.brand}}<br>
+      <span class="txt_ext_small txt_blue txt_bold">Expiration: </span>{{formatCardMonth card.expMonth}}/{{card.expYear}}<br>
+      <span class="txt_ext_small txt_blue txt_bold">Last 4 Digits: </span>...{{card.lastDigits}}
+    </p>
+  </div>
+</template>

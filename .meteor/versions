@@ -75,6 +75,7 @@ mdg:validation-error@0.5.1
 meteor@1.1.16
 meteor-base@1.0.4
 meteor-platform@1.2.6
+meteorhacks:async@1.0.0
 meteorhacks:ssr@2.2.0
 meteorspark:util@0.2.0
 minifier-css@1.1.13

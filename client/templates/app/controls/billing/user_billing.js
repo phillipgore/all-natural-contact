@@ -8,8 +8,20 @@ Template.userBilling.helpers({
 		return Meteor.user();
 	},
 
+	currentGroup: function() {
+		return Groups.findOne();
+	},
+
 	controls: function() {
 		return Controls.findOne();
+	},
+
+	groupCardExists: function() {
+		if (Groups.findOne().stripeSubcription) {
+			return true;
+		} else {
+			return false;
+		}
 	},
 
 	freeTrialExpired: function() {
