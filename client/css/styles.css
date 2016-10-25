@@ -2211,6 +2211,12 @@ button.btn {
 	border-top: 1px solid #CFDAE4;
 }
 
+.border_spacer {
+	margin-top: 12px;
+	/*padding-bottom: 12px;*/
+	border-top: 1px solid #CFDAE4;
+}
+
 .min_100 {
 	min-height: 100%;
 }

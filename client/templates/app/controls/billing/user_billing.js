@@ -12,6 +12,30 @@ Template.userBilling.helpers({
 		return Groups.findOne();
 	},
 
+	adminPause: function() {
+		if (Groups.findOne().stripePause === "adminPause") {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
+	adminPauseTimeout: function() {
+		if (moment.unix(Groups.findOne().stripeEnd).utc().valueOf() >= moment().utc().valueOf()) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
+	failPause: function() {
+		if (Groups.findOne().stripePause === "failPause") {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
 	controls: function() {
 		return Controls.findOne();
 	},

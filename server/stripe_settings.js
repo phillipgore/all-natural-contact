@@ -69,6 +69,30 @@ Meteor.methods({
     }
   },
 
+  getSubscription: function() {
+    var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
+    var stripeId = Groups.findOne({_id: groupId}).stripeId;
+    var stripeSubcription = Groups.findOne({_id: groupId}).stripeSubcription;
+
+    if (stripeSubcription == null) {
+      throw new Meteor.Error(500, 'This account has no subscription on record.', 'Stripe-Subscription Does Not Exist')
+    } else {
+      var subscriptionDetails = Async.runSync(function(complete) {
+        Stripe.customers.retrieveSubscription(stripeId, stripeSubcription, function(error, result) {
+            complete(error, result)
+        })
+      });
+
+      var subDetails = subscriptionDetails.result;
+      return {
+        subInfo: {
+          current_period_end: subDetails.current_period_end,
+          status: subDetails.status,
+        }
+      }
+    }
+  },
+
   updateSubscriptionQuantity: function(quantity) {
     var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
     var stripeId = Groups.findOne({_id: groupId}).stripeId;
@@ -86,13 +110,56 @@ Meteor.methods({
     }
   },
 
+  cancelSubscription: function() {
+    var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
+    var stripeId = Groups.findOne({_id: groupId}).stripeId;
+    var stripeSubcription = Groups.findOne({_id: groupId}).stripeSubcription;
+
+    if (stripeSubcription == null) {
+      throw new Meteor.Error(500, 'This account has no subscription on record.', 'Stripe-Subscription Does Not Exist')
+    } else {
+
+      var subscriptionCancel = Async.runSync(function(complete) {
+        Stripe.customers.cancelSubscription(stripeId, {at_period_end: true}, function(error, result) {
+            complete(error, result)
+        })
+      });
+      var subDetails = subscriptionCancel.result;
+
+      if (subscriptionCancel.error) {
+        throw new Meteor.Error("stripe-error", subscriptionCancel.error.message)
+      } else {
+        return {
+          subInfo: {
+            current_period_end: subDetails.current_period_end,
+            status: subDetails.status,
+          }
+        }
+      }
+    }
+  },
+
+  reactivateSubscription: function() {
+    var groupId = Meteor.users.findOne({_id: this.userId}).profile.belongs_to_group;
+    var stripeId = Groups.findOne({_id: groupId}).stripeId;
+    var stripeSubcription = Groups.findOne({_id: groupId}).stripeSubcription;
+
+    if (stripeSubcription == null) {
+      throw new Meteor.Error(500, 'This account has no subscription on record.', 'Stripe-Subscription Does Not Exist')
+    } else {
+
+      var subscriptionReactivate = Async.runSync(function(complete) {
+        Stripe.customers.updateSubscription(stripeId, {plan: 'simple'}, function(error, result) {
+          complete(error, result)
+        });
+      });
+      console.log(subscriptionReactivate.result)
+      if (subscriptionReactivate.error) {
+        throw new Meteor.Error("stripe-error", subscriptionReactivate.error.message)
+      } else {
+        return
+      }
+    }
+  },
+
 });
-
-Router.route('/webhook/stripe', function () {
-  var request = this.request.body;
-
-  console.log(request)
-
-  this.response.statusCode = 200;
-  this.response.end('Oh hai Stripe!\n');
-}, {where: 'server'});

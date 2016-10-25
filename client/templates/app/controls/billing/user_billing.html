@@ -6,44 +6,75 @@
 	</div>
 	<div class="top_50 scroll bottom_padding_50 bg_gray">
 		{{#if controls.publicBeta}}
+
+			<!-- Public Beta -->
 			<div class="txt_container ">
 				<h3>Free public beta.</h3>
 				<p>All Natural Contact is free to use until public beta testing is concluded.</p>
 			</div>
+
 		{{else}}
-			{{#if groupCardExists}}
+			{{#if adminPause}}
+
+				<!-- Admin Pause -->
+				<div class="txt_container ">
+					{{#if adminPauseTimeout}}
+						<h3>Your account is set to pause.</h3>
+						<p>Your account will pause on {{unixFormatDateLong currentGroup.stripeEnd}}. At that time you will not be able to access your contacts. To avoid this please reactivate your account.</p>
+					{{else}}
+						<h3>You Paused your account.</h3>
+						<p>Please feel free to reactivate. We're happy for you to start right where you left off.</p>
+					{{/if}}
+				</div>
 				<div class="js_billing_update_head txt_container">
-					<h3 class="js_billing_header">Current monthly charges.</h3>
+					<h3 class="js_billing_header">Charges if you reactivate.</h3>
 					{{> userTable}}
 				</div>
-				{{> cardInfo}}
-				<div class="js_billing_update_head cc_container">
-					<h3 class="js_billing_header">Update your credit card.</h3>
-				</div>
-				{{> groupCard}}
+
 			{{else}}
-				{{#if freeTrialExpired}}
-					<div class="js_billing_save_head txt_container">
-						<h3 class="js_billing_header">Your free trial has expired.</h3>
-						<p>Your {{controls.freeTrial}} day free trial has expired. Please enter your credit card information to continue using All Natural Contact.</p>
-					</div>
+				{{#if groupCardExists}}
+
+					<!-- Update Card -->
 					<div class="js_billing_update_head txt_container">
-						<h3 class="js_billing_header">Review your monthly charges.</h3>
+						<h3 class="js_billing_header">Current monthly charges.</h3>
 						{{> userTable}}
 					</div>
+					{{> cardInfo}}
 					<div class="js_billing_update_head cc_container">
-						<h3 class="js_billing_header">Input your credit card.</h3>
+						<h3 class="js_billing_header">Update your credit card.</h3>
 					</div>
 					{{> groupCard}}
+
 				{{else}}
-					<div class="js_billing_save_head txt_container">
-						<h3 class="js_billing_header">Please enjoy your free trial.</h3>
-						<p>You have {{freeTrialDaysRemain}} days remaing of your {{controls.freeTrial}} day free trial. On {{formatDateLong freeTrialExpirationDate}} you will be asked to enter your credit card information to continue using All Natural Contact. At that time the following monthly charges will begin to apply.</p>
-					</div>
-					<div class="js_billing_update_head txt_container">
-						<h3 class="js_billing_header">Review your future charges.</h3>
-						{{> userTable}}
-					</div>
+					{{#if freeTrialExpired}}
+
+						<!-- Free Trial Expired -->
+						<div class="js_billing_save_head txt_container">
+							<h3 class="js_billing_header">Your free trial has expired.</h3>
+							<p>Your {{controls.freeTrial}} day free trial has expired. Please enter your credit card information to continue using All Natural Contact.</p>
+						</div>
+						<div class="js_billing_update_head txt_container">
+							<h3 class="js_billing_header">Review your monthly charges.</h3>
+							{{> userTable}}
+						</div>
+						<div class="js_billing_update_head cc_container">
+							<h3 class="js_billing_header">Input your credit card.</h3>
+						</div>
+						{{> groupCard}}
+
+					{{else}}
+
+						<!-- Still in Free Trial -->
+						<div class="js_billing_save_head txt_container">
+							<h3 class="js_billing_header">Please enjoy your free trial.</h3>
+							<p>You have {{freeTrialDaysRemain}} days remaing of your {{controls.freeTrial}} day free trial. On {{formatDateLong freeTrialExpirationDate}} you will be asked to enter your credit card information to continue using All Natural Contact. At that time the following monthly charges will begin to apply.</p>
+						</div>
+						<div class="js_billing_update_head txt_container">
+							<h3 class="js_billing_header">Review your future charges.</h3>
+							{{> userTable}}
+						</div>
+
+					{{/if}}
 				{{/if}}
 			{{/if}}
 		{{/if}}

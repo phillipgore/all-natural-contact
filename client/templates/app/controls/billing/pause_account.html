@@ -1,0 +1,19 @@
+<template name="pauseAccount">
+	{{> blankSaving}}
+	<div class="toolbar gray">
+		<div class="toolbar_img icn_billing_gray"></div>
+		<h1>Billing</h1>
+	</div>
+  <div class="top_50 scroll bottom_padding_50 bg_gray">
+		<div class="red_alert_msg hide"></div>
+    <div class="txt_container">
+      <h3>Pause Your Account?</h3>
+			<p>
+				Your subscription is paid through {{unixFormatDateLong subscription.current_period_end}}. If you pause your account your data will become inaccesable on that date.
+			</p>
+			<p>
+				Please make sure you export any contacts you may need. You can unpause your account anytime.
+			</p>
+    </div>
+  </div>
+</template>

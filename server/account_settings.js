@@ -11,7 +11,7 @@ Accounts.config ({
 });
 
 Meteor.startup(function () {
-  
+
   Contacts._ensureIndex({groupId: 1, nameLast: 1, nameFirst: 1, company: 1});
   Tags._ensureIndex({groupId: 1, milestoneTagType: 1, personal: 1, tagName: 1});
   Conversations._ensureIndex({groupId: 1, belongs_to_contact: 1, conversation_date: -1});

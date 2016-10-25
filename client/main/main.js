@@ -120,6 +120,10 @@ UI.registerHelper('formatDateLong', function(datetime) {
 	return moment(datetime).format('MMMM D, YYYY');
 });
 
+UI.registerHelper('unixFormatDateLong', function(datetime) {
+	return moment.unix(datetime).format('MMMM D, YYYY');
+});
+
 UI.registerHelper('formatTime', function(datetime) {
 	return moment(datetime).tz(Meteor.user().profile.timezone).format('h:mm A');
 });
@@ -154,5 +158,5 @@ UI.registerHelper('updateUser', function() {
 });
 
 UI.registerHelper('today', function() {
-	return new Date();
+	return moment();
 })

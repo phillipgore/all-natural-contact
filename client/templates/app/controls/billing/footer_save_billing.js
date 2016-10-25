@@ -3,6 +3,22 @@ Template.footerSaveBilling.helpers({
 		return Controls.findOne();
 	},
 
+	adminPause: function() {
+		if (Groups.findOne().stripePause === "adminPause") {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
+	failPause: function() {
+		if (Groups.findOne().stripePause === "failPause") {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
 	groupCardExists: function() {
 		if (Groups.findOne().stripeSubcription) {
 			return true;
@@ -105,5 +121,39 @@ Template.footerSaveBilling.events({
 			}
 		});
 
-	}
+	},
+
+	'click .js_reactivate': function(e) {
+		e.preventDefault();
+
+		$('.js_submit').attr('disabled', 'disabled').text('Reactivating...');
+		$('.js_saving_msg').text('Reactivating...');
+		$('.js_initial_loading_overlay').show();
+		$('.red_alert_msg').slideUp();
+
+		Meteor.call('reactivateSubscription', function(error, result) {
+			if (error) {
+        $('.js_submit').removeAttr('disabled', 'disabled').text('Reactivate Account');
+				$('.js_initial_loading_overlay').hide();
+				$('.red_alert_msg').text(error.reason).slideDown();
+      } else {
+				var group_id = Groups.findOne()._id;
+        var groupProperties = {
+          stripeEnd: null,
+          stripePause: 'activated'
+        }
+
+        Meteor.call('groupUpdate', group_id, groupProperties, function(error) {
+          if (error) {
+            $('.js_submit').removeAttr('disabled', 'disabled').text('Confirm Pause');
+    				$('.js_initial_loading_overlay').hide();
+    				$('.red_alert_msg').text(error.reason).slideDown();
+  				} else {
+						$('.js_initial_loading_overlay').hide();
+  				}
+        })
+			}
+		})
+	},
+
 });

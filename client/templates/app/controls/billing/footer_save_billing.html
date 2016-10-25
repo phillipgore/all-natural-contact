@@ -3,19 +3,27 @@
 			{{#if controls.publicBeta}}
 				<a class="js_cancel_billing btn block" href="{{pathFor 'settings'}}">Return To Settings</a>
 			{{else}}
-				{{#if groupCardExists}}
-					<a class="btn" href="{{pathFor 'settings'}}">Cancel</a>
-					<span class="fl_right">
-						<a class="js_submit js_billing_update btn white" href="#">Update Card</a>
-					</span>
+				{{#if adminPause}}
+				<a class="btn" href="{{pathFor 'settings'}}">Cancel</a>
+				<span class="fl_right">
+					<a class="js_submit js_reactivate btn white" href="#">Reactivate Account</a>
+				</span>
 				{{else}}
-					{{#if freeTrialExpired}}
-						<a class="js_sign_out_billing btn" href="#">Sign Out</a>
+					{{#if groupCardExists}}
+						<a class="btn" href="{{pathFor 'settings'}}">Cancel</a>
 						<span class="fl_right">
-							<a class="js_submit js_billing_submit btn white" href="#">Submit Payment</a>
+							<a class="btn white space_right" href="{{pathFor 'pauseAccount'}}">Pause</a>
+							<a class="js_submit js_billing_update btn white" href="#">Update</a>
 						</span>
 					{{else}}
-						<a class="js_cancel_billing btn block" href="{{pathFor 'settings'}}">Return to Settings</a>
+						{{#if freeTrialExpired}}
+							<a class="js_sign_out_billing btn" href="#">Sign Out</a>
+							<span class="fl_right">
+								<a class="js_submit js_billing_submit btn white" href="#">Submit Payment</a>
+							</span>
+						{{else}}
+							<a class="js_cancel_billing btn block" href="{{pathFor 'settings'}}">Return to Settings</a>
+						{{/if}}
 					{{/if}}
 				{{/if}}
 			{{/if}}

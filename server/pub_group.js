@@ -54,9 +54,9 @@ Meteor.publish('settingsData', function() {
 });
 
 Meteor.publish('officeStats', function() {
-	var role = Meteor.users.findOne({_id: this.userId}).role.app_administrator
+	var app_admin = Meteor.users.findOne({_id: this.userId}).role.app_administrator
 
-	if (role) {
+	if (app_admin) {
 		Counts.publish(this, 'groupCount', Groups.find());
 		Counts.publish(this, 'userCount', Meteor.users.find());
 	} else {
